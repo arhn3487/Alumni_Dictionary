@@ -3,9 +3,43 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< HEAD
 
 <AnchorPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.HelloController">
    <children>
       <Button fx:id="logoutButton" layoutX="116.0" layoutY="188.0" mnemonicParsing="false" onAction="#logout" text="LogOut" />
    </children>
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="600.0" style="-fx-background-color: #c59564;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+    <children>
+        <AnchorPane fx:id="Register" layoutX="400.0" prefHeight="298.0" prefWidth="200.0" style="-fx-background-color: #c59564;">
+            <children>
+                <Text fill="#efeaea" layoutX="10.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MIST">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Text>
+                <Button layoutX="74.0" layoutY="238.0" mnemonicParsing="false" text="Login" />
+                <PasswordField layoutX="25.0" layoutY="188.0" promptText="Password" />
+                <TextField layoutX="24.0" layoutY="116.0" promptText="Student ID" />
+                <Text fill="#713333" layoutX="25.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+                    <font>
+                        <Font size="7.0" />
+                    </font>
+                </Text>
+                <Label fx:id="Register" layoutX="100.0" layoutY="272.0" text="Register" textFill="#665be3">
+                    <font>
+                        <Font size="8.0" />
+                    </font>
+                </Label>
+            <Label fx:id="klfaoilwf" layoutX="136.0" layoutY="274.0" text="Label" />
+            </children>
+        </AnchorPane>
+        <ImageView fitHeight="315.0" fitWidth="398.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@plaza.jpeg" />
+            </image>
+        </ImageView>
+    </children>
+>>>>>>> github/main
 </AnchorPane>
