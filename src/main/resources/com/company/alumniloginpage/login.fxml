@@ -31,7 +31,7 @@
       </AnchorPane>
       <ImageView fitHeight="315.0" fitWidth="398.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@login_page1.jpeg" />
+            <Image url="@plaza.jpeg" />
          </image>
       </ImageView>
    </children>
