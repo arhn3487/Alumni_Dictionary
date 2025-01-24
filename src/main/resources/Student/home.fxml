@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+   <children>
+      <VBox layoutX="2.0" layoutY="68.0" prefHeight="444.0" prefWidth="254.0" styleClass="identity_box" stylesheets="@home.css">
+         <children>
+            <HBox prefHeight="94.0" prefWidth="252.0" styleClass="identity_box" stylesheets="@home.css">
+               <children>
+                  <Label text="Name" textFill="#260e0e" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="223.0">
+               <children>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="63.0" prefWidth="740.0" styleClass="main_bar" stylesheets="@home.css">
+         <children>
+            <HBox alignment="CENTER" layoutX="8.0" layoutY="8.0" prefHeight="46.0" prefWidth="122.0" styleClass="upper_button" stylesheets="@home.css">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#mistWebsite" text="MIST" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="449.0" layoutY="8.0" prefHeight="46.0" prefWidth="122.0" styleClass="upper_button" stylesheets="@home.css">
+               <children>
+                  <Button mnemonicParsing="false" text="Post" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="603.0" layoutY="9.0" prefHeight="46.0" prefWidth="122.0" styleClass="upper_button" stylesheets="@home.css">
+               <children>
+                  <Button mnemonicParsing="false" text="Log Out" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="147.0" layoutY="8.0" prefHeight="46.0" prefWidth="122.0" styleClass="upper_button" stylesheets="@home.css">
+               <children>
+                  <Button mnemonicParsing="false" text="Job Board" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="300.0" layoutY="8.0" prefHeight="46.0" prefWidth="122.0" styleClass="upper_button" stylesheets="@home.css">
+               <children>
+                  <Button mnemonicParsing="false" text="Event" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <Button layoutX="285.0" layoutY="89.0" mnemonicParsing="false" prefHeight="146.0" prefWidth="170.0" />
+      <ImageView fitHeight="126.0" fitWidth="150.0" layoutX="501.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="522.0" layoutY="130.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="82.0" />
+   </children>
+</AnchorPane>

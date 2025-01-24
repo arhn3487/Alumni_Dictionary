@@ -2,22 +2,28 @@ package com.company.alumniloginpage;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class HelloApplication extends Application {
+public class HelloApplication extends Application
+{
+    public static void main(String[] args){
+        launch();
+    }
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scene1.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+    public void start(Stage primaryStage) throws Exception{
+        //Group root=new Group();
+        Parent root = FXMLLoader.load(getClass().getResource("bal.fxml"));
+
+        Scene scene=new Scene(root);
+        Stage stage=new Stage();
+        //Image icone = new Image("login_page1.png");
+        stage.setTitle("This is a programe for allumni of MIST");
+
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
