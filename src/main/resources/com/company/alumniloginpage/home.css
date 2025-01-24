@@ -1,0 +1,21 @@
+.identity_box {
+    -fx-background-color: #cbd4ba;
+    -fx-background-radius: 15;
+}
+
+.name_and_rank {
+    -fx-background-color: #9de85f;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, green, 10, 0.5, 0, 0);
+}
+
+.main_bar{
+    -fx-background-color: #cbd4ba;
+    -fx-background-radius: 15;
+}
+
+.upper_button{
+    -fx-background-color: #51632e;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, green, 10, 0.5, 0, 0);
+}
