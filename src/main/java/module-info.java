@@ -6,6 +6,7 @@ module com.company.alumniloginpage {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
+    requires java.sql;
 
     opens com.company.alumniloginpage to javafx.fxml;
     exports com.company.alumniloginpage;

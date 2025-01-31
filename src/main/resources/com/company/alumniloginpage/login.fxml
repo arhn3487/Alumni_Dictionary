@@ -18,15 +18,15 @@
                   <Font size="23.0" />
                </font>
             </Text>
-            <Button layoutX="66.0" layoutY="213.0" mnemonicParsing="false" onAction="#switchToHome" text="Login" />
+            <Button layoutX="66.0" layoutY="213.0" mnemonicParsing="false" onAction="#switchToHome" style="-fx-cursor: hand;" text="Login" />
             <PasswordField layoutX="25.0" layoutY="162.0" promptText="Password" />
             <TextField layoutX="24.0" layoutY="107.0" promptText="Student ID" />
             <Text fill="#713333" layoutX="25.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
                <font>
-                  <Font size="7.0" />
+                  <Font size="8.0" />
                </font>
             </Text>
-            <Button layoutX="102.0" layoutY="266.0" mnemonicParsing="false" onAction="#switchToCreateAccount" text="Register" textFill="#474a69" />
+            <Button layoutX="103.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchToCreateAccount" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Register" textFill="#0c1eed" underline="true" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="315.0" fitWidth="398.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">

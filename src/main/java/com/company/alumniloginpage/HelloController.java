@@ -10,20 +10,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import  java.sql.DriverManager;
+import  java.sql.Connection;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class HelloController {
-    @FXML
-    private Button logOutButton;
-    @FXML
-    private AnchorPane scenePane;
-    Stage stage;
+    public void loginbuttononaction(ActionEvent e)
+    {
 
-    public void logOut(ActionEvent event) throws IOException {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
     }
-
 }
