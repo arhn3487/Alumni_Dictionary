@@ -19,9 +19,9 @@
                     </font>
                 </Text>
                 <Button layoutX="69.0" layoutY="226.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-cursor: hand;" text="Sign Up" />
-                <PasswordField layoutX="22.0" layoutY="116.0" promptText="Password" />
-                <TextField layoutX="22.0" layoutY="62.0" promptText="Student ID" />
-            <PasswordField layoutX="23.0" layoutY="170.0" promptText="Confirme Password" />
+                <PasswordField layoutX="22.0" layoutY="73.0" promptText="Password" />
+                <TextField layoutX="22.0" layoutY="170.0" promptText="OTP" />
+            <PasswordField layoutX="22.0" layoutY="124.0" promptText="Confirme Password" />
             <Button layoutX="123.0" layoutY="258.0" mnemonicParsing="false" onAction="#switchToLogin" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Sign in" textFill="#0c1eed" underline="true" />
             <Text fill="#532727" layoutX="13.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account ?">
                <font>

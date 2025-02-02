@@ -26,7 +26,7 @@
                   <Font size="8.0" />
                </font>
             </Text>
-            <Button layoutX="103.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchToCreateAccount" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Register" textFill="#0c1eed" underline="true" />
+            <Button layoutX="103.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchToSignupForm" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Register" textFill="#0c1eed" underline="true" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="315.0" fitWidth="398.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
