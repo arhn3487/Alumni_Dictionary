@@ -10,12 +10,13 @@
 }
 
 .main_bar{
-    -fx-background-color: #cbd4ba;
+    -fx-background-color:  #e0d07b;
     -fx-background-radius: 15;
 }
 
-.upper_button{
-    -fx-background-color: #51632e;
+.upper_button {
+    -fx-background-color: #a69750;
     -fx-background-radius: 15;
-    -fx-effect: dropshadow(gaussian, green, 10, 0.5, 0, 0);
+    -fx-effect: dropshadow(gaussian, #e0d07b, 10, 0.5, 0, 0);
 }
+
