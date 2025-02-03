@@ -32,37 +32,32 @@ public class Controller {
     @FXML
     private ComboBox<String> graduationYear;
 
+
     @FXML
     public void initialize() {
-        if (degree != null) {
+        //If anything is null in this combobox this will not be initialize When I debeloped the frontend I try to initialize the depertment where there was not any fx-id named department thats why there always show an error
+        if (degree == null) {
+            System.out.println("Not found any fx-id name degree");
+        } else {
             degree.setItems(FXCollections.observableArrayList("BSc", "MSc"));
-            System.out.println("degree ComboBox initialized.");
-        } else {
-            System.err.println("Error: 'degree' ComboBox not found. Check fx:id in FXML.");
+            //degree.getSelectionModel().selectFirst(); // Automatically select the first option
+            System.out.println("degree ComboBox initialized with options: BSc, MSc");
         }
+        if (department== null) {
+            System.out.println("Not found any fx-id name department");
 
-        if (department != null) {
-            department.setItems(FXCollections.observableArrayList(
-                    "CSE", "EECE", "CE", "ME", "AE", "EWCE",
-                    "PME", "NAME", "IPE", "BME", "ARCH", "NSE"
-            ));
+        } else {
+            department.setItems(FXCollections.observableArrayList("CSE", "EECE","CE","ME","AE","EWCE","PME","NAME","IPE","BME","ARCH","NSE"));
             department.setVisibleRowCount(5);
-            System.out.println("department ComboBox initialized.");
-        } else {
-            System.err.println("Error: 'department' ComboBox not found. Check fx:id in FXML.");
+            System.out.println("Successfully initialized department");
         }
+        if (graduationYear== null) {
+            System.out.println("Not found any fx-id name department");
 
-        if (graduationYear != null) {
-            graduationYear.setItems(FXCollections.observableArrayList(
-                    "2002", "2003", "2004", "2005", "2006", "2007",
-                    "2008", "2009", "2010", "2011", "2012", "2013",
-                    "2014", "2015", "2016", "2017", "2018", "2019",
-                    "2020", "2021", "2022", "2023"
-            ));
-            graduationYear.setVisibleRowCount(5);
-            System.out.println("graduationYear ComboBox initialized.");
         } else {
-            System.err.println("Error: 'graduationYear' ComboBox not found. Check fx:id in FXML.");
+            graduationYear.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
+            graduationYear.setVisibleRowCount(5);
+            System.out.println("Successfully initialized department");
         }
     }
 
@@ -97,14 +92,6 @@ public class Controller {
 
     public void switchToHome(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToUserProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("userProfile.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
