@@ -4,9 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -20,22 +19,62 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import org.bson.Document;
 
 public class Controller {
 
     private Stage stage;
     private Scene scene;
+
+    @FXML
+    private TextField name;
+
+    @FXML
+    private TextField studentId;
+
+    @FXML
+    private TextField batch;
+
+    @FXML
+    private RadioButton male;
+
+    @FXML
+    private RadioButton female;
+
     @FXML
     private ComboBox<String> degree;
+
     @FXML
     private ComboBox<String> department;
+
     @FXML
     private ComboBox<String> graduationYear;
 
+    @FXML
+    private TextField workplace;
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private TextField linkedin;
+
+    @FXML
+    private TextField phone;
+
+    @FXML
+    private TextField facebook;
+
+    @FXML
+    private TextField address;
+
+    private MongoDBConnection mongoDBConnection;
 
     @FXML
     public void initialize() {
-        //If anything is null in this combobox this will not be initialize When I debeloped the frontend I try to initialize the depertment where there was not any fx-id named department thats why there always show an error
+
+        mongoDBConnection = new MongoDBConnection();
+        //If anything is null in this combobox this will not be initialized When I developed the frontend I try to initialize the department where there was not any fx-id named department that's why there always show an error
         if (degree == null) {
             System.out.println("Not found any fx-id name degree");
         } else {
@@ -61,6 +100,69 @@ public class Controller {
         }
     }
 
+    @FXML
+    private void saveinfo()
+    {
+        // Collect data from TextFields
+        String dname = name.getText();
+        String did = studentId.getText();
+        String dbatch = batch.getText();
+        String dworkplace = workplace.getText();
+        String demail = email.getText();
+        String dlinkedin = linkedin.getText();
+        String dphone = phone.getText();
+        String dfacebook = facebook.getText();
+        String daddress = address.getText();
+
+        // Collect data from RadioButtons
+        String dgender = "";
+        if (male.isSelected()) {
+            dgender = "Male";
+        } else if (female.isSelected()) {
+            dgender = "Female";
+        }
+
+        // Collect data from ComboBoxes
+        String ddegree = degree.getValue(); // Get selected value from ComboBox
+        String ddepartment = department.getValue();
+        String dgraduationYear = graduationYear.getValue();
+
+        // Create a MongoDB Document
+        Document document = new Document()
+                .append("name", dname)
+                .append("studentId", did)
+                .append("batch", dbatch)
+                .append("gender", dgender)
+                .append("degree", ddegree)
+                .append("department", ddepartment)
+                .append("graduationYear", dgraduationYear)
+                .append("workplace", dworkplace)
+                .append("email", demail)
+                .append("linkedin", dlinkedin)
+                .append("phone", dphone)
+                .append("facebook", dfacebook)
+                .append("address", daddress);
+
+        mongoDBConnection.insertinfo(document);
+
+        name.clear();
+        studentId.clear();
+        batch.clear();
+        workplace.clear();
+        email.clear();
+        linkedin.clear();
+        phone.clear();
+        facebook.clear();
+        address.clear();
+
+        male.setSelected(false);
+        female.setSelected(false);
+
+        degree.getSelectionModel().clearSelection();
+        department.getSelectionModel().clearSelection();
+        graduationYear.getSelectionModel().clearSelection();
+
+    }
 
     public void switchToCreateAccount(ActionEvent event) throws IOException {
         //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));

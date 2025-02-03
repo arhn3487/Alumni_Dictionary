@@ -12,8 +12,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="521.0" style="-fx-background-color: #c59564;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
     <children>
         <TextField fx:id="name" layoutX="124.0" layoutY="102.0" prefHeight="26.0" prefWidth="386.0" promptText="Enter your name" />
-        <Button fx:id="submit" layoutX="454.0" layoutY="486.0" mnemonicParsing="false" onAction="#switchToCreateAccount" text="Submit" textAlignment="CENTER" />
-        <Text fill="#fcfafa" layoutX="130.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UNIVERSITY ALUMNI">
+        <Button fx:id="submit" layoutX="454.0" layoutY="486.0" mnemonicParsing="false" onAction="#saveinfo" text="Submit" textAlignment="CENTER" />
+        <Text fill="#fcfafa" layoutX="174.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIST ALUMNI">
             <font>
                 <Font size="28.0" />
             </font>
@@ -55,7 +55,6 @@
                 <Font size="14.0" />
             </font>
         </Text>
-        <RadioButton fx:id="gender11" layoutX="302.0" layoutY="176.0" mnemonicParsing="false" text="Other" textFill="#ffefef" toggleGroup="$gender" />
         <Text fill="#ffefef" layoutX="15.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education and Work">
             <font>
                 <Font size="14.0" />
@@ -85,14 +84,14 @@
                 <Font size="14.0" />
             </font>
         </Text>
-        <TextField layoutX="362.0" layoutY="292.0" promptText="Workplace" />
+        <TextField fx:id="workplace" layoutX="362.0" layoutY="292.0" promptText="Workplace" />
         <Text fill="#ffefef" layoutX="15.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
-        <TextField layoutX="122.0" layoutY="374.0" promptText="abc@gmail.com" />
-        <Text fill="#ffefef" layoutX="286.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Linkdin" wrappingWidth="84.17554092407227">
+        <TextField fx:id="email" layoutX="122.0" layoutY="374.0" promptText="abc@gmail.com" />
+        <Text fill="#ffefef" layoutX="286.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LinkedIn" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
             </font>
@@ -107,15 +106,15 @@
                 <Font size="14.0" />
             </font>
         </Text>
-        <TextField layoutX="122.0" layoutY="402.0" promptText="015********" />
-        <TextField layoutX="362.0" layoutY="376.0" promptText="www.linkdin.com" />
-        <TextField layoutX="362.0" layoutY="404.0" promptText="facebook.com/arafat.hasan.1849" />
+        <TextField fx:id="phone" layoutX="122.0" layoutY="402.0" promptText="**********" />
+        <TextField fx:id="linkedin" layoutX="362.0" layoutY="376.0" promptText="linkedin.com/" />
+        <TextField fx:id="facebook" layoutX="362.0" layoutY="404.0" promptText="facebook.com/" />
         <Button fx:id="submit1" layoutX="386.0" layoutY="486.0" mnemonicParsing="false" onAction="#switchToLogin" text="Cancel" textAlignment="CENTER" />
         <Text fill="#ffefef" layoutX="15.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
-        <TextField layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="393.0" promptText="House Number , Road Number , Area , City , Postal Code , Country" />
+        <TextField fx:id="address" layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="393.0" promptText="House Number , Road Number , Area , City , Postal Code , Country" />
     </children>
 </AnchorPane>

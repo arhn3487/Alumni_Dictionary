@@ -7,6 +7,9 @@ module com.company.alumniloginpage {
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
     requires java.sql;
+    requires org.mongodb.bson;
+    requires org.mongodb.driver.sync.client;
+    requires org.mongodb.driver.core;
 
     opens com.company.alumniloginpage to javafx.fxml;
     exports com.company.alumniloginpage;
