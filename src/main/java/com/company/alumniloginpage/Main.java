@@ -17,12 +17,13 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception{
         //Group root=new Group();
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root  = FXMLLoader.load(getClass().getResource("login.fxml"));
 
-        Scene scene=new Scene(root, Color.BLACK);
+        Scene scene =new Scene(root, Color.BLACK);
         Stage stage=new Stage();
         //Image icone = new Image("login_page1.png");
         stage.setTitle("This is a program for alumni of MIST");
+        //scene.alignment("center")
         //stage.setFullScreen(true);
 
         stage.setScene(scene);

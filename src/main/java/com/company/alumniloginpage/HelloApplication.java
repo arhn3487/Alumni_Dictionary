@@ -14,7 +14,7 @@ public class HelloApplication extends Application
         launch();
     }
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void  start(Stage primaryStage) throws Exception{
         //Group root=new Group();
         Parent root = FXMLLoader.load(getClass().getResource("scene1.fxml"));
 

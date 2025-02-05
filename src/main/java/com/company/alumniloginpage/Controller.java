@@ -68,6 +68,15 @@ public class Controller {
     @FXML
     private TextField address;
 
+    //For Broadcast page
+    @FXML
+    private ComboBox<String> broad_batch;
+
+    @FXML
+
+    private ComboBox<String> broad_dept;
+
+
     private MongoDBConnection mongoDBConnection;
 
     @FXML
@@ -96,6 +105,22 @@ public class Controller {
         } else {
             graduationYear.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
             graduationYear.setVisibleRowCount(5);
+            System.out.println("Successfully initialized department");
+        }
+        if (broad_dept== null) {
+            System.out.println("Not found any fx-id name department");
+
+        } else {
+            broad_dept.setItems(FXCollections.observableArrayList("CSE", "EECE","CE","ME","AE","EWCE","PME","NAME","IPE","BME","ARCH","NSE"));
+            broad_dept.setVisibleRowCount(5);
+            System.out.println("Successfully initialized department");
+        }
+        if (broad_batch== null) {
+            System.out.println("Not found any fx-id name department");
+
+        } else {
+            broad_batch.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
+            broad_batch.setVisibleRowCount(5);
             System.out.println("Successfully initialized department");
         }
     }
@@ -164,9 +189,28 @@ public class Controller {
 
     }
 
+    public void switchBroadcast(ActionEvent event) throws IOException {
+        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void switchToCreateAccount(ActionEvent event) throws IOException {
         //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("CreateAccount.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+        stage.show();
+    }
+
+    public void switchTopersonalinfo(ActionEvent event) throws IOException {
+        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("personalinfo.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

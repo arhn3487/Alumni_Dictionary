@@ -20,7 +20,7 @@
         </Text>
         <Text fill="#ffefef" layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information">
             <font>
-                <Font size="14.0" />
+                <Font  size="14.0" />
             </font>
         </Text>
         <Text fill="#ffefef" layoutX="14.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="84.17554092407227">

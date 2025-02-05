@@ -13,7 +13,7 @@
    <children>
       <AnchorPane layoutX="400.0" prefHeight="298.0" prefWidth="200.0" style="-fx-background-color: #c59564;">
          <children>
-            <Text fill="#efeaea" layoutX="10.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MIST">
+            <Text fill ="#efeaea" layoutX="10.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MIST">
                <font>
                   <Font size="23.0" />
                </font>

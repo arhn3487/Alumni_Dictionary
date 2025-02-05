@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="521.0" style="-fx-background-color: #c59564;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
    <children>
-      <TextField fx:id="name" layoutX="124.0" layoutY="102.0" prefHeight="26.0" prefWidth="386.0" promptText="Enter your name" />
+      <TextField fx:id="name"  layoutX="124.0" layoutY="102.0" prefHeight="26.0" prefWidth="386.0" promptText="Enter your name" />
       <Button fx:id="submit" layoutX="454.0" layoutY="486.0" mnemonicParsing="false" text="Submit" textAlignment="CENTER" />
       <Text fill="#fcfafa" layoutX="130.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UNIVERSITY ALUMNI">
          <font>

@@ -11,10 +11,10 @@
             <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Home" textAlignment="CENTER" textFill="#efe7e7" />
             <Button layoutX="7.0" layoutY="189.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Job Board" textAlignment="CENTER" textFill="#efe7e7" />
             <Button layoutX="7.0" layoutY="251.0" mnemonicParsing="false" styleClass="upper_button" stylesheets="@home.css" text="Event Announcement" textAlignment="CENTER" textFill="#efe7e7" />
-            <Button layoutX="7.0" layoutY="305.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Broadcasting" textAlignment="CENTER" textFill="#efe7e7" />
+            <Button layoutX="7.0" layoutY="305.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Broadcasting" textAlignment="CENTER" textFill="#efe7e7" />
             <Button layoutX="7.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Signout" textAlignment="CENTER" textFill="#efe7e7" />
-            <Button layoutX="7.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Alumni Card" textAlignment="CENTER" textFill="#efe7e7" />
-            <Button layoutX="7.0" layoutY="70.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="User Profile" textAlignment="CENTER" textFill="#efe7e7" />
+            <Button  layoutX="7.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Alumni Card" textAlignment="CENTER" textFill="#efe7e7" />
+            <Button layoutX="7.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchTopersonalinfo" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="User Profile" textAlignment="CENTER" textFill="#efe7e7" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="174.0" layoutY="180.0" prefHeight="206.0" prefWidth="378.0" styleClass="main_bar" stylesheets="@home.css">
