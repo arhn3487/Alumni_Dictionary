@@ -233,7 +233,7 @@ public class Controller {
                 // OTP matched, open the password form
                 try {
                     // Load the password form
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("passwordform.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("passwordform2.fxml"));
                     Parent root = loader.load();
 
                     // Get the controller and pass the user data
