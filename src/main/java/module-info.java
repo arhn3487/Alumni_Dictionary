@@ -11,6 +11,7 @@ module com.company.alumniloginpage {
     requires org.mongodb.driver.sync.client;
     requires org.mongodb.driver.core;
     requires java.mail;
+    requires activation;
 
     opens com.company.alumniloginpage to javafx.fxml;
     exports com.company.alumniloginpage;

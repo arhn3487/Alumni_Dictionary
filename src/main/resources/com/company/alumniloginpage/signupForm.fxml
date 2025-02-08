@@ -55,36 +55,36 @@
                 <Font size="14.0" />
             </font>
         </Text>
-        <Text fill="#ffefef" layoutX="15.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education and Work">
+        <Text fill="#ffefef" layoutX="15.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education and Work">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
 
-        <ComboBox fx:id="degree" layoutX="126.0" layoutY="260.0" prefHeight="26.0" prefWidth="115.0" promptText="Select One" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Degree" wrappingWidth="84.17554092407227">
+        <ComboBox fx:id="degree" layoutX="126.0" layoutY="267.0" prefHeight="26.0" prefWidth="115.0" promptText="Select One" />
+        <Text fill="#ffefef" layoutX="15.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Degree" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
-        <Text fill="#ffefef" layoutX="302.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" wrappingWidth="84.17554092407227">
+        <Text fill="#ffefef" layoutX="302.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
-        <ComboBox fx:id="department" layoutX="396.0" layoutY="259.0" prefHeight="26.0" prefWidth="115.0" promptText="Select One" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graduation Year" wrappingWidth="115.20000000000005">
+        <ComboBox fx:id="department" layoutX="396.0" layoutY="266.0" prefHeight="26.0" prefWidth="115.0" promptText="Select One" />
+        <Text fill="#ffefef" layoutX="15.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graduation Year" wrappingWidth="115.20000000000005">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
-        <ComboBox fx:id="graduationYear" layoutX="127.0" layoutY="292.0" prefHeight="26.0" prefWidth="115.0" promptText="Year" />
-        <Text fill="#ffefef" layoutX="275.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Workplace" wrappingWidth="84.17554092407227">
+        <ComboBox fx:id="graduationYear" layoutX="127.0" layoutY="299.0" prefHeight="26.0" prefWidth="115.0" promptText="Year" />
+        <Text fill="#ffefef" layoutX="275.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Workplace" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
             </font>
         </Text>
-        <TextField fx:id="workplace" layoutX="362.0" layoutY="292.0" promptText="Workplace" />
+        <TextField fx:id="workplace" layoutX="362.0" layoutY="299.0" promptText="Workplace" />
         <Text fill="#ffefef" layoutX="15.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.17554092407227">
             <font>
                 <Font size="14.0" />
@@ -117,5 +117,12 @@
         </Text>
         <TextField fx:id="address" layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="393.0" promptText="House Number , Road Number , Area , City , Postal Code , Country" />
       <RadioButton fx:id="other" layoutX="303.0" layoutY="176.0" mnemonicParsing="false" text="Other" textFill="#ffefef" toggleGroup="$gender" />
+      <TextField fx:id="imagePathField" layoutX="123.0" layoutY="198.0" prefHeight="26.0" prefWidth="318.0" promptText="Image path " />
+      <Text fill="#ffefef" layoutX="14.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="84.17554092407227">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="451.0" layoutY="199.0" mnemonicParsing="false" onAction="#uploadImage" text="Upload" />
     </children>
 </AnchorPane>

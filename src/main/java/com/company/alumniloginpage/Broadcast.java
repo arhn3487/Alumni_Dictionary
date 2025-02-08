@@ -2,10 +2,12 @@ package com.company.alumniloginpage;
 
 import javax.mail.*;
 import javax.mail.internet.*;
+import java.io.File;
 import java.util.Properties;
+import javax.activation.*;
 
 public class Broadcast {
-    public static Integer sendEmail(String[] addresses, String subject,String text) {
+    public static Integer sendEmail(String[] addresses, String subject, String text, String attachmentPath) {
         final String username = "arafatsakibisbat@gmail.com";  // Change to your email
         final String password = "mbbt kffo caun txoe";         // Use App Password
 
@@ -24,7 +26,7 @@ public class Broadcast {
                 });
 
         try {
-            // Create a simple email message
+            // Create email message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
 
@@ -34,9 +36,32 @@ public class Broadcast {
                 recipientAddresses[i] = new InternetAddress(addresses[i]);
             }
             message.setRecipients(Message.RecipientType.TO, recipientAddresses); // Set recipients
-
             message.setSubject(subject);
-            message.setText(text);  // Set the plain text message
+
+            // Create email body (text part)
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(text);
+
+            // Create multipart message
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+
+            // Add attachment if provided
+            if (attachmentPath != null && !attachmentPath.isEmpty()) {
+                File file = new File(attachmentPath);
+                if (file.exists()) {
+                    MimeBodyPart attachmentPart = new MimeBodyPart();
+                    DataSource source = new FileDataSource(file);
+                    attachmentPart.setDataHandler(new DataHandler(source));
+                    attachmentPart.setFileName(file.getName()); // Set file name
+                    multipart.addBodyPart(attachmentPart);
+                } else {
+                    System.out.println("Attachment file not found: " + attachmentPath);
+                }
+            }
+
+            // Set the complete message content
+            message.setContent(multipart);
 
             // Send email
             Transport.send(message);

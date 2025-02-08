@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.Node;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,6 +27,10 @@ import org.bson.Document;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import java.io.File;
+
 
 
 public class Controller {
@@ -81,6 +87,13 @@ public class Controller {
     @FXML
 
     private ComboBox<String> broad_dept;
+
+    @FXML
+    private TextField attachmentPath;
+
+    @FXML
+    private TextField imagePathField;
+
 
 
     private MongoDBConnection mongoDBConnection;
@@ -194,6 +207,7 @@ public class Controller {
         String dphone = phone.getText();
         String dfacebook = facebook.getText();
         String daddress = address.getText();
+        String dImage=imagePathField.getText();
 
         // Collect data from RadioButtons
         String dgender = "";
@@ -252,6 +266,8 @@ public class Controller {
                             .append("phone", dphone)
                             .append("facebook", dfacebook)
                             .append("address", daddress);
+                    userData.append("Image",dImage);
+
                     passwordController.setUserData(userData);
 
                     // Show the password form
@@ -269,6 +285,35 @@ public class Controller {
         }
     }
 
+    @FXML
+    private void chooseAttachment() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select File for Attachment");
+
+        // Set file filter (optional)
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("All Files", "*.*")
+        );
+
+        Stage stage = new Stage();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            attachmentPath.setText(selectedFile.getAbsolutePath());
+        }
+    }
+
+    public void uploadImage() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedFile != null) {
+            imagePathField.setText(selectedFile.getAbsolutePath());
+        }
+    }
+
+
     public void switchBroadcast(ActionEvent event) throws IOException {
         //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
@@ -276,6 +321,11 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void BroadcastMail(ActionEvent event) throws IOException {
+        Broadcast test= new Broadcast();
+
     }
 
     public void switchalumniCard(ActionEvent event) throws IOException {

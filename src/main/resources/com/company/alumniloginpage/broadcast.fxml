@@ -8,20 +8,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="575.0" styleClass="main_bar" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+<AnchorPane prefHeight="410.0" prefWidth="575.0" styleClass="main_bar" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
    <children>
       <Text fill="#61604a" layoutX="164.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BROADCAST A MAIL" textAlignment="CENTER">
          <font>
             <Font size="31.0" />
          </font>
       </Text>
-      <Button layoutX="530.0" layoutY="364.0" mnemonicParsing="false" text="Sent" />
-      <Button layoutX="466.0" layoutY="364.0" mnemonicParsing="false" onAction="#switchToHome" text="Cancel" />
+      <Button layoutX="530.0" layoutY="374.0" mnemonicParsing="false" onAction="#BroadcastMail" text="Sent" />
+      <Button layoutX="466.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchToHome" text="Cancel" />
       <TextField layoutX="87.0" layoutY="133.0" prefHeight="26.0" prefWidth="482.0" promptText="Subject" />
       <ComboBox fx:id="broad_batch" layoutX="87.0" layoutY="71.0" prefHeight="26.0" prefWidth="115.0" promptText="Batch" />
-      <Text layoutX="21.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch">
+      <Text layoutX="20.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch">
          <font>
-            <Font size="15.0" />
+            <Font size="17.0" />
          </font>
       </Text>
       <ComboBox fx:id="broad_dept" layoutX="392.0" layoutY="68.0" prefHeight="26.0" prefWidth="115.0" promptText="Department" />
@@ -30,9 +30,9 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="17.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject">
+      <Text layoutX="17.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
          </font>
       </Text>
       <Text layoutX="16.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compose">
@@ -40,10 +40,20 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextArea layoutX="19.0" layoutY="195.0" prefHeight="162.0" prefWidth="550.0" promptText="Compose Your Mail">
+      <TextArea layoutX="17.0" layoutY="202.0" prefHeight="120.0" prefWidth="550.0" promptText="Compose Your Mail">
          <font>
             <Font size="16.0" />
          </font>
       </TextArea>
+
+      <!-- Attachment Section -->
+      <Text layoutX="19.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attachment">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="attachmentPath" editable="false" layoutX="110.0" layoutY="328.0" prefHeight="26.0" prefWidth="382.0" promptText="No file selected" />
+      <Button layoutX="513.0" layoutY="328.0" mnemonicParsing="false" onAction="#chooseAttachment" text="Browse" />
+
    </children>
 </AnchorPane>
