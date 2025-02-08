@@ -12,7 +12,7 @@ public class MongoDBConnection
 
     private MongoClient mongoClient;
     private MongoDatabase database;
-    private MongoCollection<Document> collection;
+    private static MongoCollection<Document> collection;
 
     public MongoDBConnection()
     {
@@ -22,7 +22,7 @@ public class MongoDBConnection
         collection = database.getCollection("info");
     }
 
-    public void insertinfo(Document doc)
+    public static void insertinfo(Document doc)
     {
         collection.insertOne(doc);
         System.out.println("Document inserted");

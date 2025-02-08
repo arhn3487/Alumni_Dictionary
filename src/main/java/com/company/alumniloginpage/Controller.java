@@ -18,8 +18,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import org.bson.Document;
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
+
 
 public class Controller {
 
@@ -125,6 +131,56 @@ public class Controller {
         }
     }
 
+    private String generateOTP() {
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000); // Generates a 6-digit number
+        return String.valueOf(otp);
+    }
+
+    private void sendOTP(String email, String otp) {
+        // Sender's email credentials
+        String from = "arafatsakibisbat@gmail.com"; // Replace with your email
+        String password = "icde xfka vrxx jyxc"; // Replace with your email password
+
+        // Setup mail server properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        // Create a session with the email server
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+
+        try {
+            // Create a MimeMessage object
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            message.setSubject("OTP Verification");
+            message.setText("Your OTP is: " + otp);
+
+            // Send the email
+            Transport.send(message);
+            System.out.println("OTP sent successfully to " + email);
+        } catch (MessagingException e) {
+            System.err.println("Error sending OTP: " + e.getMessage());
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     @FXML
     private void saveinfo()
     {
@@ -152,41 +208,65 @@ public class Controller {
         String ddepartment = department.getValue();
         String dgraduationYear = graduationYear.getValue();
 
-        // Create a MongoDB Document
-        Document document = new Document()
-                .append("name", dname)
-                .append("studentId", did)
-                .append("batch", dbatch)
-                .append("gender", dgender)
-                .append("degree", ddegree)
-                .append("department", ddepartment)
-                .append("graduationYear", dgraduationYear)
-                .append("workplace", dworkplace)
-                .append("email", demail)
-                .append("linkedin", dlinkedin)
-                .append("phone", dphone)
-                .append("facebook", dfacebook)
-                .append("address", daddress);
+        // Generate and send OTP
+//        String generatedOTP = generateOTP();
+//
+//        SendOTP sendOTP = new SendOTP();
+//
+//        sendOTP.sendEmail(demail, generatedOTP);
 
-        mongoDBConnection.insertinfo(document);
+        String generatedOTP = generateOTP();
+        sendOTP(demail, generatedOTP);
 
-        name.clear();
-        studentId.clear();
-        batch.clear();
-        workplace.clear();
-        email.clear();
-        linkedin.clear();
-        phone.clear();
-        facebook.clear();
-        address.clear();
+        // Prompt the user to enter the OTP
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("OTP Verification");
+        dialog.setHeaderText("An OTP has been sent to your email.");
+        dialog.setContentText("Please enter the OTP:");
 
-        male.setSelected(false);
-        female.setSelected(false);
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            String enteredOTP = result.get();
 
-        degree.getSelectionModel().clearSelection();
-        department.getSelectionModel().clearSelection();
-        graduationYear.getSelectionModel().clearSelection();
+            // Verify the OTP
+            if (generatedOTP.equals(enteredOTP)) {
+                // OTP matched, open the password form
+                try {
+                    // Load the password form
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("passwordform.fxml"));
+                    Parent root = loader.load();
 
+                    // Get the controller and pass the user data
+                    PasswordController passwordController = loader.getController();
+                    Document userData = new Document()
+                            .append("name", dname)
+                            .append("studentId", did)
+                            .append("batch", dbatch)
+                            .append("gender", dgender)
+                            .append("degree", ddegree)
+                            .append("department", ddepartment)
+                            .append("graduationYear", dgraduationYear)
+                            .append("workplace", dworkplace)
+                            .append("email", demail)
+                            .append("linkedin", dlinkedin)
+                            .append("phone", dphone)
+                            .append("facebook", dfacebook)
+                            .append("address", daddress);
+                    passwordController.setUserData(userData);
+
+                    // Show the password form
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Create Password");
+                    stage.show();
+                } catch (IOException e) {
+                    System.err.println("Error loading password form: " + e.getMessage());
+                }
+            } else {
+                // OTP did not match, show error and allow resend
+                showAlert("Error", "Invalid OTP. Please try again.");
+            }
+        }
     }
 
     public void switchBroadcast(ActionEvent event) throws IOException {
@@ -238,7 +318,7 @@ public class Controller {
     }
 
     public void switchToLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login.fxml"))));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login2.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
