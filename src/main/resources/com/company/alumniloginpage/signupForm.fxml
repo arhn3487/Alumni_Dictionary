@@ -116,10 +116,6 @@
             </font>
         </Text>
         <TextField fx:id="address" layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="393.0" promptText="House Number , Road Number , Area , City , Postal Code , Country" />
-      <RadioButton fx:id="other" layoutX="303.0" layoutY="176.0" mnemonicParsing="false" text="Other" textFill="#ffefef">
-         <toggleGroup>
-            <ToggleGroup fx:id="gender1" />
-         </toggleGroup>
-      </RadioButton>
+      <RadioButton fx:id="other" layoutX="303.0" layoutY="176.0" mnemonicParsing="false" text="Other" textFill="#ffefef" toggleGroup="$gender" />
     </children>
 </AnchorPane>

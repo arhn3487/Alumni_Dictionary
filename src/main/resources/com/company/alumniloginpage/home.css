@@ -1,5 +1,5 @@
 .identity_box {
-    -fx-background-color: #cbd4ba;
+    -fx-background-color: #87CEEB ;
     -fx-background-radius: 15;
 }
 
@@ -16,8 +16,13 @@
 }
 
 .upper_button {
-    -fx-background-color: #a69750;
+    -fx-background-color: #F9FAFB;
     -fx-background-radius: 15;
     -fx-effect: dropshadow(gaussian, #e0d07b, 10, 0.5, 0, 0);
 }
 
+.isbat{
+    -fx-background-color: #F9FAFB;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, #e0d07b, 10, 0.5, 0, 0);
+}
