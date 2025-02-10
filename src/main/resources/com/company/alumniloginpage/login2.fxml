@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #c59564;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #c59564;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.LoginController">
     <children>
         <!-- Background Image -->
         <ImageView fitHeight="498.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -34,17 +34,17 @@
                                 <DropShadow color="rgba(0,0,0,0.2)" offsetX="2" offsetY="2" radius="3" />
                             </effect>
                         </Text>
-                        <TextField layoutX="20.0" layoutY="80.0" prefHeight="35.0" prefWidth="210.0" promptText="Student ID" style="-fx-background-radius: 5; -fx-padding: 5; -fx-font-size: 14;">
+                        <TextField fx:id="userIdField" layoutX="20.0" layoutY="80.0" prefHeight="35.0" prefWidth="210.0" promptText="Student ID" style="-fx-background-radius: 5; -fx-padding: 5; -fx-font-size: 14;">
                             <font>
                                 <Font name="Arial" size="14.0" />
                             </font>
                         </TextField>
-                        <PasswordField layoutX="20.0" layoutY="130.0" prefHeight="35.0" prefWidth="210.0" promptText="Password" style="-fx-background-radius: 5; -fx-padding: 5; -fx-font-size: 14;">
+                        <PasswordField fx:id="passwordField" layoutX="20.0" layoutY="130.0" prefHeight="35.0" prefWidth="210.0" promptText="Password" style="-fx-background-radius: 5; -fx-padding: 5; -fx-font-size: 14;">
                             <font>
                                 <Font name="Arial" size="14.0" />
                             </font>
                         </PasswordField>
-                        <Button layoutX="20.0" layoutY="180.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3498db; -fx-background-radius: 5; -fx-text-fill: white; -fx-font-size: 14; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Login">
+                        <Button fx:id="loginButton" layoutX="20.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #3498db; -fx-background-radius: 5; -fx-text-fill: white; -fx-font-size: 14; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Login">
                             <font>
                                 <Font name="Arial" size="14.0" />
                             </font>
