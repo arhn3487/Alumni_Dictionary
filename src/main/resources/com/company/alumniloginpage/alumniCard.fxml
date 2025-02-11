@@ -8,71 +8,134 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="835.0" styleClass="home_page_final" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
     <children>
-        <AnchorPane prefHeight="400.0" prefWidth="150.0" styleClass="main_bar" stylesheets="@home.css">
+        <AnchorPane layoutX="2.0" prefHeight="114.0" prefWidth="820.0" styleClass="home_page_up" stylesheets="@home.css">
             <children>
-                <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Home" textAlignment="CENTER" textFill="#efe7e7" />
-                <Button layoutX="7.0" layoutY="189.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Job Board" textAlignment="CENTER" textFill="#efe7e7" />
-                <Button layoutX="7.0" layoutY="251.0" mnemonicParsing="false" styleClass="upper_button" stylesheets="@home.css" text="Event Announcement" textAlignment="CENTER" textFill="#efe7e7" />
-                <Button layoutX="7.0" layoutY="305.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Broadcasting" textAlignment="CENTER" textFill="#efe7e7" />
-                <Button layoutX="7.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Signout" textAlignment="CENTER" textFill="#efe7e7" />
-                <Button layoutX="7.0" layoutY="131.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="Alumni Card" textAlignment="CENTER" textFill="#efe7e7" />
-                <Button layoutX="7.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchTopersonalinfo" prefHeight="26.0" prefWidth="130.0" styleClass="upper_button" stylesheets="@home.css" text="User Profile" textAlignment="CENTER" textFill="#efe7e7" />
+                <Text fill="#1b0101" layoutX="240.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alumni Card" textAlignment="CENTER" wrappingWidth="382.71258544921875">
+                    <font>
+                        <Font name="Arial Narrow" size="64.0" />
+                    </font>
+                </Text>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="179.0" layoutY="4.0" prefHeight="390.0" prefWidth="426.0" styleClass="main_bar" stylesheets="@home.css">
+        <AnchorPane layoutX="2.0" layoutY="124.0" prefHeight="132.0" prefWidth="200.0" stylesheets="@home.css" />
+        <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: #ffffff;" styleClass="identity_box" stylesheets="@home.css">
             <children>
-                <AnchorPane layoutX="4.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="418.0" styleClass="identity_box" stylesheets="@../../../../../../../../Alumni_Dictionaryyyyyyyyyyyyyyyyyyyyyyyyy/Alumni_Dictionary-main/src/main/resources/com/company/alumniloginpage/home.css">
-                    <children>
-                        <ImageView fitHeight="104.0" fitWidth="85.0" layoutX="319.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/MISTLogo.png" />
-                            </image>
-                        </ImageView>
-                        <Text fill="#403e3e" layoutX="12.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <TextField layoutX="92.0" layoutY="55.0" prefHeight="26.0" prefWidth="217.0" promptText="Name" />
-                        <Text fill="#403e3e" layoutX="12.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <TextField layoutX="96.0" layoutY="180.0" prefHeight="26.0" prefWidth="92.0" promptText="Bloood Group" />
-                        <ImageView fitHeight="42.0" fitWidth="114.0" layoutX="295.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/signature.png" />
-                            </image>
-                        </ImageView>
-                        <Text fill="#281616" layoutX="60.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MILITARY INSTITUTE OF SCIENCE AND TECHNOLOGY" textAlignment="CENTER">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <Text fill="#403e3e" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
-                            <font>
-                                <Font size="15.0" />
-                            </font>
-                        </Text>
-                        <TextField layoutX="94.0" layoutY="140.0" prefHeight="26.0" prefWidth="135.0" promptText="Session" />
-                        <Text fill="#403e3e" layoutX="11.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" wrappingWidth="73.8458251953125">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </Text>
-                        <TextField layoutX="93.0" layoutY="96.0" prefHeight="26.0" prefWidth="135.0" promptText="Deparatment" />
-                        <ImageView fitHeight="48.0" fitWidth="37.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/MISTLogo.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </AnchorPane>
-                <Button layoutX="346.0" layoutY="352.0" mnemonicParsing="false" text="Download" />
+                <Button layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="57.0" prefWidth="200.0" style="-fx-background-color: #54b2b7;" styleClass="logout_upper_button" stylesheets="@home.css" text="        Home" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="50.0" fitWidth="85.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Home.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="2.0" layoutY="191.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428#601a99ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Job Accouncement" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="33.0" fitWidth="62.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/job.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="-3.0" layoutY="277.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="206.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="33.0" fitWidth="42.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Announcement.png" />
+                    </image>
+                </ImageView>
+                <Button layoutY="430.0" mnemonicParsing="false" onAction="#logOut" prefHeight="63.0" prefWidth="200.0" styleClass="logout_upper_button" stylesheets="@home.css" text="       Sign Out" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="8.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/logout.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="-5.0" layoutY="357.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="206.0" style="-fx-background-color: #b8c175;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni List" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="44.0" fitWidth="30.0" layoutX="17.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Alumni%20List.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="10.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: #525fc7;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Broadcast" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="17.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Invitation.png" />
+                    </image>
+                </ImageView>
             </children>
         </AnchorPane>
+        <AnchorPane layoutX="297.0" layoutY="124.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="523.0" styleClass="identity_box" stylesheets="@../../../../../../../../Alumni_Dictionaryyyyyyyyyyyyyyyyyyyyyyyyy/Alumni_Dictionary-main/src/main/resources/com/company/alumniloginpage/home.css">
+            <children>
+                <ImageView fitHeight="104.0" fitWidth="85.0" layoutX="434.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/MISTLogo.png" />
+                    </image>
+                </ImageView>
+                <Text fill="#403e3e" layoutX="12.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <TextField layoutX="120.0" layoutY="60.0" prefHeight="31.0" prefWidth="276.0" promptText="Name" />
+                <Text fill="#403e3e" layoutX="8.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Group">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <TextField layoutX="123.0" layoutY="228.0" prefHeight="31.0" prefWidth="101.0" promptText="Bloood Group" />
+                <ImageView fitHeight="43.0" fitWidth="128.0" layoutX="391.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/signature.png" />
+                    </image>
+                </ImageView>
+                <Text fill="#281616" layoutX="60.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MILITARY INSTITUTE OF SCIENCE AND TECHNOLOGY" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <Text fill="#403e3e" layoutX="6.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <TextField layoutX="123.0" layoutY="169.0" prefHeight="26.0" prefWidth="135.0" promptText="Session" />
+                <Text fill="#403e3e" layoutX="5.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" wrappingWidth="85.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+                <TextField layoutX="123.0" layoutY="121.0" prefHeight="26.0" prefWidth="175.0" promptText="Deparatment" />
+                <ImageView fitHeight="48.0" fitWidth="37.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/MISTLogo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Button layoutX="717.0" layoutY="575.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #525fc7;" text="Download">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
     </children>
 </AnchorPane>

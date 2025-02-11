@@ -1,121 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="521.0" style="-fx-background-color: #c59564;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
-    <children>
-        <TextField fx:id="name" layoutX="124.0" layoutY="102.0" prefHeight="26.0" prefWidth="386.0" promptText="Enter your name" />
-        <Button fx:id="submit" layoutX="454.0" layoutY="486.0" mnemonicParsing="false" text="Submit" textAlignment="CENTER" />
-        <Text fill="#fcfafa" layoutX="130.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UNIVERSITY ALUMNI">
-            <font>
-                <Font  size="28.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="14.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="14.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <TextField fx:id="studentId" layoutX="124.0" layoutY="140.0" prefHeight="26.0" prefWidth="129.0" promptText="Enter your student ID" />
-        <Text fill="#ffefef" layoutX="333.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <TextField fx:id="batch" layoutX="428.0" layoutY="141.0" prefHeight="26.0" prefWidth="84.0" promptText="Batch" />
-        <RadioButton fx:id="male" layoutX="125.0" layoutY="176.0" mnemonicParsing="false" text="Male" textFill="#ffefef">
-            <toggleGroup>
-                <ToggleGroup fx:id="gender" />
-            </toggleGroup></RadioButton>
-        <RadioButton fx:id="female" layoutX="210.0" layoutY="176.0" mnemonicParsing="false" text="Female" textFill="#ffefef" toggleGroup="$gender" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contract" wrappingWidth="60.0">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="14.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <RadioButton fx:id="gender11" layoutX="302.0" layoutY="176.0" mnemonicParsing="false" text="Other" textFill="#ffefef" toggleGroup="$gender" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Education and Work">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-
-        <ComboBox fx:id="degree" layoutX="126.0" layoutY="260.0" onAction="#combobox_degree" prefHeight="26.0" prefWidth="115.0" promptText="Select One" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Degree" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="302.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <ComboBox fx:id="degree1" layoutX="396.0" layoutY="259.0" prefHeight="26.0" prefWidth="115.0" promptText="Select One" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graduation Year" wrappingWidth="115.20000000000005">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <ComboBox fx:id="degree2" layoutX="127.0" layoutY="292.0" prefHeight="26.0" prefWidth="115.0" promptText="Year" />
-        <Text fill="#ffefef" layoutX="275.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Workplace" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <TextField layoutX="362.0" layoutY="292.0" promptText="Workplace" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <TextField layoutX="122.0" layoutY="374.0" promptText="abc@gmail.com" />
-        <Text fill="#ffefef" layoutX="286.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Linkdin" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="14.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <Text fill="#ffefef" layoutX="287.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <TextField layoutX="122.0" layoutY="402.0" promptText="015********" />
-        <TextField layoutX="362.0" layoutY="376.0" promptText="www.linkdin.com" />
-        <TextField layoutX="362.0" layoutY="404.0" promptText="www.linkdin.com" />
-        <Button fx:id="submit1" layoutX="386.0" layoutY="486.0" mnemonicParsing="false" onAction="#switchToLogin" text="Cancel" textAlignment="CENTER" />
-        <Text fill="#ffefef" layoutX="15.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="84.17554092407227">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Text>
-        <TextField layoutX="120.0" layoutY="433.0" prefHeight="26.0" prefWidth="393.0" promptText="House Number , Road Number , Area , City , Postal Code , Country" />
-    </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="714.0" styleClass="home_page_final" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+   <children>
+      <AnchorPane layoutX="2.0" prefHeight="114.0" prefWidth="714.0" styleClass="home_page_up" stylesheets="@home.css">
+         <children>
+            <Text layoutX="180.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alumni Portal " textAlignment="CENTER">
+               <font>
+                  <Font size="64.0" />
+               </font>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.16959063708782196" green="0.10721247643232346" blue="0.2631579041481018" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.1919766068458557" green="0.11645223945379257" blue="0.3052631616592407" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Text>
+         </children></AnchorPane>
+      <AnchorPane layoutX="2.0" layoutY="124.0" prefHeight="132.0" prefWidth="200.0" stylesheets="@home.css">
+         <children>
+            <Button layoutX="34.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="72.0" prefWidth="152.0" style="-fx-background-color: #54b2b7;" styleClass="logout_upper_button" stylesheets="@home.css" text="        Home" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="39.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@photos/Home.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <Button layoutX="552.0" layoutY="425.0" mnemonicParsing="false" onAction="#logOut" prefHeight="72.0" prefWidth="152.0" styleClass="logout_upper_button" stylesheets="@home.css" text="       Sign Out" textAlignment="CENTER" textFill="#fcf7f7">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="552.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@photos/logout.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="273.0" layoutY="141.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="72.0" prefWidth="152.0" style="-fx-background-color: #525fc7;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Broadcast" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="275.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@photos/Invitation.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="264.0" layoutY="267.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="188.0" style="-fx-background-color: #b8c175;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni List" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button layoutX="474.0" layoutY="266.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="234.0" style="-fx-background-color: #428#601a99ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Job Accouncement" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button layoutX="26.0" layoutY="267.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="72.0" prefWidth="188.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni Card" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="279.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@photos/Alumni%20List.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="50.0" layoutX="32.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@photos/idcard.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="469.0" layoutY="141.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="234.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="33.0" fitWidth="62.0" layoutX="474.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@photos/job.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="33.0" fitWidth="50.0" layoutX="474.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@photos/Announcement.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

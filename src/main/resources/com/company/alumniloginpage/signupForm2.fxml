@@ -121,15 +121,15 @@
                     </font>
                 </Text>
                 <Button layoutX="446.0" layoutY="199.0" mnemonicParsing="false" onAction="#uploadImage" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 3 12;" text="Upload" />
-                <AnchorPane prefHeight="92.0" prefWidth="521.0" styleClass="home_page_up" stylesheets="@home.css">
-                    <children>
-                        <Text fill="#1b0101" layoutX="108.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIST Alumni" textAlignment="CENTER" wrappingWidth="287.51251220703125">
-                            <font>
-                                <Font name="Arial Narrow" size="47.0" />
-                            </font>
-                        </Text>
-                    </children>
-                </AnchorPane>
+            <AnchorPane prefHeight="92.0" prefWidth="521.0" styleClass="home_page_up" stylesheets="@home.css">
+               <children>
+                  <Text fill="#1b0101" layoutX="108.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIST Alumni" textAlignment="CENTER" wrappingWidth="287.51251220703125">
+                     <font>
+                        <Font name="Arial Narrow" size="47.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
             </children>
         </AnchorPane>
     </children>

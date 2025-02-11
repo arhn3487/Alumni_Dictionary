@@ -26,3 +26,40 @@
     -fx-background-radius: 15;
     -fx-effect: dropshadow(gaussian, #e0d07b, 10, 0.5, 0, 0);
 }
+
+.home_page_up
+{
+   -fx-background-color: #f5c487;
+    -fx-background-radius: 15;
+}
+.home_page_background
+{
+   -fx-background-color: #8f7759;
+   -fx-background-radius: 15;
+}
+
+.logout_upper_button {
+    -fx-background-color: #54b2b7;
+    -fx-text-fill: white;
+    -fx-font-size: 19px;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+.logout_upper_button:hover {
+    -fx-background-color: #3a8b8f;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+    -fx-translate-y: -8px; /* Moves the button higher for better visibility */
+    -fx-translate-x: 4px;  /* Adds more movement to the right */
+}
+
+.logout_upper_button:pressed {
+    -fx-background-color: #2e7074;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-translate-y: -2px;
+    -fx-translate-x: 1px;
+}

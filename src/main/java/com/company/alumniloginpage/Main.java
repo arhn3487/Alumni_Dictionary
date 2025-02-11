@@ -24,7 +24,8 @@ public class Main extends Application
         //Image icone = new Image("login_page1.png");
         stage.setTitle("This is a program for alumni of MIST");
         //scene.alignment("center")
-        //stage.setFullScreen(true);
+        stage.setFullScreen(false);
+        stage.setResizable(false);
 
         stage.setScene(scene);
         stage.show();

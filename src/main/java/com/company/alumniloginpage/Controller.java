@@ -230,6 +230,7 @@ public class Controller {
 //        sendOTP.sendEmail(demail, generatedOTP);
 
         String generatedOTP = generateOTP();
+        //SendOTP;
         sendOTP(demail, generatedOTP);
 
         // Prompt the user to enter the OTP
@@ -286,6 +287,12 @@ public class Controller {
     }
 
     @FXML
+    void invite_batch()
+    {
+
+    }
+
+    @FXML
     private void chooseAttachment() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File for Attachment");
@@ -325,6 +332,7 @@ public class Controller {
 
     public void BroadcastMail(ActionEvent event) throws IOException {
         Broadcast test= new Broadcast();
+
 
     }
 
