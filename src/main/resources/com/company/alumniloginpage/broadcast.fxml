@@ -55,7 +55,7 @@
                   <Image url="@photos/job.png" />
                </image>
             </ImageView>
-            <Button layoutX="-3.0" layoutY="277.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="206.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="3.0" layoutY="277.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -72,24 +72,24 @@
             </Button>
             <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="8.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@photos/logout.png" />
+                  <Image url="@photos/logOut.png" />
                </image>
             </ImageView>
-            <Button layoutX="-5.0" layoutY="357.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="206.0" style="-fx-background-color: #b8c175;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni List" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="1.0" layoutY="357.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #b8c175;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni List" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
             <ImageView fitHeight="44.0" fitWidth="30.0" layoutX="17.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@photos/Alumni%20List.png" />
+                  <Image url="@photos/Alumni List.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="243.0" layoutY="124.0" prefHeight="498.0" prefWidth="586.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#BroadcastMail" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #24d163;" text="Sent" textFill="WHITE">
+            <Button fx:id="sendmail" layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#BroadcastMail" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #24d163;" text="Send" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -105,17 +105,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField layoutX="98.0" layoutY="111.0" prefHeight="26.0" prefWidth="482.0" promptText="Subject" />
-            <ComboBox fx:id="broad_batch" layoutX="98.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Batch" style="-fx-background-color: #beebce;">
+            <TextField fx:id="broadsubject" layoutX="98.0" layoutY="111.0" prefHeight="26.0" prefWidth="482.0" promptText="Subject" />
+            <ComboBox fx:id="graduationYear" layoutX="98.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Session" style="-fx-background-color: #beebce;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ComboBox>
-            <Text layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch">
+            <Text layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
-            <ComboBox fx:id="broad_dept" layoutX="459.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Department" style="-fx-background-color: #beebce;">
+            <ComboBox fx:id="department" layoutX="459.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Department" style="-fx-background-color: #beebce;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ComboBox>
@@ -134,7 +134,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextArea layoutX="7.0" layoutY="236.0" prefHeight="146.0" prefWidth="574.0" promptText="Compose Your Mail">
+            <TextArea fx:id="broadtext" layoutX="7.0" layoutY="236.0" prefHeight="146.0" prefWidth="574.0" promptText="Compose Your Mail">
                <font>
                   <Font size="16.0" />
                </font>
@@ -144,8 +144,8 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="attachmentPath" editable="false" layoutX="118.0" layoutY="408.0" prefHeight="26.0" prefWidth="382.0" promptText="No file selected" />
-            <Button layoutX="525.0" layoutY="409.0" mnemonicParsing="false" onAction="#chooseAttachment" style="-fx-background-color: #beebce;" text="Browse">
+            <TextField fx:id="attachmentPath" editable="false" layoutX="118.0" layoutY="408.0" onAction="#chooseAttachment" prefHeight="26.0" prefWidth="382.0" promptText="No file selected" />
+            <Button fx:id="choosefile" layoutX="525.0" layoutY="409.0" mnemonicParsing="false" onAction="#chooseAttachment" style="-fx-background-color: #beebce;" text="Browse">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

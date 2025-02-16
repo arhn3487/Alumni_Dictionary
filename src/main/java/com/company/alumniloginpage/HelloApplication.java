@@ -19,10 +19,6 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("This is a program for alumni of MIST");
 
-        // Set icon if needed
-        Image icon = new Image(getClass().getResourceAsStream("/login_page1.png"));
-        primaryStage.getIcons().add(icon);
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }

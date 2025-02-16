@@ -1,36 +1,46 @@
 package com.company.alumniloginpage;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import org.bson.Document;
-import java.util.Properties;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
-
+import java.util.stream.StreamSupport;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class Controller {
@@ -94,6 +104,20 @@ public class Controller {
     @FXML
     private TextField imagePathField;
 
+    @FXML
+    private TextArea broadtext;
+
+    @FXML
+    private TextField broadsubject;
+
+    @FXML
+    private Button choosefile;
+
+    @FXML
+    private Button sendmail;
+
+    private File attachmentFile;
+
 
 
     private MongoDBConnection mongoDBConnection;
@@ -114,7 +138,7 @@ public class Controller {
             System.out.println("Not found any fx-id name department");
 
         } else {
-            department.setItems(FXCollections.observableArrayList("CSE", "EECE","CE","ME","AE","EWCE","PME","NAME","IPE","BME","ARCH","NSE"));
+            department.setItems(FXCollections.observableArrayList("All", "CSE", "EECE","CE","ME","AE","EWCE","PME","NAME","IPE","BME","ARCH","NSE"));
             department.setVisibleRowCount(5);
             System.out.println("Successfully initialized department");
         }
@@ -122,7 +146,7 @@ public class Controller {
             System.out.println("Not found any fx-id name department");
 
         } else {
-            graduationYear.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
+            graduationYear.setItems(FXCollections.observableArrayList("All", "2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
             graduationYear.setVisibleRowCount(5);
             System.out.println("Successfully initialized department");
         }
@@ -287,12 +311,6 @@ public class Controller {
     }
 
     @FXML
-    void invite_batch()
-    {
-
-    }
-
-    @FXML
     private void chooseAttachment() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File for Attachment");
@@ -322,7 +340,7 @@ public class Controller {
 
 
     public void switchBroadcast(ActionEvent event) throws IOException {
-        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
+        //Parent root = loadFXML(load.(getClass().getResource("broadcast.fxml")));
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -332,12 +350,67 @@ public class Controller {
 
     public void BroadcastMail(ActionEvent event) throws IOException {
         Broadcast test= new Broadcast();
+        String year = graduationYear.getValue();
+        String batch = department.getValue();
+        String subject = broadsubject.getText();
+        String message = broadtext.getText();
+        String apath = attachmentPath.getText();
 
+        if (year == null || batch == null || subject.isEmpty() || message.isEmpty()) {
+            showAlert("Error", "Please fill all fields.");
+            return;
+        }
+
+        String[] emails = fetchUsersByYearAndBatch(year, batch);
+
+        if (emails.length == 0) {
+            showAlert("Info", "No users found for the specified year and batch.");
+            return;
+        }
+
+        test.sendEmail(emails,subject,message,apath);
+
+        showAlert("Success", "Broadcast sent successfully!");
 
     }
 
+    private String[] fetchUsersByYearAndBatch(String year, String batch) {
+        List<String> emails = new ArrayList<String>(); // Create a list to store emails
+
+        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+            MongoDatabase database = mongoClient.getDatabase("alumni");
+            MongoCollection<Document> collection = database.getCollection("info");
+
+            // Build the query based on the selected year and batch
+            Document query = new Document();
+
+            if (!"All".equals(year)) {
+                query.append("graduationYear", year); // Filter by year if not "All"
+            }
+
+            if (!"All".equals(batch)) {
+                query.append("department", batch); // Filter by batch if not "All"
+            }
+
+            // Query to find users with the specified year and/or batch
+            Iterable<Document> users = collection.find(query);
+
+            // Iterate through the users and extract emails
+            for (Document user : users) {
+                String email = user.getString("email");
+                if (email != null && !email.isEmpty()) {
+                    emails.add(email); // Add the email to the list
+                    System.out.println("Fetched email: " + email);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching users: " + e.getMessage());
+        }
+
+        return emails.toArray(new String[0]);
+    }
+
     public void switchalumniCard(ActionEvent event) throws IOException {
-        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniCard.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -346,7 +419,6 @@ public class Controller {
     }
 
     public void switchToCreateAccount(ActionEvent event) throws IOException {
-        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("CreateAccount.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -356,7 +428,7 @@ public class Controller {
     }
 
     public void switchTopersonalinfo(ActionEvent event) throws IOException {
-        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
+
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("personalinfo.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -366,7 +438,7 @@ public class Controller {
     }
 
     public void switchToSignupForm(ActionEvent event) throws IOException {
-        //Parent root = loadFXML(load.(getClass().getResource("SignUp.fxml")));
+
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("signupForm.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -21,8 +21,8 @@ public class Main extends Application
 
         Scene scene =new Scene(root, Color.BLACK);
         Stage stage=new Stage();
-        //Image icone = new Image("login_page1.png");
-        stage.setTitle("This is a program for alumni of MIST");
+
+        stage.setTitle("MIST Alumni Portal");
         //scene.alignment("center")
         stage.setFullScreen(false);
         stage.setResizable(false);

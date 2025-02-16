@@ -9,7 +9,7 @@ import javax.activation.*;
 public class Broadcast {
     public static Integer sendEmail(String[] addresses, String subject, String text, String attachmentPath) {
         final String username = "arafatsakibisbat@gmail.com";  // Change to your email
-        final String password = "mbbt kffo caun txoe";         // Use App Password
+        final String password = "icde xfka vrxx jyxc";        // Use App Password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
