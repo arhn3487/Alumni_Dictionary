@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_background" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+    <children>
+        <AnchorPane layoutX="2.0" prefHeight="114.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up" stylesheets="@home.css">
+            <children>
+                <Text fill="#1b0101" layoutX="314.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alumni List" textAlignment="CENTER" wrappingWidth="316.51251220703125">
+                    <font>
+                        <Font name="Arial" size="64.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="2.0" layoutY="124.0" prefHeight="132.0" prefWidth="200.0" stylesheets="@home.css" />
+        <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="identity_box" stylesheets="@home.css">
+            <children>
+                <Button layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="57.0" prefWidth="200.0" style="-fx-background-color: #54b2b7;" styleClass="logout_upper_button" stylesheets="@home.css" text="        Home" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="50.0" fitWidth="85.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Home.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="5.0" layoutY="103.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni Card" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="37.0" fitWidth="50.0" layoutX="21.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/idcard.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="5.0" layoutY="194.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428#601a99ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Job Accouncement" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="33.0" fitWidth="62.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/job.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="3.0" layoutY="277.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="33.0" fitWidth="42.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Announcement.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="5.0" layoutY="424.0" mnemonicParsing="false" onAction="#logOut" prefHeight="63.0" prefWidth="200.0" styleClass="logout_upper_button" stylesheets="@home.css" text="       Sign Out" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="8.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/logOut.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="1.0" layoutY="357.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #b8c175;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni List" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="44.0" fitWidth="30.0" layoutX="17.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Alumni List.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="243.0" layoutY="124.0" prefHeight="498.0" prefWidth="586.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);">
+            <children>
+                <Button layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #24d163;" text="Search" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <ComboBox fx:id="graduationYear" layoutX="98.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Session" style="-fx-background-color: #beebce;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></ComboBox>
+                <Text fill="#fff9f9" layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
+                    <font>
+                        <Font name="Arial" size="17.0" />
+                    </font>
+                </Text>
+                <ComboBox fx:id="department" layoutX="459.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Department" style="-fx-background-color: #beebce;">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></ComboBox>
+                <Text fill="WHITE" layoutX="353.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Text>
+            <TableView fx:id="alumniTable" layoutX="3.0" layoutY="92.0" prefHeight="300.0" prefWidth="498.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);">
+               <columns>
+                  <TableColumn prefWidth="120.0" text="Name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="100.0" text="Student ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="studentId" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="80.0" text="Batch">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="batch" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="80.0" text="Year">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="graduationYear" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="120.0" text="Department">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="department" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

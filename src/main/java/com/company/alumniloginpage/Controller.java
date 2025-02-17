@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
@@ -118,6 +120,9 @@ public class Controller {
 
     private File attachmentFile;
 
+    @FXML
+    private TableView<AlumniListController.Alumni> alumniTable;
+
 
 
     private MongoDBConnection mongoDBConnection;
@@ -166,6 +171,13 @@ public class Controller {
             broad_batch.setVisibleRowCount(5);
             System.out.println("Successfully initialized department");
         }
+
+        // Set up the TableView columns
+//        alumniTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
+//        alumniTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("studentId"));
+//        alumniTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("batch"));
+//        alumniTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("graduationYear"));
+//        alumniTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("department"));
     }
 
     private String generateOTP() {
@@ -311,6 +323,95 @@ public class Controller {
     }
 
     @FXML
+    private void handleSearch() {
+        String year = graduationYear.getValue();
+        String batch = department.getValue();
+
+        // Fetch alumni based on the selected year and batch
+        List<AlumniListController.Alumni> alumniList = fetchAlumni(year, batch);
+
+        // Display the alumni list in the TableView
+        ObservableList<AlumniListController.Alumni> data = FXCollections.observableArrayList(alumniList);
+        alumniTable.setItems(data);
+    }
+
+    private List<AlumniListController.Alumni> fetchAlumni(String year, String batch) {
+        List<AlumniListController.Alumni> alumniList = new ArrayList<>();
+
+        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+            MongoDatabase database = mongoClient.getDatabase("alumni");
+            MongoCollection<Document> collection = database.getCollection("info");
+
+            // Build the query based on the selected year and batch
+            Document query = new Document();
+
+            if (!"All".equals(year)) {
+                query.append("graduationYear", year); // Filter by year if not "All"
+            }
+
+            if (!"All".equals(batch)) {
+                query.append("department", batch); // Filter by batch if not "All"
+            }
+
+            // Query to find alumni with the specified year and/or batch
+            Iterable<Document> alumniDocuments = collection.find(query);
+
+            // Convert MongoDB documents to Alumni objects
+            for (Document doc : alumniDocuments) {
+                AlumniListController.Alumni alumni = new AlumniListController.Alumni(
+                        doc.getString("name"),
+                        doc.getString("studentId"),
+                        doc.getString("batch"),
+                        doc.getString("graduationYear"),
+                        doc.getString("department")
+                );
+                alumniList.add(alumni);
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching alumni: " + e.getMessage());
+        }
+
+        return alumniList;
+    }
+
+    // Alumni class to represent a single alumni record
+    public static class Alumni {
+        private final String name;
+        private final String studentId;
+        private final String batch;
+        private final String graduationYear;
+        private final String department;
+
+        public Alumni(String name, String studentId, String batch, String graduationYear, String department) {
+            this.name = name;
+            this.studentId = studentId;
+            this.batch = batch;
+            this.graduationYear = graduationYear;
+            this.department = department;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getStudentId() {
+            return studentId;
+        }
+
+        public String getBatch() {
+            return batch;
+        }
+
+        public String getGraduationYear() {
+            return graduationYear;
+        }
+
+        public String getDepartment() {
+            return department;
+        }
+    }
+
+    @FXML
     private void chooseAttachment() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select File for Attachment");
@@ -418,28 +519,17 @@ public class Controller {
         stage.show();
     }
 
-    public void switchToCreateAccount(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("CreateAccount.fxml"))));
+    public void switchalumniList(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniList.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-
         stage.show();
     }
 
     public void switchTopersonalinfo(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("personalinfo.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-
-        stage.show();
-    }
-
-    public void switchToSignupForm(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("signupForm.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

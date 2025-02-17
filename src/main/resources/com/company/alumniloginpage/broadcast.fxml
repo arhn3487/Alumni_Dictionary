@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="835.0" styleClass="home_page_background" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_background" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
    <children>
-      <AnchorPane layoutX="2.0" prefHeight="114.0" prefWidth="835.0" styleClass="home_page_up" stylesheets="@home.css">
+      <AnchorPane layoutX="2.0" prefHeight="114.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up" stylesheets="@home.css">
          <children>
             <Text fill="#1b0101" layoutX="302.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Broadcast" textAlignment="CENTER" wrappingWidth="287.51251220703125">
                <font>
@@ -22,8 +22,8 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="2.0" layoutY="124.0" prefHeight="132.0" prefWidth="200.0" stylesheets="@home.css" />
-      <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: #ffffff;" styleClass="identity_box" stylesheets="@home.css">
+      <AnchorPane layoutX="2.0" layoutY="124.0" prefHeight="132.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" stylesheets="@home.css" />
+      <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="identity_box" stylesheets="@home.css">
          <children>
             <Button layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="57.0" prefWidth="200.0" style="-fx-background-color: #54b2b7;" styleClass="logout_upper_button" stylesheets="@home.css" text="        Home" textAlignment="CENTER" textFill="WHITE">
                <font>
@@ -87,7 +87,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="243.0" layoutY="124.0" prefHeight="498.0" prefWidth="586.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane layoutX="243.0" layoutY="124.0" prefHeight="498.0" prefWidth="586.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);">
          <children>
             <Button fx:id="sendmail" layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#BroadcastMail" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #24d163;" text="Send" textFill="WHITE">
                <font>
@@ -110,28 +110,28 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ComboBox>
-            <Text layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
+            <Text fill="WHITE" layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
                <font>
-                  <Font size="17.0" />
+                  <Font name="Arial" size="17.0" />
                </font>
             </Text>
             <ComboBox fx:id="department" layoutX="459.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Department" style="-fx-background-color: #beebce;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ComboBox>
-            <Text layoutX="353.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
+            <Text fill="WHITE" layoutX="353.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Arial" size="17.0" />
                </font>
             </Text>
-            <Text layoutX="16.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject">
+            <Text fill="WHITE" layoutX="16.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compose">
+            <Text fill="WHITE" layoutX="14.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compose">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial" size="19.0" />
                </font>
             </Text>
             <TextArea fx:id="broadtext" layoutX="7.0" layoutY="236.0" prefHeight="146.0" prefWidth="574.0" promptText="Compose Your Mail">
@@ -139,9 +139,9 @@
                   <Font size="16.0" />
                </font>
             </TextArea>
-            <Text fill="#050000" layoutX="17.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attachment">
+            <Text fill="WHITE" layoutX="17.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attachment">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Arial" size="17.0" />
                </font>
             </Text>
             <TextField fx:id="attachmentPath" editable="false" layoutX="118.0" layoutY="408.0" onAction="#chooseAttachment" prefHeight="26.0" prefWidth="382.0" promptText="No file selected" />

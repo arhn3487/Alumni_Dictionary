@@ -104,30 +104,4 @@ public class LoginController {
         stage.show();
     }
 
-//    private void openUserProfile(Document user) {
-//        // Load the user profile or dashboard
-//        // Example: Load the user profile FXML and pass the user data
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("user_profile.fxml"));
-//            Parent root = loader.load();
-//
-//            UserProfileController controller = loader.getController();
-//            controller.setUserData(
-//                    user.getString("name"),
-//                    user.getString("email"),
-//                    user.getString("phone"),
-//                    user.getString("address"),
-//                    user.getString("batch"),
-//                    user.getString("degree"),
-//                    user.getString("department")
-//            );
-//
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root));
-//            stage.setTitle("User Profile");
-//            stage.show();
-//        } catch (IOException e) {
-//            System.err.println("Error loading user profile: " + e.getMessage());
-//        }
-//    }
 }

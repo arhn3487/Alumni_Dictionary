@@ -2,14 +2,82 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
-    <ComboBox fx:id="yearComboBox" layoutX="50.0" layoutY="50.0" promptText="Select Year" />
-    <ComboBox fx:id="batchComboBox" layoutX="50.0" layoutY="100.0" promptText="Select Batch" />
-    <TextField fx:id="subjectField" layoutX="50.0" layoutY="150.0" promptText="Enter Subject" />
-    <TextField fx:id="messageField" layoutX="50.0" layoutY="200.0" promptText="Enter Message" />
-    <Button fx:id="attachmentButton" layoutX="50.0" layoutY="250.0" onAction="#handleAttachment" text="Attach File" />
-    <Button fx:id="sendButton" layoutX="50.0" layoutY="300.0" onAction="#sendEmail" text="Send Broadcast" />
+<?import java.net.URL?>
+<?import java.lang.String?>
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AlumniListController">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
+    <!-- Title -->
+<?import java.lang.String?>
+<Text layoutX="20.0" layoutY="40.0" text="Alumni List" style="-fx-font-size: 24; -fx-font-weight: bold;" />
+
+    <!-- Year ComboBox -->
+    <ComboBox fx:id="yearComboBox" layoutX="20.0" layoutY="60.0" promptText="Select Year">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="All" />
+                <String fx:value="2020" />
+                <String fx:value="2021" />
+                <String fx:value="2022" />
+                <String fx:value="2023" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Batch ComboBox -->
+    <ComboBox fx:id="batchComboBox" layoutX="200.0" layoutY="60.0" promptText="Select Batch">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="All" />
+                <String fx:value="CSE" />
+                <String fx:value="EEE" />
+                <String fx:value="ME" />
+                <String fx:value="CE" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Search Button -->
+    <Button fx:id="searchButton" layoutX="380.0" layoutY="60.0" text="Search" onAction="#handleSearch" />
+
+    <!-- TableView to Display Alumni List -->
+    <TableView fx:id="alumniTable" layoutX="20.0" layoutY="100.0" prefHeight="300.0" prefWidth="560.0">
+        <columns>
+            <TableColumn text="Name" prefWidth="120.0">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Student ID" prefWidth="100.0">
+                <cellValueFactory>
+                    <PropertyValueFactory property="studentId" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Batch" prefWidth="80.0">
+                <cellValueFactory>
+                    <PropertyValueFactory property="batch" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Year" prefWidth="80.0">
+                <cellValueFactory>
+                    <PropertyValueFactory property="graduationYear" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Department" prefWidth="120.0">
+                <cellValueFactory>
+                    <PropertyValueFactory property="department" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
 </AnchorPane>
