@@ -25,88 +25,75 @@
         <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="identity_box" stylesheets="@home.css">
             <children>
                 <!-- Dashboard Button -->
-                <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);" styleClass="left-button" text="Dashboard">
+                <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);" styleClass="left-button" text="          Dashboard">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Home.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                 </Button>
 
                 <!-- Broadcast Button -->
-                <Button layoutX="10.0" layoutY="99.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);" styleClass="left-button" text="Broadcast">
+                <Button layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);" styleClass="left-button" text="          Broadcast">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Invitation.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                 </Button>
 
                 <!-- Job Board Button -->
-                <Button layoutX="10.0" layoutY="183.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #1d976c, #93f9b9);" styleClass="left-button" text="Job Board">
+                <Button layoutX="10.0" layoutY="183.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #1d976c, #93f9b9);" styleClass="left-button" text="          Job Board">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/job.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                 </Button>
 
                 <!-- Events Button -->
-                <Button layoutX="11.0" layoutY="266.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #43cea2, #185a9d);" styleClass="left-button" text="Events">
+                <Button layoutX="11.0" layoutY="266.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #43cea2, #185a9d);" styleClass="left-button" text="           Events">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Announcement.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                 </Button>
 
                 <!-- Alumni List Button -->
-                <Button layoutX="10.0" layoutY="350.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #f46b45, #eea849);" styleClass="left-button" text="Alumni List">
+                <Button layoutX="10.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchalumniList" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #f46b45, #eea849);" styleClass="left-button" text="          Alumni List">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Alumni List.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                 </Button>
 
                 <!-- Sign Out Button -->
-                <Button layoutX="10.0" layoutY="436.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);" styleClass="left-button" text="Sign Out">
+                <Button layoutX="10.0" layoutY="436.0" mnemonicParsing="false" onAction="#logOut" prefHeight="60.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);" styleClass="left-button" text="          Sign Out">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/logOut.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                 </Button>
+                <ImageView fitHeight="36.0" fitWidth="68.0" layoutX="11.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/job.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="20.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Announcement.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="52.0" fitWidth="67.0" layoutX="19.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Home.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="52.0" fitWidth="67.0" layoutX="19.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Invitation.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="40.0" fitWidth="59.0" layoutX="19.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/logOut.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="40.0" fitWidth="59.0" layoutX="30.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Alumni List.png" />
+                    </image></ImageView>
             </children>
         </AnchorPane>
 
@@ -120,18 +107,18 @@
                     </font>
                 </Text>
                 <TextField fx:id="nameField" layoutX="120.0" layoutY="60.0" prefHeight="39.0" prefWidth="353.0" promptText="Name" style="-fx-background-color: transparent;">
-               <font>
-                  <Font size="18.0" />
-               </font></TextField>
+                    <font>
+                        <Font size="18.0" />
+                    </font></TextField>
                 <Text fill="#403e3e" layoutX="8.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
                 <TextField fx:id="sessionField" layoutX="123.0" layoutY="220.0" prefHeight="39.0" prefWidth="353.0" promptText="Session" style="-fx-background-color: transparent;">
-               <font>
-                  <Font size="18.0" />
-               </font></TextField>
+                    <font>
+                        <Font size="18.0" />
+                    </font></TextField>
                 <ImageView fitHeight="43.0" fitWidth="128.0" layoutX="455.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@photos/signature.png" />
@@ -148,23 +135,43 @@
                     </font>
                 </Text>
                 <TextField fx:id="departmentField" layoutX="123.0" layoutY="169.0" prefHeight="39.0" prefWidth="353.0" promptText="Department" style="-fx-background-color: transparent;">
-               <font>
-                  <Font size="18.0" />
-               </font></TextField>
+                    <font>
+                        <Font size="18.0" />
+                    </font></TextField>
                 <Text fill="#403e3e" layoutX="11.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID" wrappingWidth="85.0">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
                 <TextField fx:id="studentIdField" layoutX="120.0" layoutY="114.0" prefHeight="39.0" prefWidth="353.0" promptText="Student ID" style="-fx-background-color: transparent;">
-               <font>
-                  <Font size="18.0" />
-               </font></TextField>
-                <ImageView fitHeight="48.0" fitWidth="37.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                    <font>
+                        <Font size="18.0" />
+                    </font></TextField>
+                <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@photos/MISTLogo.png" />
                     </image>
                 </ImageView>
+                <Text fill="#403e3e" layoutX="107.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Text>
+                <Text fill="#403e3e" layoutX="108.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Text>
+                <Text fill="#403e3e" layoutX="110.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Text>
+                <Text fill="#403e3e" layoutX="110.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Text>
             </children>
         </AnchorPane>
 

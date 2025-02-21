@@ -1,6 +1,7 @@
 package com.company.alumniloginpage;
 
-public class SharedData {
+public class SharedData
+{
     private static SharedData instance;
     private String loggedInUserId;
 
@@ -8,19 +9,23 @@ public class SharedData {
     private SharedData() {}
 
     // Get the singleton instance
-    public static SharedData getInstance() {
-        if (instance == null) {
+    public static SharedData getInstance()
+    {
+        if (instance == null)
+        {
             instance = new SharedData();
         }
         return instance;
     }
 
     // Getter and setter for loggedInUserId
-    public String getLoggedInUserId() {
+    public String getLoggedInUserId()
+    {
         return loggedInUserId;
     }
 
-    public void setLoggedInUserId(String loggedInUserId) {
+    public void setLoggedInUserId(String loggedInUserId)
+    {
         this.loggedInUserId = loggedInUserId;
     }
 }

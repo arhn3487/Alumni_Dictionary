@@ -444,7 +444,6 @@ public class Controller {
     }
 
     public void switchBroadcast(ActionEvent event) throws IOException {
-        //Parent root = loadFXML(load.(getClass().getResource("broadcast.fxml")));
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

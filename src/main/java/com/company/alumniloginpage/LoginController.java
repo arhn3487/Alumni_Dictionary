@@ -16,13 +16,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class LoginController
 {
-
     private Stage stage;
     private Scene scene;
 
@@ -34,8 +32,6 @@ public class LoginController
 
     @FXML
     private Button loginButton;
-
-    public String LoggedUserID;
 
     @FXML
     private void handleLogin()
@@ -49,33 +45,29 @@ public class LoginController
             MongoDatabase database = mongoClient.getDatabase("alumni");
             MongoCollection<Document> collection = database.getCollection("info");
 
-            // Check if the user ID exists
             Document user = collection.find(new Document("studentId", userId)).first();
 
             if (user == null)
             {
-                // User ID not found
                 showAlert("Error", "User ID not found.");
                 clearFields();
             }
             else
             {
-                // Verify password
                 String storedPassword = user.getString("password");
 
                 if (storedPassword.equals(password))
                 {
-                    // Password matches, login successful
                     SharedData.getInstance().setLoggedInUserId(userId);
                     showAlert("Success", "Login successful!");
 
                     System.out.println("Logged in user ID: " + userId);
-                    // Open the user profile or dashboard
+
                     switchToHome();
-                    //openUserProfile(user);
-                } else
+
+                }
+                else
                 {
-                    // Password does not match
                     showAlert("Error", "Password does not match.");
                     clearFields();
                 }
