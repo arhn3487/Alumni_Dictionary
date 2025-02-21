@@ -57,9 +57,61 @@
 }
 
 .logout_upper_button:pressed {
-    -fx-background-color: #2e7074;
+    -fx-background-color:#3a8b8f;
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-translate-y: -2px;
     -fx-translate-x: 1px;
+}
+
+/* Root styles */
+.root {
+    -fx-font-family: 'Montserrat', sans-serif;
+}
+
+/* Gradient Button Base Style */
+.gradient-button {
+    -fx-font-size: 18px;
+    /*-fx-font-weight: bold;*/
+    -fx-text-fill: #311e4e;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
+/* Hover Effect for Buttons */
+.gradient-button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0.5, 0, 0);
+}
+
+/* Left Side Buttons */
+.left-button {
+    -fx-font-size: 16px;
+    /*-fx-font-weight: bold;*/
+    -fx-text-fill: #311e4e;
+    -fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+    -fx-alignment: center-left;
+}
+
+/* Hover Effect for Buttons */
+.left-button:hover {
+    -fx-background-color: linear-gradient(to right, #1BFFFF, #2E3192);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0.5, 0, 0);
+}
+
+/* Icon Styling */
+.left-button .image-view {
+    -fx-fit-height: 30px;
+    -fx-fit-width: 30px;
 }

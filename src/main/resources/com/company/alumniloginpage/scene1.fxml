@@ -74,7 +74,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button layoutX="474.0" layoutY="266.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="234.0" style="-fx-background-color: #428#601a99ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Job Accouncement" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="474.0" layoutY="266.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="234.0" style="-fx-background-color: #428#601a99ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Job Board" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>
@@ -94,7 +94,7 @@
             <Image url="@photos/idcard.png" />
          </image>
       </ImageView>
-      <Button layoutX="469.0" layoutY="141.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="234.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="469.0" layoutY="141.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="234.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="      Events" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

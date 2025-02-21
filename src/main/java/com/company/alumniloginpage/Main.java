@@ -11,11 +11,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application
 {
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         launch();
     }
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception
+    {
         //Group root=new Group();
         Parent root  = FXMLLoader.load(getClass().getResource("login2.fxml"));
 

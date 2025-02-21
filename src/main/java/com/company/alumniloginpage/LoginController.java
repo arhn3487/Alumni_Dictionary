@@ -20,7 +20,8 @@ import org.bson.Document;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoginController {
+public class LoginController
+{
 
     private Stage stage;
     private Scene scene;
@@ -35,45 +36,55 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
-    private void handleLogin() {
+    private void handleLogin()
+    {
         String userId = userIdField.getText();
         String password = passwordField.getText();
 
         // Connect to MongoDB
-        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+        {
             MongoDatabase database = mongoClient.getDatabase("alumni");
             MongoCollection<Document> collection = database.getCollection("info");
 
             // Check if the user ID exists
             Document user = collection.find(new Document("studentId", userId)).first();
 
-            if (user == null) {
+            if (user == null)
+            {
                 // User ID not found
                 showAlert("Error", "User ID not found.");
                 clearFields();
-            } else {
+            }
+            else
+            {
                 // Verify password
                 String storedPassword = user.getString("password");
 
-                if (storedPassword.equals(password)) {
+                if (storedPassword.equals(password))
+                {
                     // Password matches, login successful
                     showAlert("Success", "Login successful!");
                     // Open the user profile or dashboard
                     switchToHome();
                     //openUserProfile(user);
-                } else {
+                } else
+                {
                     // Password does not match
                     showAlert("Error", "Password does not match.");
                     clearFields();
                 }
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.err.println("Error during login: " + e.getMessage());
             showAlert("Error", "An error occurred. Please try again.");
         }
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message)
+    {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -81,27 +92,27 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    private void clearFields() {
+    private void clearFields()
+    {
         userIdField.clear();
         passwordField.clear();
     }
 
-    public void switchToSignupForm(ActionEvent event) throws IOException {
-
+    public void switchToSignupForm(ActionEvent event) throws IOException
+    {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("signupForm.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-
         stage.show();
     }
 
-    public void switchToHome() throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("scene1.fxml"))));
+    public void switchToHome() throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
         stage = (Stage) loginButton.getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
 }

@@ -1,0 +1,30 @@
+/* Root styles */
+.root {
+    -fx-font-family: 'Montserrat', sans-serif;
+}
+
+/* Gradient Button Style */
+.gradient-button {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-background-radius: 25px;
+    -fx-border-radius: 25px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+/* Hover Effect for Buttons */
+.gradient-button:hover {
+    -fx-background-color: linear-gradient(to right, #2575fc, #6a11cb);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
+/* Label Styles */
+.label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
