@@ -35,6 +35,8 @@ public class LoginController
     @FXML
     private Button loginButton;
 
+    public String LoggedUserID;
+
     @FXML
     private void handleLogin()
     {
@@ -64,7 +66,10 @@ public class LoginController
                 if (storedPassword.equals(password))
                 {
                     // Password matches, login successful
+                    SharedData.getInstance().setLoggedInUserId(userId);
                     showAlert("Success", "Login successful!");
+
+                    System.out.println("Logged in user ID: " + userId);
                     // Open the user profile or dashboard
                     switchToHome();
                     //openUserProfile(user);
