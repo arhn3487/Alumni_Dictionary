@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.bson.Document;
 import java.io.IOException;
@@ -33,11 +30,16 @@ public class LoginController
     @FXML
     private Button loginButton;
 
+
+    @FXML
+    private ComboBox<String> userType;
+
     @FXML
     private void handleLogin()
     {
         String userId = userIdField.getText();
         String password = passwordField.getText();
+        String usertype = userType.getValue();
 
         // Connect to MongoDB
         try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
@@ -55,11 +57,12 @@ public class LoginController
             else
             {
                 String storedPassword = user.getString("password");
+                String storedType = user.getString("usertype");
 
-                if (storedPassword.equals(password))
+                if (storedPassword.equals(password) && storedType.equals(usertype))
                 {
                     SharedData.getInstance().setLoggedInUserId(userId);
-                    showAlert("Success", "Login successful!");
+                    //showAlert("Success", "Login successful!");
 
                     System.out.println("Logged in user ID: " + userId);
 
@@ -68,7 +71,7 @@ public class LoginController
                 }
                 else
                 {
-                    showAlert("Error", "Password does not match.");
+                    showAlert("Error", "Something Wrong !!!.");
                     clearFields();
                 }
             }

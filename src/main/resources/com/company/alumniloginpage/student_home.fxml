@@ -44,7 +44,7 @@
         <AnchorPane layoutX="20.0" layoutY="140.0" prefHeight="350.0" prefWidth="674.0">
             <children>
                 <!-- Row 1 -->
-                <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); -fx-background-radius: 20;" stylesheets="@home.css" text="Home" textFill="#311e4e">
+                <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); -fx-background-radius: 20;" stylesheets="@home.css" text="Home" textFill="#311e4e">
                     <font>
                         <Font size="18.0" />
                     </font>

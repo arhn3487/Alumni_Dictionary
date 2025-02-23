@@ -48,15 +48,18 @@
                     <font>
                         <Font size="18.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Home.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <styleClass>
                         <String fx:value="gradient-button home-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+
+                <Button layoutX="240.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b); -fx-background-radius: 20;" stylesheets="@home.css" text="Broadcast" textFill="#311e4e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="gradient-button broadcast-button" />
                         <String fx:value="gradient-button" />
                     </styleClass>
                 </Button>
@@ -65,13 +68,6 @@
                     <font>
                         <Font size="18.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Announcement.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <styleClass>
                         <String fx:value="gradient-button events-button" />
                         <String fx:value="gradient-button" />
@@ -79,17 +75,10 @@
                 </Button>
 
                 <!-- Row 2 -->
-                <Button layoutX="237.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #ff6e7f, #bfe9ff); -fx-background-radius: 20;" text="ID Card" textFill="#311e4e">
+                <Button layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #ff6e7f, #bfe9ff); -fx-background-radius: 20;" text="Modify" textFill="#311e4e">
                     <font>
                         <Font size="18.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/idcard.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <styleClass>
                         <String fx:value="gradient-button alumni-card-button" />
                         <String fx:value="gradient-button" />
@@ -100,30 +89,16 @@
                     <font>
                         <Font size="18.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Alumni List.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <styleClass>
                         <String fx:value="gradient-button alumni-list-button" />
                         <String fx:value="gradient-button" />
                     </styleClass>
                 </Button>
 
-                <Button layoutX="20.0" layoutY="140.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #1d976c, #93f9b9); -fx-background-radius: 20;" text="Job Board" textFill="#311e4e">
+                <Button layoutX="460.0" layoutY="140.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #1d976c, #93f9b9); -fx-background-radius: 20;" text="Job Board" textFill="#311e4e">
                     <font>
                         <Font size="18.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/job.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <styleClass>
                         <String fx:value="gradient-button job-board-button" />
                         <String fx:value="gradient-button" />
@@ -131,22 +106,50 @@
                 </Button>
 
                 <!-- Sign Out Button -->
-                <Button layoutX="523.0" layoutY="286.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b); -fx-background-radius: 20;" text="Sign Out" textFill="#311e4e">
+                <Button layoutX="523.0" layoutY="286.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b); -fx-background-radius: 20;" text="     Sign Out" textFill="#311e4e">
                     <font>
                         <Font size="16.0" />
                     </font>
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/logOut.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <styleClass>
                         <String fx:value="gradient-button sign-out-button" />
                         <String fx:value="gradient-button" />
                     </styleClass>
                 </Button>
+                <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="37.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/modify.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="37.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Home.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="41.0" fitWidth="68.0" layoutX="473.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Announcement.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="251.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Invitation.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="460.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/job.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="41.0" fitWidth="30.0" layoutX="262.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/Alumni%20List.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="523.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/logOut.png" />
+                    </image>
+                </ImageView>
             </children>
         </AnchorPane>
     </children>

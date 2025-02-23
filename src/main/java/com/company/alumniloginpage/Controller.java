@@ -75,6 +75,9 @@ public class Controller {
     private ComboBox<String> degree;
 
     @FXML
+    private ComboBox<String> userTypes;
+
+    @FXML
     private ComboBox<String> department;
 
     @FXML
@@ -82,6 +85,9 @@ public class Controller {
 
     @FXML
     private TextField workplace;
+
+    @FXML
+    private ComboBox<String> userType;
 
     @FXML
     private TextField email;
@@ -175,6 +181,23 @@ public class Controller {
             broad_batch.setVisibleRowCount(5);
             System.out.println("Successfully initialized department");
         }
+        if (userTypes== null) {
+            System.out.println("Not found any fx-id name department");
+
+        } else {
+            userTypes.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
+            userTypes.setVisibleRowCount(5);
+            System.out.println("Successfully initialized department");
+        }
+
+//        if (userType== null) {
+//            System.out.println("Not found any fx-id name userType");
+//
+//        } else {
+//            userType.setItems(FXCollections.observableArrayList("Admin","Alumni","Student"));
+//            //userType.setVisibleRowCount(5);
+//            System.out.println("Successfully initialized userType");
+//        }
 
         // Set up the TableView columns
 //        alumniTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -248,6 +271,7 @@ public class Controller {
         String dfacebook = facebook.getText();
         String daddress = address.getText();
         String dImage=imagePathField.getText();
+        String duserType=userType.getValue();
 
         // Collect data from RadioButtons
         String dgender = "";
@@ -308,6 +332,7 @@ public class Controller {
                             .append("facebook", dfacebook)
                             .append("address", daddress);
                     userData.append("Image",dImage);
+                    userData.append("usertype",duserType);
 
                     passwordController.setUserData(userData);
 
@@ -551,13 +576,23 @@ public class Controller {
     public void switchToLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login2.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        userTypes.getItems().addAll("Admin", "Student", "Alumni");
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void switchToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+    public void switchToStudentHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("student_home.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
