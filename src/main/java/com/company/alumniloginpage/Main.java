@@ -22,8 +22,8 @@ public class Main extends Application
 
         stage.setTitle("MIST Alumni Portal");
 
-        stage.setFullScreen(false);
-        stage.setResizable(false);
+//        stage.setFullScreen(false);
+//        stage.setResizable(false);
 
         stage.setScene(scene);
         stage.show();
