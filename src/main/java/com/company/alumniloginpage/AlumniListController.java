@@ -29,8 +29,8 @@ public class AlumniListController {
     @FXML
     private void initialize() {
         // Populate the year and batch ComboBoxes
-        yearComboBox.getItems().addAll("All", "2002", "2021", "2022", "2023");
-        batchComboBox.getItems().addAll("All", "CSE", "EEE", "ME", "CE");
+        yearComboBox.getItems().addAll( "2002", "2021", "2022", "2023");
+        batchComboBox.getItems().addAll( "CSE", "EEE", "ME", "CE");
 
         // Set up the TableView columns
         alumniTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));

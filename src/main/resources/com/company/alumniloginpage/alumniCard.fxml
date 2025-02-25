@@ -1,185 +1,495 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_final" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AlumniCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_final" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AlumniCardController">
     <children>
-        <!-- Header Section -->
-        <AnchorPane layoutX="-4.0" prefHeight="114.0" prefWidth="841.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up" stylesheets="@home.css">
+        <!-- Header Section with improved design -->
+        <AnchorPane layoutX="0.0" prefHeight="114.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up">
             <children>
-                <Text fill="#311e4e" layoutX="252.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alumni Card" textAlignment="CENTER" wrappingWidth="352.71258544921875">
-                    <font>
-                        <Font size="64.0" />
-                    </font>
-                </Text>
-            </children>
-        </AnchorPane>
-
-        <!-- Left Side Buttons -->
-        <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="identity_box" stylesheets="@home.css">
-            <children>
-                <!-- Dashboard Button -->
-                <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);" styleClass="left-button" text="          Dashboard">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
-
-                <!-- Broadcast Button -->
-                <Button layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);" styleClass="left-button" text="          Broadcast">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
-
-                <!-- Job Board Button -->
-                <Button layoutX="10.0" layoutY="183.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #1d976c, #93f9b9);" styleClass="left-button" text="          Job Board">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
-
-                <!-- Events Button -->
-                <Button layoutX="11.0" layoutY="266.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #43cea2, #185a9d);" styleClass="left-button" text="           Events">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
-
-                <!-- Alumni List Button -->
-                <Button layoutX="10.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchalumniList" prefHeight="65.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #f46b45, #eea849);" styleClass="left-button" text="          Alumni List">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
-
-                <!-- Sign Out Button -->
-                <Button layoutX="10.0" layoutY="436.0" mnemonicParsing="false" onAction="#logOut" prefHeight="60.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);" styleClass="left-button" text="          Sign Out">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Button>
-                <ImageView fitHeight="36.0" fitWidth="68.0" layoutX="11.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/job.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="20.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Announcement.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="52.0" fitWidth="67.0" layoutX="19.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Home.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="52.0" fitWidth="67.0" layoutX="19.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Invitation.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="59.0" layoutX="19.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/logOut.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="59.0" layoutX="30.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Alumni List.png" />
-                    </image></ImageView>
-            </children>
-        </AnchorPane>
-
-        <!-- Right Side Content -->
-        <AnchorPane fx:id="alumniCardPane" layoutX="231.0" layoutY="136.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="299.0" prefWidth="591.0" style="-fx-background-color: #90D5FF;" styleClass="identity_box">
-            <children>
-                <ImageView fx:id="userImageView" fitHeight="104.0" fitWidth="85.0" layoutX="485.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
-                <Text fill="#403e3e" layoutX="12.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="nameField" layoutX="120.0" layoutY="60.0" prefHeight="39.0" prefWidth="353.0" promptText="Name" style="-fx-background-color: transparent;">
-                    <font>
-                        <Font size="18.0" />
-                    </font></TextField>
-                <Text fill="#403e3e" layoutX="8.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="sessionField" layoutX="123.0" layoutY="220.0" prefHeight="39.0" prefWidth="353.0" promptText="Session" style="-fx-background-color: transparent;">
-                    <font>
-                        <Font size="18.0" />
-                    </font></TextField>
-                <ImageView fitHeight="43.0" fitWidth="128.0" layoutX="455.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/signature.png" />
-                    </image>
-                </ImageView>
-                <Text fill="#281616" layoutX="60.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MILITARY INSTITUTE OF SCIENCE AND TECHNOLOGY" textAlignment="CENTER">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                <Text fill="#403e3e" layoutX="6.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="departmentField" layoutX="123.0" layoutY="169.0" prefHeight="39.0" prefWidth="353.0" promptText="Department" style="-fx-background-color: transparent;">
-                    <font>
-                        <Font size="18.0" />
-                    </font></TextField>
-                <Text fill="#403e3e" layoutX="11.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID" wrappingWidth="85.0">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="studentIdField" layoutX="120.0" layoutY="114.0" prefHeight="39.0" prefWidth="353.0" promptText="Student ID" style="-fx-background-color: transparent;">
-                    <font>
-                        <Font size="18.0" />
-                    </font></TextField>
-                <ImageView fitHeight="38.0" fitWidth="48.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="24.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@photos/MISTLogo.png" />
                     </image>
                 </ImageView>
-                <Text fill="#403e3e" layoutX="107.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                <Text fill="#311e4e" layoutX="132.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MIST Alumni Network" textAlignment="CENTER">
                     <font>
-                        <Font size="27.0" />
+                        <Font name="System Bold" size="36.0" />
                     </font>
+                    <effect>
+                        <DropShadow height="5.0" radius="2.0" width="5.0">
+                            <color>
+                                <Color opacity="0.25" />
+                            </color>
+                        </DropShadow>
+                    </effect>
                 </Text>
-                <Text fill="#403e3e" layoutX="108.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                <Label layoutX="652.0" layoutY="45.0" text="Alumni Card Status" textFill="#311e4e">
                     <font>
-                        <Font size="27.0" />
+                        <Font name="System Bold" size="24.0" />
                     </font>
-                </Text>
-                <Text fill="#403e3e" layoutX="110.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
-                    <font>
-                        <Font size="27.0" />
-                    </font>
-                </Text>
-                <Text fill="#403e3e" layoutX="110.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
-                    <font>
-                        <Font size="27.0" />
-                    </font>
-                </Text>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" layoutX="928.0" layoutY="42.0" spacing="15.0">
+                    <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/mail.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="userEmailLabel" text="user@example.com" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" layoutX="928.0" layoutY="72.0" spacing="15.0">
+                    <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/phone.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="userPhoneLabel" text="01XXXXXXXXX" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
             </children>
+            <effect>
+                <DropShadow height="10.0" radius="4.5" width="10.0">
+                    <color>
+                        <Color opacity="0.5" />
+                    </color>
+                </DropShadow>
+            </effect>
         </AnchorPane>
 
-        <!-- Download Button -->
-        <Button layoutX="736.0" layoutY="587.0" mnemonicParsing="false" onAction="#handleDownload" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #525fc7;" text="Download">
-            <font>
-                <Font size="13.0" />
-            </font>
-        </Button>
+        <!-- Left Side Navigation with improved styling -->
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="0.0" layoutY="114.0" prefHeight="636.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-background: transparent;" styleClass="transparent-scroll-pane">
+            <content>
+                <VBox prefHeight="636.0" prefWidth="250.0" spacing="15.0" style="-fx-background-color: rgba(0, 0, 10, 0.8); -fx-padding: 15;">
+                    <children>
+                        <Label text="NAVIGATION" textFill="#a7a7a7">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+
+                        <!-- Dashboard Button -->
+                        <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);" styleClass="left-button" text="          Dashboard">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/Home.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <!-- Broadcast Button -->
+                        <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b);" styleClass="left-button" text="          Broadcast">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/Invitation.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <!-- Job Board Button -->
+                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #1d976c, #93f9b9);" styleClass="left-button" text="          Job Board">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/job.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <!-- Events Button -->
+                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #43cea2, #185a9d);" styleClass="left-button" text="           Events">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/Announcement.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <!-- Alumni List Button -->
+                        <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #f46b45, #eea849);" styleClass="left-button" text="          Alumni List">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/Alumni List.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <Label text="QUICK LINKS" textFill="#a7a7a7">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+
+                        <!-- MIST Website Button -->
+                        <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #3494E6, #EC6EAD);" styleClass="left-button" text="          MIST Website">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/MISTLogo.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <!-- Upcoming Events Button -->
+                        <Button mnemonicParsing="false"  prefHeight="50.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #4776E6, #8E54E9);" styleClass="left-button" text="          Upcoming Events">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/calendar.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+
+                        <!-- Sign Out Button -->
+                        <Button mnemonicParsing="false" onAction="#logOut" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b);" styleClass="left-button" text="          Sign Out">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/logOut.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.5" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+
+        <!-- Right Side Content Area -->
+        <AnchorPane layoutX="250.0" layoutY="114.0" prefHeight="636.0" prefWidth="950.0" style="-fx-background-color: rgba(10, 10, 40, 0.7);">
+            <children>
+                <!-- Page Title -->
+                <Label layoutX="30.0" layoutY="20.0" text="Your Alumni ID Card" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+
+                <Text fill="#a7a7a7" layoutX="30.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your official MIST alumni identification card has been automatically generated. Please verify your information below.">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+
+                <!-- Card Status Message -->
+                <AnchorPane layoutX="30.0" layoutY="90.0" prefHeight="60.0" prefWidth="890.0" style="-fx-background-color: rgba(61, 179, 158, 0.2); -fx-background-radius: 8;">
+                    <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/img_2.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="64.0" layoutY="20.0" text="Your alumni ID card has been automatically generated and is ready for download." textFill="#3db39e">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+
+                <!-- Card Preview Container -->
+                <AnchorPane layoutX="30.0" layoutY="160.0" prefHeight="420.0" prefWidth="580.0" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 10;">
+                    <children>
+                        <Label layoutX="20.0" layoutY="20.0" text="Card Preview" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <!-- Alumni Card with improved design -->
+                        <AnchorPane fx:id="alumniCardPane" layoutX="20.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="540.0" style="-fx-background-color: linear-gradient(to bottom right, #ffffff, #e0f2ff); -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #0066cc; -fx-border-width: 2;" styleClass="identity_box">
+                            <children>
+                                <!-- User Image with improved frame -->
+                                <AnchorPane layoutX="410.0" layoutY="60.0" prefHeight="140.0" prefWidth="120.0" style="-fx-background-color: #ffffff; -fx-border-color: #0066cc; -fx-border-width: 2; -fx-border-radius: 5;">
+                                    <children>
+                                        <ImageView fx:id="userImageView" fitHeight="130.0" fitWidth="110.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                    </children>
+                                    <effect>
+                                        <DropShadow height="10.0" radius="4.5" width="10.0">
+                                            <color>
+                                                <Color opacity="0.25" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </AnchorPane>
+
+                                <!-- Card Header with Logo -->
+                                <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="540.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF); -fx-background-radius: 15 15 0 0;">
+                                    <children>
+                                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@photos/MISTLogo.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Text fill="#281616" layoutX="64.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MILITARY INSTITUTE OF SCIENCE AND TECHNOLOGY">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </AnchorPane>
+
+                                <!-- Card Fields with improved styling and data binding -->
+                                <Label layoutX="20.0" layoutY="70.0" text="Name" textFill="#0066cc">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="nameLabel" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="Arafat Hasan" textFill="#333333">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <Label layoutX="20.0" layoutY="120.0" text="Student ID" textFill="#0066cc">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="studentIdLabel" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="202314069" textFill="#333333">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <Label layoutX="20.0" layoutY="170.0" text="Department" textFill="#0066cc">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="departmentLabel" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="Computer Science and Engineering" textFill="#333333">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <Label layoutX="20.0" layoutY="220.0" text="Session" textFill="#0066cc">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="sessionLabel" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="2022-2025" textFill="#333333">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+
+                                <!-- Card Footer with Signature -->
+                                <AnchorPane layoutX="0.0" layoutY="280.0" prefHeight="60.0" prefWidth="540.0" style="-fx-background-color: rgba(0, 102, 204, 0.1); -fx-background-radius: 0 0 15 15;">
+                                    <children>
+                                        <ImageView fitHeight="40.0" fitWidth="120.0" layoutX="410.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@photos/signature.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label layoutX="20.0" layoutY="20.0" text="Valid until: Lifetime" textFill="#0066cc">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                              <Text layoutX="445.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Signature" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                            <effect>
+                                <DropShadow height="20.0" radius="9.5" width="20.0">
+                                    <color>
+                                        <Color opacity="0.25" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+
+                <!-- Right Side Options Panel -->
+                <AnchorPane layoutX="630.0" layoutY="160.0" prefHeight="420.0" prefWidth="290.0" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 10;">
+                    <children>
+                        <Label layoutX="20.0" layoutY="20.0" text="Card Options" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <Button fx:id="verifyInfoButton" layoutX="20.0" layoutY="88.0" mnemonicParsing="false"  prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #35a37f; -fx-background-radius: 5;" text="Verify Information" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/submit.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+
+                        <Button fx:id="requestChangeButton" layoutX="20.0" layoutY="190.0" mnemonicParsing="false" onAction="#switchToSignupForm" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #e4a023; -fx-background-radius: 5;" text="Request Change" textFill="WHITE">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/edit.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+
+                        <VBox layoutX="20.0" layoutY="260.0" prefHeight="140.0" prefWidth="250.0" spacing="10.0" style="-fx-background-color: rgba(255, 255, 255, 0.05); -fx-padding: 10; -fx-background-radius: 5;">
+                            <children>
+                                <Label text="Download Options" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Button fx:id="pngFormatButton" mnemonicParsing="false"  prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #4f74e3; -fx-background-radius: 5;" text="PNG" textFill="WHITE" />
+                                        <Button fx:id="pdfFormatButton" mnemonicParsing="false"  prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #606060; -fx-background-radius: 5;" text="PDF" textFill="WHITE" />
+                                    </children>
+                                </HBox>
+                                <Button fx:id="downloadButton" onAction="#handleDownload" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF); -fx-background-radius: 5;" text="Download Card" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@photos/download.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+
+                <!-- Footer Section -->
+                <HBox alignment="CENTER" layoutX="0.0" layoutY="580.0" prefHeight="56.0" prefWidth="950.0" style="-fx-background-color: rgba(0, 0, 0, 0.3);">
+                    <children>
+                        <Label text="© 2024 Military Institute of Science and Technology | All Rights Reserved" textFill="#a7a7a7">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

@@ -22,8 +22,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.bson.Document;
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class AlumniCardController
@@ -159,6 +162,19 @@ public class AlumniCardController
         stage.show();
     }
 
+    public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{
+        Desktop.getDesktop().browse(new URI("https://mist.ac.bd/"));
+    }
+
+    public void switchToSignupForm(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("signupForm.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void logOut(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
@@ -175,4 +191,6 @@ public class AlumniCardController
             stage.close();
         }
     }
+
+
 }
