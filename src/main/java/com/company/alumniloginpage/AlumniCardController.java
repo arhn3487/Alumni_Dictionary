@@ -175,6 +175,14 @@ public class AlumniCardController
         stage.show();
     }
 
+    public void switchtoEvent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("event.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void logOut(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));

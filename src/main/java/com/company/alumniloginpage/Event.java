@@ -1,81 +1,73 @@
 package com.company.alumniloginpage;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
+import java.time.LocalDate;
 
 public class Event {
-    private final SimpleStringProperty name;
-    private final SimpleStringProperty date;
-    private final SimpleStringProperty location;
-    private final SimpleStringProperty description;
-    private final SimpleBooleanProperty registered;
+    private String id;
+    private String title;
+    private LocalDate date;
+    private String location;
+    private String description;
 
-    public Event(String name, String date, String location, String description) {
-        this.name = new SimpleStringProperty(name);
-        this.date = new SimpleStringProperty(date);
-        this.location = new SimpleStringProperty(location);
-        this.description = new SimpleStringProperty(description);
-        this.registered = new SimpleBooleanProperty(false);
+    public Event(String id, String title, LocalDate date, String location, String description) {
+        this.id = id;
+        this.title = title;
+        this.date = date;
+        this.location = location;
+        this.description = description;
+    }
+
+    // Constructor without ID for new events
+    public Event(String title, LocalDate date, String location, String description) {
+        this.title = title;
+        this.date = date;
+        this.location = location;
+        this.description = description;
     }
 
     // Getters and setters
-    public String getName() {
-        return name.get();
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name.set(name);
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getDate() {
-        return date.get();
+    public String getTitle() {
+        return title;
     }
 
-    public void setDate(String date) {
-        this.date.set(date);
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLocation() {
-        return location.get();
-    }
-
-    public void setLocation(String location) {
-        this.location.set(location);
-    }
-
-    public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        this.description.set(description);
-    }
-
-    public boolean isRegistered() {
-        return registered.get();
-    }
-
-    public void setRegistered(boolean registered) {
-        this.registered.set(registered);
-    }
-
-    public SimpleStringProperty nameProperty() {
-        return name;
-    }
-
-    public SimpleStringProperty dateProperty() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public SimpleStringProperty locationProperty() {
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getLocation() {
         return location;
     }
 
-    public SimpleStringProperty descriptionProperty() {
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
         return description;
     }
 
-    public SimpleBooleanProperty registeredProperty() {
-        return registered;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return title + " (" + date + ")";
     }
 }

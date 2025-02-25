@@ -1,81 +1,269 @@
 package com.company.alumniloginpage;
 
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.Node;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+public class EventController {
+    // FXML Injected Controls
+    @FXML private ListView<Event> eventListView;
+    @FXML private TextField eventTitle;
+    @FXML private DatePicker eventDate;
+    @FXML private TextField eventLocation;
+    @FXML private TextArea eventDescription;
+    @FXML private Button addEventButton;
+    @FXML private Button removeEventButton;
+    @FXML private Button clearButton;
 
-public class EventController implements Initializable {
+    // MongoDB Connection
+    private MongoDBConnection mongoDBConnection;
 
+    // Stage and Scene for navigation
+    private Stage stage;
+    private Scene scene;
+
+    // Observable List to hold events
+    private ObservableList<Event> eventList = FXCollections.observableArrayList();
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    // Initialize method called when the FXML is loaded
     @FXML
-    private TableView<Event> eventTable;
+    public void initialize() {
+        // Initialize MongoDB connection
+        mongoDBConnection = MongoDBConnection.getInstance();
 
-    @FXML
-    private TableColumn<Event, String> eventNameColumn;
-
-    @FXML
-    private TableColumn<Event, String> eventDateColumn;
-
-    @FXML
-    private TableColumn<Event, String> eventLocationColumn;
-
-    @FXML
-    private TableColumn<Event, String> eventDescriptionColumn;
-
-    @FXML
-    private Button backButton;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set up the table columns
-        eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
-        eventDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        // Load sample data
-        loadSampleEvents();
+        // Initialize event management features
+        initializeEventManagement();
     }
 
-    private void loadSampleEvents() {
-        // Add some sample events
-        eventTable.getItems().add(new Event("Annual Alumni Reunion", "March 15, 2025", "Main Campus Auditorium", "Join us for our annual alumni gathering with food, networking, and special guests."));
-        eventTable.getItems().add(new Event("Career Fair", "April 10, 2025", "Student Center", "Connect with employers and explore job opportunities in various industries."));
-        eventTable.getItems().add(new Event("Homecoming Weekend", "May 20, 2025", "University Stadium", "Celebrate with fellow alumni during our annual homecoming festivities."));
-        eventTable.getItems().add(new Event("Workshop: Networking Skills", "June 5, 2025", "Business School Room 203", "Learn effective networking techniques from industry professionals."));
+    // Method to initialize event management functionality
+    public void initializeEventManagement() {
+        // Set up the ListView with custom cell factory to display events
+        eventListView.setItems(eventList);
+        eventListView.setCellFactory(param -> new ListCell<Event>() {
+            @Override
+            protected void updateItem(Event event, boolean empty) {
+                super.updateItem(event, empty);
+
+                if (empty || event == null) {
+                    setText(null);
+                } else {
+                    setText(event.getTitle() + " - " + event.getDate() + " - " + event.getLocation());
+                }
+            }
+        });
+
+        // Add event selection listener
+        eventListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                displayEventDetails(newValue);
+            }
+        });
+
+        // Add event handlers for buttons
+        addEventButton.setOnAction(event -> addEvent());
+        removeEventButton.setOnAction(event -> removeEvent());
+        clearButton.setOnAction(event -> clearEventFields());
+
+        // Load events from database
+        loadEventsFromDatabase();
     }
 
+    // Method to load events from MongoDB
+    private void loadEventsFromDatabase() {
+        try {
+            MongoCollection<Document> eventsCollection = mongoDBConnection.getDatabase().getCollection("events");
+            FindIterable<Document> events = eventsCollection.find();
+
+            eventList.clear();
+            for (Document doc : events) {
+                ObjectId objectId = doc.getObjectId("_id");
+                String id = objectId.toString();
+                String title = doc.getString("title");
+                LocalDate date = LocalDate.parse(doc.getString("date"), DATE_FORMATTER);
+                String location = doc.getString("location");
+                String description = doc.getString("description");
+
+                Event event = new Event(id, title, date, location, description);
+                eventList.add(event);
+            }
+        } catch (Exception e) {
+            showAlert("Error", "Failed to load events: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Method to add a new event
+    private void addEvent() {
+        String title = eventTitle.getText().trim();
+        LocalDate date = eventDate.getValue();
+        String location = eventLocation.getText().trim();
+        String description = eventDescription.getText().trim();
+
+        if (title.isEmpty() || date == null || location.isEmpty() || description.isEmpty()) {
+            showAlert("Input Error", "Please fill all fields");
+            return;
+        }
+
+        try {
+            // Create a new document to insert into MongoDB
+            Document eventDoc = new Document()
+                    .append("title", title)
+                    .append("date", date.format(DATE_FORMATTER))
+                    .append("location", location)
+                    .append("description", description);
+
+            // Insert the document into the events collection
+            MongoCollection<Document> eventsCollection = mongoDBConnection.getDatabase().getCollection("events");
+            eventsCollection.insertOne(eventDoc);
+
+            // Get the generated ID and create an Event object
+            ObjectId objectId = eventDoc.getObjectId("_id");
+            String id = objectId.toString();
+            Event newEvent = new Event(id, title, date, location, description);
+
+            // Add the event to the list view
+            eventList.add(newEvent);
+            clearEventFields();
+
+            showAlert("Success", "Event added successfully");
+        } catch (Exception e) {
+            showAlert("Error", "Failed to add event: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Method to remove an event
+    private void removeEvent() {
+        Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
+        if (selectedEvent == null) {
+            showAlert("Selection Error", "Please select an event to remove");
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Remove Event");
+        alert.setContentText("Are you sure you want to remove: " + selectedEvent.getTitle() + "?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                // Remove from database - Convert string ID to ObjectId
+                MongoCollection<Document> eventsCollection = mongoDBConnection.getDatabase().getCollection("events");
+                ObjectId objectId = new ObjectId(selectedEvent.getId());
+                eventsCollection.deleteOne(new Document("_id", objectId));
+
+                // Remove from list view
+                eventList.remove(selectedEvent);
+                clearEventFields();
+
+                showAlert("Success", "Event removed successfully");
+            } catch (Exception e) {
+                showAlert("Error", "Failed to remove event: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Method to clear event form fields
+    private void clearEventFields() {
+        eventTitle.clear();
+        eventDate.setValue(null);
+        eventLocation.clear();
+        eventDescription.clear();
+        eventListView.getSelectionModel().clearSelection();
+    }
+
+    // Method to display event details in form fields
+    private void displayEventDetails(Event event) {
+        eventTitle.setText(event.getTitle());
+        eventDate.setValue(event.getDate());
+        eventLocation.setText(event.getLocation());
+        eventDescription.setText(event.getDescription());
+    }
+
+    // Helper method to show alerts
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    // Navigation methods with ActionEvent parameter for consistency with Controller class
     @FXML
-    private void switchToDashboard(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
+    public void switchToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    private void registerForEvent(ActionEvent event) {
-        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
-        if (selectedEvent != null) {
-            // Here you would typically open a registration form or confirmation dialog
-            System.out.println("Registered for: " + selectedEvent.getName());
+    public void switchalumniCard(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("alumniCard.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-            // For now, just change the status in the table
-            selectedEvent.setRegistered(true);
-            eventTable.refresh();
+    @FXML
+    public void switchtoEvent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("event.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchBroadcast(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("broadcast.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void logOut(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Log Out");
+        alert.setHeaderText("You're about to logout");
+        alert.setContentText("Do you want to save before exiting?");
+
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            stage.setScene(scene);
+            stage.show();
         }
     }
 }

@@ -47,7 +47,7 @@
                                 <Image url="@photos/mail.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="userEmailLabel" text="user@example.com" textFill="WHITE">
+                        <Label fx:id="userEmailLabel" text="arhasan3487@gmail.com" textFill="WHITE">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -61,7 +61,7 @@
                                 <Image url="@photos/phone.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="userPhoneLabel" text="01XXXXXXXXX" textFill="WHITE">
+                        <Label fx:id="userPhoneLabel" text="01540194651" textFill="WHITE">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -153,7 +153,7 @@
                         </Button>
 
                         <!-- Events Button -->
-                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #43cea2, #185a9d);" styleClass="left-button" text="           Events">
+                        <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="65.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #43cea2, #185a9d);" styleClass="left-button" text="           Events">
                             <font>
                                 <Font size="16.0" />
                             </font>
@@ -222,7 +222,7 @@
                         </Button>
 
                         <!-- Upcoming Events Button -->
-                        <Button mnemonicParsing="false"  prefHeight="50.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #4776E6, #8E54E9);" styleClass="left-button" text="          Upcoming Events">
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to right, #4776E6, #8E54E9);" styleClass="left-button" text="          Upcoming Events">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -423,7 +423,7 @@
                             </font>
                         </Label>
 
-                        <Button fx:id="verifyInfoButton" layoutX="20.0" layoutY="88.0" mnemonicParsing="false"  prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #35a37f; -fx-background-radius: 5;" text="Verify Information" textFill="WHITE">
+                        <Button fx:id="verifyInfoButton" layoutX="20.0" layoutY="88.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #35a37f; -fx-background-radius: 5;" text="Verify Information" textFill="WHITE">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -458,8 +458,8 @@
                                 </Label>
                                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                                     <children>
-                                        <Button fx:id="pngFormatButton" mnemonicParsing="false"  prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #4f74e3; -fx-background-radius: 5;" text="PNG" textFill="WHITE" />
-                                        <Button fx:id="pdfFormatButton" mnemonicParsing="false"  prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #606060; -fx-background-radius: 5;" text="PDF" textFill="WHITE" />
+                                        <Button fx:id="pngFormatButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #4f74e3; -fx-background-radius: 5;" text="PNG" textFill="WHITE" />
+                                        <Button fx:id="pdfFormatButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #606060; -fx-background-radius: 5;" text="PDF" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <Button fx:id="downloadButton" onAction="#handleDownload" prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF); -fx-background-radius: 5;" text="Download Card" textFill="WHITE">

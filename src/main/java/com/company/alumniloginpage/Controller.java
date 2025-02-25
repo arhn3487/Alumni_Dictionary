@@ -6,206 +6,95 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.util.List;
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.*;
-
 import org.bson.Document;
 
 import javax.mail.*;
 import javax.mail.internet.*;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import java.awt.*;
 import java.io.File;
-import java.util.stream.StreamSupport;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
 import java.util.List;
-import java.util.ArrayList;
 
 
 public class Controller {
 
-    private Stage stage;
-    private Scene scene;
+    @FXML private TextField name, studentId, batch, workplace, email, linkedin, phone, facebook, address, attachmentPath, imagePathField;
+    @FXML private RadioButton male, female;
+    @FXML private ComboBox<String> degree, userTypes, department, graduationYear, broad_batch, broad_dept, userType;
+    @FXML private TextArea broadtext;
+    @FXML private TextField broadsubject;
+    @FXML private TableView<AlumniListController.Alumni> alumniTable;
+    @FXML
+    private ListView<Event> eventListView;
 
     @FXML
-    private TextField name;
+    private TextField eventTitle;
 
     @FXML
-    private TextField studentId;
+    private DatePicker eventDate;
 
     @FXML
-    private TextField batch;
+    private TextField eventLocation;
 
     @FXML
-    private RadioButton male;
+    private TextArea eventDescription;
 
     @FXML
-    private RadioButton female;
+    private Button addEventButton;
 
     @FXML
-    private ComboBox<String> degree;
+    private Button removeEventButton;
 
     @FXML
-    private ComboBox<String> userTypes;
+    private Button clearButton;
 
-    @FXML
-    private ComboBox<String> department;
-
-    @FXML
-    private ComboBox<String> graduationYear;
-
-    @FXML
-    private TextField workplace;
-
-    @FXML
-    private ComboBox<String> userType;
-
-    @FXML
-    private TextField email;
-
-    @FXML
-    private TextField linkedin;
-
-    @FXML
-    private TextField phone;
-
-    @FXML
-    private TextField facebook;
-
-    @FXML
-    private TextField address;
-
-    //For Broadcast page
-    @FXML
-    private ComboBox<String> broad_batch;
-
-    @FXML
-
-    private ComboBox<String> broad_dept;
-
-    @FXML
-    private TextField attachmentPath;
-
-    @FXML
-    private TextField imagePathField;
-
-    @FXML
-    private TextArea broadtext;
-
-    @FXML
-    private TextField broadsubject;
-
-    @FXML
-    private Button choosefile;
-
-    @FXML
-    private Button sendmail;
-
-    private File attachmentFile;
-
-    @FXML
-    private TableView<AlumniListController.Alumni> alumniTable;
+    Stage stage;
+    Scene scene;
 
     private MongoDBConnection mongoDBConnection;
-
     @FXML
     public void initialize() {
-
         mongoDBConnection = new MongoDBConnection();
-        //If anything is null in this combobox this will not be initialized When I developed the frontend I try to initialize the department where there was not any fx-id named department that's why there always show an error
-        if (degree == null) {
-            System.out.println("Not found any fx-id name degree");
-        } else {
-            degree.setItems(FXCollections.observableArrayList("BSc", "MSc"));
-            //degree.getSelectionModel().selectFirst(); // Automatically select the first option
-            System.out.println("degree ComboBox initialized with options: BSc, MSc");
-        }
-        if (department== null) {
-            System.out.println("Not found any fx-id name department");
 
-        } else {
-            department.setItems(FXCollections.observableArrayList("All", "CSE", "EECE","CE","ME","AE","EWCE","PME","NAME","IPE","BME","ARCH","NSE"));
-            department.setVisibleRowCount(5);
-            System.out.println("Successfully initialized department");
-        }
-        if (graduationYear== null) {
-            System.out.println("Not found any fx-id name department");
+        initializeComboBox(degree, "degree", "BSc", "MSc");
+        initializeComboBox(department, "department", "All", "CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME", "NAME", "IPE", "BME", "ARCH", "NSE");
+        initializeComboBox(graduationYear, "graduationYear", "All", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023");
+        initializeComboBox(broad_dept, "broad_dept", "CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME", "NAME", "IPE", "BME", "ARCH", "NSE");
+        initializeComboBox(broad_batch, "broad_batch", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023");
+        initializeComboBox(userTypes, "userTypes", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023");
 
-        } else {
-            graduationYear.setItems(FXCollections.observableArrayList("All", "2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
-            graduationYear.setVisibleRowCount(5);
-            System.out.println("Successfully initialized department");
-        }
-        if (broad_dept== null) {
-            System.out.println("Not found any fx-id name department");
+        // Uncomment if needed
+        // initializeComboBox(userType, "userType", "Admin", "Alumni", "Student");
 
-        } else {
-            broad_dept.setItems(FXCollections.observableArrayList("CSE", "EECE","CE","ME","AE","EWCE","PME","NAME","IPE","BME","ARCH","NSE"));
-            broad_dept.setVisibleRowCount(5);
-            System.out.println("Successfully initialized department");
-        }
-        if (broad_batch== null) {
-            System.out.println("Not found any fx-id name department");
-
-        } else {
-            broad_batch.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
-            broad_batch.setVisibleRowCount(5);
-            System.out.println("Successfully initialized department");
-        }
-        if (userTypes== null) {
-            System.out.println("Not found any fx-id name department");
-
-        } else {
-            userTypes.setItems(FXCollections.observableArrayList("2002", "2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023"));
-            userTypes.setVisibleRowCount(5);
-            System.out.println("Successfully initialized department");
-        }
-
-//        if (userType== null) {
-//            System.out.println("Not found any fx-id name userType");
-//
-//        } else {
-//            userType.setItems(FXCollections.observableArrayList("Admin","Alumni","Student"));
-//            //userType.setVisibleRowCount(5);
-//            System.out.println("Successfully initialized userType");
-//        }
-
-        // Set up the TableView columns
-//        alumniTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("name"));
-//        alumniTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("studentId"));
-//        alumniTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("batch"));
-//        alumniTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("graduationYear"));
-//        alumniTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("department"));
+        // Uncomment if TableView columns need to be set up
+        // setupTableView();
     }
+
+    private void initializeComboBox(ComboBox<String> comboBox, String name, String... values) {
+        if (comboBox == null) {
+            System.out.println("Not found any fx-id named " + name);
+        } else {
+            comboBox.setItems(FXCollections.observableArrayList(values));
+            comboBox.setVisibleRowCount(5);
+            System.out.println("Successfully initialized " + name);
+        }
+    }
+
 
     private String generateOTP() {
         Random random = new Random();
@@ -476,6 +365,14 @@ public class Controller {
         stage.show();
     }
 
+    public void switchtoEvent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("event.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void BroadcastMail(ActionEvent event) throws IOException {
         Broadcast test= new Broadcast();
         String year = graduationYear.getValue();
@@ -576,9 +473,9 @@ public class Controller {
     public void switchToLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login2.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        userTypes.getItems().addAll("Admin", "Student", "Alumni");
         scene = new Scene(root);
         stage.setScene(scene);
+        userTypes.getItems().addAll("Admin", "Student", "Alumni");
         stage.show();
 
     }
