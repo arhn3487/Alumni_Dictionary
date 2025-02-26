@@ -1,0 +1,201 @@
+/* Main Styles */
+.main-container {
+    -fx-background-color: #f5f5f5;
+}
+
+/* Top Bar Styles */
+.top-bar {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+.university-name {
+    -fx-text-fill: #2e3192;
+    -fx-font-weight: bold;
+}
+
+.alumni-portal {
+    -fx-text-fill: #444444;
+}
+
+.header-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #444444;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.header-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.logout-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-background-color: #2e3192;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.profile-circle {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.welcome-text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 20;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-button-active {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: #00ffff;
+}
+
+/* Content Area Styles */
+.content-area {
+    -fx-background-color: transparent;
+}
+
+.content-area .viewport {
+    -fx-background-color: transparent;
+}
+
+.section-heading {
+    -fx-fill: #2e3192;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.feature-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 0);
+}
+
+.card-title {
+    -fx-fill: #2e3192;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.card-subtitle {
+    -fx-fill: #666666;
+    -fx-font-size: 14px;
+}
+
+/* Form Styles */
+.input-label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 14px;
+}
+
+.form-text-field {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 4px;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 4px;
+    -fx-font-size: 14px;
+}
+
+.form-text-field:focused {
+    -fx-border-color: #2e3192;
+}
+
+.form-combo-box {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 4px;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 4px;
+    -fx-font-size: 14px;
+}
+
+.action-button {
+    -fx-background-color: #2e3192;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: #232578;
+}
+
+.secondary-button {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #444444;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 4px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.send-button {
+    -fx-background-color: #2e3192;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.send-button:hover {
+    -fx-background-color: #232578;
+}
+
+.browse-button {
+    -fx-background-color: #2e3192;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Table Styles */
+.alumni-table {
+    -fx-background-color: white;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 4px;
+}
+
+.alumni-table .column-header {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}
+
+.alumni-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.alumni-table .table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.alumni-table .table-row-cell:selected {
+    -fx-background-color: #e8f0ff;
+}
