@@ -146,9 +146,9 @@ public class EventController {
             eventList.add(newEvent);
             clearEventFields();
 
-            showAlert("Success", "Event added successfully");
+            //showAlert("Success", "Event added successfully");
         } catch (Exception e) {
-            showAlert("Error", "Failed to add event: " + e.getMessage());
+            //showAlert("Error", "Failed to add event: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -157,14 +157,14 @@ public class EventController {
     private void removeEvent() {
         Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
         if (selectedEvent == null) {
-            showAlert("Selection Error", "Please select an event to remove");
+            //showAlert("Selection Error", "Please select an event to remove");
             return;
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Remove Event");
-        alert.setContentText("Are you sure you want to remove: " + selectedEvent.getTitle() + "?");
+        //alert.setContentText("Are you sure you want to remove: " + selectedEvent.getTitle() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -178,9 +178,9 @@ public class EventController {
                 eventList.remove(selectedEvent);
                 clearEventFields();
 
-                showAlert("Success", "Event removed successfully");
+                //showAlert("Success", "Event removed successfully");
             } catch (Exception e) {
-                showAlert("Error", "Failed to remove event: " + e.getMessage());
+                //showAlert("Error", "Failed to remove event: " + e.getMessage());
                 e.printStackTrace();
             }
         }

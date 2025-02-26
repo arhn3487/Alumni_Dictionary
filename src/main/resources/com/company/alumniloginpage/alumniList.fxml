@@ -304,7 +304,7 @@
                                 </Text>
                                 <HBox spacing="20.0" styleClass="search-container">
                                     <children>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-group">
+                                        <VBox spacing="10.0" styleClass="form-group" HBox.hgrow="ALWAYS">
                                             <children>
                                                 <Label styleClass="input-label" text="Session">
                                                     <font>
@@ -329,7 +329,7 @@
                                                 </ComboBox>
                                             </children>
                                         </VBox>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-group">
+                                        <VBox spacing="10.0" styleClass="form-group" HBox.hgrow="ALWAYS">
                                             <children>
                                                 <Label styleClass="input-label" text="Department">
                                                     <font>
@@ -421,27 +421,27 @@
                                 </Text>
                                 <TableView fx:id="alumniTable" prefHeight="350.0" prefWidth="798.0" styleClass="alumni-table">
                                     <columns>
-                                        <TableColumn prefWidth="200.0" text="Name" styleClass="table-column">
+                                        <TableColumn prefWidth="200.0" styleClass="table-column" text="Name">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="name" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="120.0" text="Student ID" styleClass="table-column">
+                                        <TableColumn prefWidth="136.00001525878906" styleClass="table-column" text="Student ID">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="studentId" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="100.0" text="Batch" styleClass="table-column">
+                                        <TableColumn prefWidth="138.4000244140625" styleClass="table-column" text="Batch">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="batch" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="120.0" text="Graduation Year" styleClass="table-column">
+                                        <TableColumn prefWidth="128.00003051757812" styleClass="table-column" text="Graduation Year">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="graduationYear" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="180.0" text="Department" styleClass="table-column">
+                                        <TableColumn prefWidth="156.800048828125" styleClass="table-column" text="Department">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="department" />
                                             </cellValueFactory>

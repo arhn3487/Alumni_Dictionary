@@ -363,6 +363,7 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     public void switchtoEvent(ActionEvent event) throws IOException {
@@ -371,6 +372,7 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     public void BroadcastMail(ActionEvent event) throws IOException {
@@ -441,6 +443,7 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     public void switchToSignupForm(ActionEvent event) throws IOException
@@ -450,6 +453,7 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     public void switchalumniList(ActionEvent event) throws IOException {
@@ -458,6 +462,7 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     public void switchTopersonalinfo(ActionEvent event) throws IOException {
@@ -477,7 +482,7 @@ public class Controller {
         stage.setScene(scene);
         userTypes.getItems().addAll("Admin", "Student", "Alumni");
         stage.show();
-
+    stage.setFullScreen(true);
     }
 
     public void switchToHome(ActionEvent event) throws IOException {
@@ -485,6 +490,7 @@ public class Controller {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
     }
 
@@ -494,6 +500,7 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{

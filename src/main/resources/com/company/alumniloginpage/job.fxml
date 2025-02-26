@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@event.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
+    <left>
+        <AnchorPane prefHeight="700.0" prefWidth="200.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+            <children>
+                <!-- Logo added here -->
+                <ImageView fitHeight="33.0" fitWidth="136.0" layoutX="25.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/alumni.png" />
+                    </image>
+                </ImageView>
+                <Text fill="WHITE" layoutX="22.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-title" text="Alumni Directory" wrappingWidth="155.0">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Text>
+                <Button layoutX="25.0" layoutY="130.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Home" textAlignment="CENTER" textFill="WHITE" />
+                <Button layoutX="25.0" layoutY="185.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Alumni List" textAlignment="CENTER" textFill="WHITE" />
+                <Button layoutX="25.0" layoutY="240.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Alumni Card" textAlignment="CENTER" textFill="WHITE" />
+                <Button layoutX="25.0" layoutY="295.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Job Board" textAlignment="CENTER" textFill="WHITE" />
+                <Button layoutX="25.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button-active" text="Event Management" textAlignment="CENTER" textFill="WHITE" />
+                <Button layoutX="25.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Broadcasting" textAlignment="CENTER" textFill="WHITE" />
+                <Button layoutX="25.0" layoutY="620.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="150.0" styleClass="logout-button" text="Sign Out" textAlignment="CENTER" textFill="WHITE" />
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="700.0" prefWidth="800.0" styleClass="main-content" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="#333333" layoutX="30.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Event Management" wrappingWidth="503.0">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                </Text>
+                <Text fill="#666666" layoutX="30.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheader-text" text="Add, remove, and manage alumni events" wrappingWidth="503.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+
+                <!-- Featured event image added here -->
+                <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="550.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="event-image">
+                    <image>
+                        <Image url="@images/featured_event.jpg" />
+                    </image>
+                </ImageView>
+
+                <AnchorPane layoutX="30.0" layoutY="100.0" prefHeight="280.0" prefWidth="740.0" styleClass="list-container">
+                    <children>
+                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-title" text="Upcoming Events" wrappingWidth="251.0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Text>
+                        <ListView fx:id="eventListView" layoutX="20.0" layoutY="45.0" prefHeight="215.0" prefWidth="700.0" styleClass="event-list" />
+                    </children>
+                </AnchorPane>
+
+                <AnchorPane layoutX="30.0" layoutY="400.0" prefHeight="280.0" prefWidth="740.0" styleClass="form-container">
+                    <children>
+                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-title" text="Add New Event" wrappingWidth="251.0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Text>
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Title:" wrappingWidth="100.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="590.0" promptText="Enter event title" styleClass="form-field" />
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                        <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="200.0" promptText="Select date" styleClass="form-field" />
+
+                        <Text fill="#333333" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="eventLocation" layoutX="430.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter location" styleClass="form-field" />
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                        <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="90.0" prefWidth="590.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
+
+                        <!-- Upload image button added here -->
+                        <Text fill="#333333" layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Image:" wrappingWidth="100.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                        <Button fx:id="uploadImageButton" layoutX="130.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="secondary-button" text="Upload Image" textFill="#333333" />
+
+                        <Button fx:id="addEventButton" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="action-button" text="Add Event" textFill="WHITE" />
+                        <Button fx:id="removeEventButton" layoutX="600.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="delete-button" text="Remove" textFill="WHITE" />
+                        <Button fx:id="clearButton" layoutX="340.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="secondary-button" text="Clear Fields" textFill="#333333" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
