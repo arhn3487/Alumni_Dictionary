@@ -1,151 +1,532 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_background" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
-    <children>
-        <AnchorPane layoutX="2.0" prefHeight="114.0" prefWidth="835.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up" stylesheets="@home.css">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@alumnilist.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" BorderPane.alignment="CENTER">
             <children>
-                <Text fill="#1b0101" layoutX="314.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alumni List" textAlignment="CENTER" wrappingWidth="316.51251220703125">
-                    <font>
-                        <Font name="Arial" size="64.0" />
-                    </font>
-                </Text>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/MISTLogo.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="20.0" right="15.0" />
+                    </HBox.margin>
+                    <effect>
+                        <DropShadow height="10.0" radius="4.5" width="10.0">
+                            <color>
+                                <Color opacity="0.25" />
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </ImageView>
+                <VBox alignment="CENTER_LEFT" styleClass="header-title-container">
+                    <children>
+                        <Label styleClass="university-name" text="Military Institute of Science and Technology">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label styleClass="alumni-portal" text="Alumni Portal">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/help.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.15" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+                        <Button fx:id="settingsButton" mnemonicParsing="false" styleClass="header-button" text="Settings">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/settings.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.15" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/logOut.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                            <effect>
+                                <DropShadow height="8.0" radius="3.5" width="8.0">
+                                    <color>
+                                        <Color opacity="0.3" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Button>
+                    </children>
+                </HBox>
             </children>
-        </AnchorPane>
-        <AnchorPane layoutX="2.0" layoutY="124.0" prefHeight="132.0" prefWidth="200.0" stylesheets="@home.css" />
-        <AnchorPane layoutX="9.0" layoutY="119.0" prefHeight="510.0" prefWidth="222.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="identity_box" stylesheets="@home.css">
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="9.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="57.0" prefWidth="200.0" style="-fx-background-color: #54b2b7;" styleClass="logout_upper_button" stylesheets="@home.css" text="        Home" textAlignment="CENTER" textFill="WHITE">
+                <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="profile-container">
+                    <children>
+                        <Circle radius="50.0" styleClass="profile-circle">
+                            <fill>
+                                <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="0.10588235408067703" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                            <effect>
+                                <DropShadow height="15.0" radius="7.0" width="15.0">
+                                    <color>
+                                        <Color opacity="0.4" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </Circle>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/profile_holder.png" />
+                            </image>
+                            <effect>
+                                <DropShadow height="10.0" radius="4.5" width="10.0">
+                                    <color>
+                                        <Color opacity="0.2" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </ImageView>
+                    </children>
+                </StackPane>
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome, Alumni">
                     <font>
-                        <Font size="23.0" />
+                        <Font name="System Bold" size="18.0" />
                     </font>
+                    <effect>
+                        <DropShadow height="3.0" radius="1.0" width="3.0">
+                            <color>
+                                <Color opacity="0.4" />
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </Label>
+                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
                 </Button>
-                <ImageView fitHeight="50.0" fitWidth="85.0" layoutX="23.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Home.png" />
-                    </image>
-                </ImageView>
-                <Button layoutX="5.0" layoutY="103.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni Card" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="15.0" />
-                    </font>
+                <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/idcard.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <ImageView fitHeight="37.0" fitWidth="50.0" layoutX="21.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/idcard.png" />
-                    </image>
-                </ImageView>
-                <Button layoutX="5.0" layoutY="194.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428#601a99ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Job Accouncement" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Alumni Directory">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Alumni List.png" />
+                            </image>
+                            <effect>
+                                <DropShadow height="5.0" radius="2.0" width="5.0">
+                                    <color>
+                                        <Color opacity="0.3" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </ImageView>
+                    </graphic>
+                    <effect>
+                        <DropShadow height="8.0" radius="3.5" width="8.0">
+                            <color>
+                                <Color opacity="0.15" />
+                            </color>
+                        </DropShadow>
+                    </effect>
                 </Button>
-                <ImageView fitHeight="33.0" fitWidth="62.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/job.png" />
-                    </image>
-                </ImageView>
-                <Button layoutX="3.0" layoutY="277.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="200.0" style="-fx-background-color: #428ea1;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Event Accouncement" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
+                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Invitation.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <ImageView fitHeight="33.0" fitWidth="42.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Announcement.png" />
-                    </image>
-                </ImageView>
-                <Button layoutX="5.0" layoutY="424.0" mnemonicParsing="false" onAction="#logOut" prefHeight="63.0" prefWidth="200.0" styleClass="logout_upper_button" stylesheets="@home.css" text="       Sign Out" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="16.0" />
-                    </font>
+                <Button fx:id="eventsCalendarButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Announcement.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="8.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/logOut.png" />
-                    </image>
-                </ImageView>
-                <Button layoutX="1.0" layoutY="357.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #b8c175;" styleClass="logout_upper_button" stylesheets="@home.css" text="       Alumni List" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font size="19.0" />
-                    </font>
+                <Button fx:id="jobOpportunitiesButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/job.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <ImageView fitHeight="44.0" fitWidth="30.0" layoutX="17.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/Alumni List.png" />
-                    </image>
-                </ImageView>
+                <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/donate.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
             </children>
-        </AnchorPane>
-        <AnchorPane layoutX="243.0" layoutY="124.0" prefHeight="498.0" prefWidth="586.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);">
-            <children>
-                <Button layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #24d163;" text="Search" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Button>
-                <ComboBox fx:id="graduationYear" layoutX="98.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Session" style="-fx-background-color: #beebce;">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor></ComboBox>
-                <Text fill="#fff9f9" layoutX="25.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session">
-                    <font>
-                        <Font name="Arial" size="17.0" />
-                    </font>
-                </Text>
-                <ComboBox fx:id="department" layoutX="459.0" layoutY="21.0" prefHeight="26.0" prefWidth="115.0" promptText="Department" style="-fx-background-color: #beebce;">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor></ComboBox>
-                <Text fill="WHITE" layoutX="353.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
-                    <font>
-                        <Font name="Arial" size="15.0" />
-                    </font>
-                </Text>
-            <TableView fx:id="alumniTable" layoutX="3.0" layoutY="92.0" prefHeight="300.0" prefWidth="498.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);">
-               <columns>
-                  <TableColumn prefWidth="120.0" text="Name">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="name" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn prefWidth="100.0" text="Student ID">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="studentId" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn prefWidth="80.0" text="Batch">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="batch" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn prefWidth="80.0" text="Year">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="graduationYear" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn prefWidth="120.0" text="Department">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="department" />
-                     </cellValueFactory>
-                  </TableColumn>
-               </columns>
-            </TableView>
-            </children>
-        </AnchorPane>
-    </children>
-</AnchorPane>
+        </VBox>
+    </left>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
+            <content>
+                <VBox spacing="20.0" styleClass="content-container">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" styleClass="page-header">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Alumni Directory">
+                                    <font>
+                                        <Font name="System Bold" size="28.0" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow height="3.0" radius="1.0" width="3.0">
+                                            <color>
+                                                <Color opacity="0.2" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </Text>
+                            </children>
+                            <padding>
+                                <Insets left="20.0" top="10.0" />
+                            </padding>
+                        </HBox>
+                        <VBox styleClass="feature-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Search Alumni">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow height="3.0" radius="1.0" width="3.0">
+                                            <color>
+                                                <Color opacity="0.1" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </Text>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-subtitle" text="Find and connect with your fellow alumni from MIST">
+                                    <VBox.margin>
+                                        <Insets bottom="20.0" top="5.0" />
+                                    </VBox.margin>
+                                </Text>
+                                <HBox spacing="20.0" styleClass="search-container">
+                                    <children>
+                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-group">
+                                            <children>
+                                                <Label styleClass="input-label" text="Session">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <effect>
+                                                        <DropShadow height="2.0" radius="0.5" width="2.0">
+                                                            <color>
+                                                                <Color opacity="0.1" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                </Label>
+                                                <ComboBox fx:id="graduationYear" prefHeight="40.0" prefWidth="200.0" promptText="All Sessions" styleClass="form-combo-box">
+                                                    <effect>
+                                                        <DropShadow height="5.0" radius="2.0" width="5.0">
+                                                            <color>
+                                                                <Color opacity="0.05" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                </ComboBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-group">
+                                            <children>
+                                                <Label styleClass="input-label" text="Department">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <effect>
+                                                        <DropShadow height="2.0" radius="0.5" width="2.0">
+                                                            <color>
+                                                                <Color opacity="0.1" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                </Label>
+                                                <ComboBox fx:id="department" prefHeight="40.0" prefWidth="200.0" promptText="All Departments" styleClass="form-combo-box">
+                                                    <effect>
+                                                        <DropShadow height="5.0" radius="2.0" width="5.0">
+                                                            <color>
+                                                                <Color opacity="0.05" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                </ComboBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="120.0" styleClass="search-button-container">
+                                            <children>
+                                                <Button layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="40.0" prefWidth="120.0" styleClass="search-button" text="Search">
+                                                    <font>
+                                                        <Font size="15.0" />
+                                                    </font>
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                    <effect>
+                                                        <DropShadow height="8.0" radius="3.5" width="8.0">
+                                                            <color>
+                                                                <Color opacity="0.3" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                    <graphic>
+                                                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@photos/search.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                            <effect>
+                                <DropShadow height="15.0" radius="7.0" width="15.0">
+                                    <color>
+                                        <Color opacity="0.15" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </VBox>
+                        <VBox styleClass="feature-card">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Alumni Directory">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow height="3.0" radius="1.0" width="3.0">
+                                            <color>
+                                                <Color opacity="0.1" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </Text>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-subtitle" text="Connect with alumni from various batches and departments">
+                                    <VBox.margin>
+                                        <Insets bottom="20.0" top="5.0" />
+                                    </VBox.margin>
+                                </Text>
+                                <TableView fx:id="alumniTable" prefHeight="350.0" prefWidth="798.0" styleClass="alumni-table">
+                                    <columns>
+                                        <TableColumn prefWidth="200.0" text="Name" styleClass="table-column">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="name" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="120.0" text="Student ID" styleClass="table-column">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="studentId" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="100.0" text="Batch" styleClass="table-column">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="batch" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="120.0" text="Graduation Year" styleClass="table-column">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="graduationYear" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="180.0" text="Department" styleClass="table-column">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="department" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                    <VBox.margin>
+                                        <Insets top="10.0" />
+                                    </VBox.margin>
+                                    <effect>
+                                        <DropShadow height="8.0" radius="3.5" width="8.0">
+                                            <color>
+                                                <Color opacity="0.1" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </TableView>
+                                <HBox alignment="CENTER_RIGHT" spacing="15.0" styleClass="action-buttons-container">
+                                    <children>
+                                        <Button fx:id="exportButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="action-button" text="Export List">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@photos/filter.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow height="8.0" radius="3.5" width="8.0">
+                                                    <color>
+                                                        <Color opacity="0.15" />
+                                                    </color>
+                                                </DropShadow>
+                                            </effect>
+                                        </Button>
+                                        <Button fx:id="contactButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="action-button" text="Contact Selected">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@photos/Invitation.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <DropShadow height="8.0" radius="3.5" width="8.0">
+                                                    <color>
+                                                        <Color opacity="0.15" />
+                                                    </color>
+                                                </DropShadow>
+                                            </effect>
+                                        </Button>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="20.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                            </VBox.margin>
+                            <effect>
+                                <DropShadow height="15.0" radius="7.0" width="15.0">
+                                    <color>
+                                        <Color opacity="0.15" />
+                                    </color>
+                                </DropShadow>
+                            </effect>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

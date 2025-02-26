@@ -1,156 +1,486 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="714.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_final" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
-   <children>
-      <!-- Header Section -->
-      <AnchorPane layoutX="-5.0" prefHeight="114.0" prefWidth="721.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up" stylesheets="@home.css">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@alumnilist.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="206.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" textAlignment="CENTER">
-               <font>
-                  <Font size="64.0" />
-               </font>
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@photos/MISTLogo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="20.0" right="15.0" />
+               </HBox.margin>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+            <VBox alignment="CENTER_LEFT" styleClass="header-title-container">
+               <children>
+                  <Label styleClass="university-name" text="Military Institute of Science and Technology">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="alumni-portal" text="Alumni Portal">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow height="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.16959063708782196" green="0.10721247643232346" blue="0.2631579041481018" />
+                              <Color opacity="0.15" />
                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="settingsButton" mnemonicParsing="false" styleClass="header-button" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow height="5.0" radius="2.0" width="5.0">
                            <color>
-                              <Color red="0.1921568661928177" green="0.11764705926179886" blue="0.30588236451148987" />
+                              <Color opacity="0.15" />
                            </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-            </Text>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/logOut.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow height="8.0" radius="3.5" width="8.0">
+                           <color>
+                              <Color opacity="0.3" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </AnchorPane>
-
-      <!-- Buttons Grid -->
-      <AnchorPane layoutX="20.0" layoutY="140.0" prefHeight="350.0" prefWidth="674.0">
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
-            <!-- Row 1 -->
-            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); -fx-background-radius: 20;" stylesheets="@home.css" text="Home" textFill="#311e4e">
+            <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="profile-container">
+               <children>
+                  <Circle radius="50.0" styleClass="profile-circle">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.10588235408067703" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <DropShadow height="15.0" radius="7.0" width="15.0">
+                           <color>
+                              <Color opacity="0.4" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Circle>
+                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/profile_holder.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="10.0" radius="4.5" width="10.0">
+                           <color>
+                              <Color opacity="0.2" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome, Alumni">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-               <styleClass>
-                  <String fx:value="gradient-button home-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+               <effect>
+                  <DropShadow height="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color opacity="0.4" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </Button>
-
-            <Button layoutX="240.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b); -fx-background-radius: 20;" stylesheets="@home.css" text="Broadcast" textFill="#311e4e">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="gradient-button broadcast-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+            <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/idcard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-
-            <Button layoutX="460.0" layoutY="20.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #43cea2, #185a9d); -fx-background-radius: 20;" text="Events" textFill="#311e4e">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="gradient-button events-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Alumni Directory">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Alumni List.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="5.0" radius="2.0" width="5.0">
+                           <color>
+                              <Color opacity="0.3" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow height="8.0" radius="3.5" width="8.0">
+                     <color>
+                        <Color opacity="0.15" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
-
-            <!-- Row 2 -->
-            <Button layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #ff6e7f, #bfe9ff); -fx-background-radius: 20;" text="Modify" textFill="#311e4e">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="gradient-button alumni-card-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+            <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Invitation.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-
-            <Button layoutX="240.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchalumniList" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #f46b45, #eea849); -fx-background-radius: 20;" text="Alumni List" textFill="#311e4e">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="gradient-button alumni-list-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+            <Button fx:id="eventsCalendarButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Announcement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-
-            <Button layoutX="460.0" layoutY="140.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #1d976c, #93f9b9); -fx-background-radius: 20;" text="Job Board" textFill="#311e4e">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="gradient-button job-board-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+            <Button fx:id="jobOpportunitiesButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/job.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-
-            <!-- Sign Out Button -->
-            <Button layoutX="523.0" layoutY="286.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b); -fx-background-radius: 20;" text="     Sign Out" textFill="#311e4e">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="gradient-button sign-out-button" />
-                  <String fx:value="gradient-button" />
-               </styleClass>
+            <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/donate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <ImageView fitHeight="41.0" fitWidth="50.0" layoutX="37.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/modify.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="37.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/Home.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="68.0" layoutX="473.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/Announcement.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="251.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/Invitation.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="460.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/job.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="41.0" fitWidth="30.0" layoutX="262.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/Alumni%20List.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="523.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@photos/logOut.png" />
-               </image>
-            </ImageView>
          </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
+         <content>
+            <VBox spacing="20.0" styleClass="content-container">
+               <children>
+                  <HBox alignment="CENTER_LEFT" styleClass="page-header">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Alumni Directory">
+                           <font>
+                              <Font name="System Bold" size="28.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="3.0" radius="1.0" width="3.0">
+                                 <color>
+                                    <Color opacity="0.2" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <VBox styleClass="feature-card" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Search Alumni">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="3.0" radius="1.0" width="3.0">
+                                 <color>
+                                    <Color opacity="0.1" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-subtitle" text="Find and connect with your fellow alumni from MIST">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox spacing="20.0" styleClass="search-container">
+                           <children>
+                              <VBox spacing="10.0" styleClass="form-group" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="input-label" text="Session">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow height="2.0" radius="0.5" width="2.0">
+                                             <color>
+                                                <Color opacity="0.1" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <ComboBox fx:id="graduationYear" prefHeight="40.0" prefWidth="200.0" promptText="All Sessions" styleClass="form-combo-box">
+                                       <effect>
+                                          <DropShadow height="5.0" radius="2.0" width="5.0">
+                                             <color>
+                                                <Color opacity="0.05" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </ComboBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0" styleClass="form-group" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="input-label" text="Department">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow height="2.0" radius="0.5" width="2.0">
+                                             <color>
+                                                <Color opacity="0.1" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Label>
+                                    <ComboBox fx:id="department" prefHeight="40.0" prefWidth="200.0" promptText="All Departments" styleClass="form-combo-box">
+                                       <effect>
+                                          <DropShadow height="5.0" radius="2.0" width="5.0">
+                                             <color>
+                                                <Color opacity="0.05" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </ComboBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="BOTTOM_CENTER" prefHeight="65.0" prefWidth="120.0" styleClass="search-button-container">
+                                 <children>
+                                    <Button layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="40.0" prefWidth="120.0" styleClass="search-button" text="Search">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <effect>
+                                          <DropShadow height="8.0" radius="3.5" width="8.0">
+                                             <color>
+                                                <Color opacity="0.3" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@photos/search.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="15.0" radius="7.0" width="15.0">
+                           <color>
+                              <Color opacity="0.15" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox styleClass="feature-card">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Alumni Directory">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="3.0" radius="1.0" width="3.0">
+                                 <color>
+                                    <Color opacity="0.1" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-subtitle" text="Connect with alumni from various batches and departments">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <TableView fx:id="alumniTable" prefHeight="350.0" prefWidth="798.0" styleClass="alumni-table">
+                           <columns>
+                              <TableColumn prefWidth="184.79995965957642" styleClass="table-column" text="Name">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="name" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="161.6000518798828" styleClass="table-column" text="Student ID">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="studentId" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="118.39996337890625" styleClass="table-column" text="Batch">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="batch" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="135.19998168945312" styleClass="table-column" text="Graduation Year">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="graduationYear" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="159.20001220703125" styleClass="table-column" text="Department">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="department" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                           </columns>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <effect>
+                              <DropShadow height="8.0" radius="3.5" width="8.0">
+                                 <color>
+                                    <Color opacity="0.1" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </TableView>
+                        <HBox alignment="CENTER_RIGHT" spacing="15.0" styleClass="action-buttons-container">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow height="15.0" radius="7.0" width="15.0">
+                           <color>
+                              <Color opacity="0.15" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
