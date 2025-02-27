@@ -31,8 +31,8 @@ import java.util.*;
 import java.util.List;
 
 
-public class Controller {
-
+public class Controller
+{
     @FXML private TextField name, studentId, batch, workplace, email, linkedin, phone, facebook, address, attachmentPath, imagePathField;
     @FXML private RadioButton male, female;
     @FXML private ComboBox<String> degree, userTypes, department, graduationYear, broad_batch, broad_dept, userType;
@@ -95,49 +95,6 @@ public class Controller {
         }
     }
 
-
-    private String generateOTP() {
-        Random random = new Random();
-        int otp = 100000 + random.nextInt(900000); // Generates a 6-digit number
-        return String.valueOf(otp);
-    }
-
-    private void sendOTP(String email, String otp) {
-        // Sender's email credentials
-        String from = "arafatsakibisbat@gmail.com"; // Replace with your email
-        String password = "icde xfka vrxx jyxc"; // Replace with your email password
-
-        // Setup mail server properties
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        // Create a session with the email server
-        Session session = Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-
-        try {
-            // Create a MimeMessage object
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            message.setSubject("OTP Verification");
-            message.setText("Your OTP is: " + otp);
-
-            // Send the email
-            Transport.send(message);
-            System.out.println("OTP sent successfully to " + email);
-        } catch (MessagingException e) {
-            System.err.println("Error sending OTP: " + e.getMessage());
-        }
-    }
-
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -175,16 +132,9 @@ public class Controller {
         String ddepartment = department.getValue();
         String dgraduationYear = graduationYear.getValue();
 
-        // Generate and send OTP
-//        String generatedOTP = generateOTP();
-//
-//        SendOTP sendOTP = new SendOTP();
-//
-//        sendOTP.sendEmail(demail, generatedOTP);
-
-        String generatedOTP = generateOTP();
-        //SendOTP;
-        sendOTP(demail, generatedOTP);
+        SendOTP sendtheOTP = new SendOTP();
+        String generatedOTP = sendtheOTP.generateOTP();
+        sendtheOTP.sendOTP(demail, generatedOTP);
 
         // Prompt the user to enter the OTP
         TextInputDialog dialog = new TextInputDialog();
@@ -230,6 +180,10 @@ public class Controller {
                     stage.setScene(new Scene(root));
                     stage.setTitle("Create Password");
                     stage.show();
+
+                    // Close the current stage (sign-up form)
+                    Stage currentStage = (Stage) name.getScene().getWindow();
+                    currentStage.close();
                 } catch (IOException e) {
                     System.err.println("Error loading password form: " + e.getMessage());
                 }

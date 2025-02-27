@@ -6,52 +6,58 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.Random;
 
-public class SendOTP {
-    public static Integer sendEmail(String name,String to) {
-        final String username = "arafatsakibisbat@gmail.com";  // Change to your email
-        final String password = "mbbt kffo caun txoe";     // Use App Password (not direct password)
+public class SendOTP
+{
+    public String generateOTP()
+    {
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000); // Generates a 6-digit number
+        return String.valueOf(otp);
+    }
 
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+    public void sendOTP(String email, String otp)
+    {
+        // Sender's email credentials
+        String from = "arafatsakibisbat@gmail.com";
+        String password = "icde xfka vrxx jyxc";
 
-        // Create session with authentication
-        Session session = Session.getInstance(props,
-                new Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+        // Setup mail server properties
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
 
-        try {
-            Random rand = new Random();
-            int otp = 100000 + rand.nextInt(900000);
-            // Create a simple email message
-            Message message = new MimeMessage(session);
-            message.setFrom(new  InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to)); // Change recipient
-            message.setSubject("Test Email");
-            //message.setText("This is a simple email without an attachment.");
-            message.setContent("<h4>Dear " +name+"</br>"
-                    +"<h3>Thank you for signing up for the <b>MIST Alumni Portal</b>.</h3>"
+        // Create a session with the email server
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+
+        try
+        {
+            // Create a MimeMessage object
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+            message.setSubject("OTP Verification");
+            //message.setText("Your OTP is: " + otp);
+            message.setContent("<h3>Thank you for signing up for the <b>MIST Alumni Portal</b>.</h3>"
                     + "<p>To complete your registration, please use the verification code below:</p>"
                     + "<h2 style='color:blue;'>" + otp + "</h2>"
                     + "<p>Please do not share this code with anyone.</p>"
-                    + "<p>If you did not request this verification, please ignore this email or contact our support team at <b>" + username + "</b>.</p>"
+                    + "<p>If you did not request this verification, please ignore this email or contact our support team at <b>arafatsakibisbat@gmail.com</b>.</p>"
                     + "<br><p>Best regards,<br>MIST Alumni Team<br>mist.ac.bd<br>01540194651</p>", "text/html");
 
-            // Send email
-
-            // Send email
+            // Send the email
             Transport.send(message);
-            System.out.println("Email sent successfully!");
-            return otp;
-
-        } catch (MessagingException e) {
-            e.printStackTrace();
-            return 0;
+            System.out.println("OTP sent successfully to " + email);
+        }
+        catch (MessagingException e)
+        {
+            System.err.println("Error sending OTP: " + e.getMessage());
         }
     }
 }
