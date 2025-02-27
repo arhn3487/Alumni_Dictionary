@@ -17,25 +17,28 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@alumniManagementController.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AlumniManagementController">
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@alumniManagementStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AlumniManagementController">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/MISTLogo.png" />
-                    </image>
+                <StackPane styleClass="logo-container">
+                    <children>
+                        <Circle radius="30.0" styleClass="logo-circle" />
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/MISTLogo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
                     <HBox.margin>
                         <Insets left="20.0" right="15.0" />
                     </HBox.margin>
-                </ImageView>
-                <VBox alignment="CENTER_LEFT">
+                </StackPane>
+                <VBox alignment="CENTER_LEFT" styleClass="title-container">
                     <children>
                         <Label styleClass="university-name" text="Military Institute of Science and Technology">
                             <font>
@@ -49,7 +52,7 @@
                         </Label>
                     </children>
                 </VBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="header-buttons-container" HBox.hgrow="ALWAYS">
                     <children>
                         <Button mnemonicParsing="false" styleClass="header-button" text="Help">
                             <graphic>
@@ -93,29 +96,12 @@
         </HBox>
     </top>
     <left>
-        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+        <VBox fx:id="sidebar" prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
             <children>
-                <StackPane prefHeight="150.0" prefWidth="200.0">
+                <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="profile-container">
                     <children>
-                        <Circle radius="50.0" styleClass="profile-circle">
-                            <fill>
-                                <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
-                                    <stops>
-                                        <Stop>
-                                            <color>
-                                                <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
-                                            </color>
-                                        </Stop>
-                                        <Stop offset="1.0">
-                                            <color>
-                                                <Color red="0.10588235408067703" green="1.0" blue="1.0" />
-                                            </color>
-                                        </Stop>
-                                    </stops>
-                                </LinearGradient>
-                            </fill>
-                        </Circle>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <Circle radius="50.0" styleClass="profile-circle" />
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-image">
                             <image>
                                 <Image url="@photos/profile_holder.png" />
                             </image>
@@ -127,7 +113,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+                <Button fx:id="dashboardBtn" mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -139,7 +125,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
+                <Button fx:id="idCardBtn" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -148,7 +134,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Alumni Directory">
+                <Button fx:id="directoryBtn" mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Alumni Directory">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -157,7 +143,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
+                <Button fx:id="announcementsBtn" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -166,7 +152,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
+                <Button fx:id="calendarBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -175,7 +161,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                <Button fx:id="jobsBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -184,7 +170,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+                <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -197,11 +183,11 @@
         </VBox>
     </left>
     <center>
-        <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
+        <ScrollPane fx:id="contentScrollPane" fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
             <content>
-                <VBox spacing="20.0">
+                <VBox spacing="20.0" styleClass="content-container">
                     <children>
-                        <HBox alignment="CENTER_LEFT">
+                        <HBox alignment="CENTER_LEFT" styleClass="page-header">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Alumni Directory Management">
                                     <font>
@@ -213,7 +199,7 @@
                                 <Insets left="20.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <VBox styleClass="feature-card">
+                        <VBox styleClass="feature-card" fx:id="directoryCard">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Alumni Directory">
                                     <font>
@@ -225,9 +211,9 @@
                                         <Insets bottom="20.0" top="5.0" />
                                     </VBox.margin>
                                 </Text>
-                                <HBox spacing="15.0">
+                                <HBox spacing="15.0" styleClass="filter-container">
                                     <children>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="filter-field">
                                             <children>
                                                 <Label styleClass="input-label" text="User Type">
                                                     <font>
@@ -237,7 +223,7 @@
                                                 <ComboBox fx:id="userTypeComboBox" prefHeight="40.0" prefWidth="200.0" promptText="All Users" styleClass="form-combo-box" />
                                             </children>
                                         </VBox>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="filter-field">
                                             <children>
                                                 <Label styleClass="input-label" text="Department">
                                                     <font>
@@ -247,7 +233,7 @@
                                                 <ComboBox fx:id="departmentComboBox" prefHeight="40.0" prefWidth="200.0" promptText="All Departments" styleClass="form-combo-box" />
                                             </children>
                                         </VBox>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="filter-field">
                                             <children>
                                                 <Label styleClass="input-label" text="Batch">
                                                     <font>
@@ -257,7 +243,7 @@
                                                 <ComboBox fx:id="batchComboBox" prefHeight="40.0" prefWidth="200.0" promptText="All Batches" styleClass="form-combo-box" />
                                             </children>
                                         </VBox>
-                                        <VBox alignment="BOTTOM_CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+                                        <VBox alignment="BOTTOM_CENTER" spacing="10.0" HBox.hgrow="ALWAYS" styleClass="filter-field">
                                             <children>
                                                 <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" prefHeight="40.0" prefWidth="150.0" styleClass="action-button" text="Search">
                                                     <graphic>
@@ -298,7 +284,7 @@
                                 <Insets left="20.0" right="20.0" />
                             </VBox.margin>
                         </VBox>
-                        <VBox styleClass="feature-card">
+                        <VBox styleClass="feature-card" fx:id="newUserCard">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Add New User">
                                     <font>
@@ -312,11 +298,11 @@
                                 </Text>
                                 <HBox spacing="20.0">
                                     <children>
-                                        <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+                                        <VBox spacing="15.0" HBox.hgrow="ALWAYS" styleClass="form-container">
                                             <children>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Full Name *">
                                                                     <font>
@@ -326,7 +312,7 @@
                                                                 <TextField fx:id="nameField" prefHeight="40.0" promptText="Enter full name" styleClass="form-text-field" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Student ID *">
                                                                     <font>
@@ -338,9 +324,9 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Batch *">
                                                                     <font>
@@ -350,7 +336,7 @@
                                                                 <TextField fx:id="batchField" prefHeight="40.0" promptText="Enter batch year" styleClass="form-text-field" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Gender *">
                                                                     <font>
@@ -362,9 +348,9 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Degree *">
                                                                     <font>
@@ -374,7 +360,7 @@
                                                                 <ComboBox fx:id="degreeComboBox" prefHeight="40.0" prefWidth="200.0" promptText="Select degree" styleClass="form-combo-box" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Department *">
                                                                     <font>
@@ -386,9 +372,9 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Graduation Year *">
                                                                     <font>
@@ -398,7 +384,7 @@
                                                                 <TextField fx:id="graduationYearField" prefHeight="40.0" promptText="Enter graduation year" styleClass="form-text-field" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Current Workplace">
                                                                     <font>
@@ -410,9 +396,9 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Email *">
                                                                     <font>
@@ -422,7 +408,7 @@
                                                                 <TextField fx:id="emailField" prefHeight="40.0" promptText="Enter email address" styleClass="form-text-field" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Phone *">
                                                                     <font>
@@ -434,9 +420,9 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="LinkedIn Profile">
                                                                     <font>
@@ -446,7 +432,7 @@
                                                                 <TextField fx:id="linkedinField" prefHeight="40.0" promptText="Enter LinkedIn profile URL" styleClass="form-text-field" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Facebook Profile">
                                                                     <font>
@@ -458,7 +444,7 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <VBox spacing="10.0">
+                                                <VBox spacing="10.0" styleClass="form-field">
                                                     <children>
                                                         <Label styleClass="input-label" text="Address">
                                                             <font>
@@ -468,9 +454,9 @@
                                                         <TextField fx:id="addressField" prefHeight="40.0" promptText="Enter current address" styleClass="form-text-field" />
                                                     </children>
                                                 </VBox>
-                                                <HBox spacing="15.0">
+                                                <HBox spacing="15.0" styleClass="form-row">
                                                     <children>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Password *">
                                                                     <font>
@@ -480,14 +466,14 @@
                                                                 <TextField fx:id="passwordField" prefHeight="40.0" promptText="Enter password" styleClass="form-text-field" />
                                                             </children>
                                                         </VBox>
-                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="form-field">
                                                             <children>
                                                                 <Label styleClass="input-label" text="Profile Photo">
                                                                     <font>
                                                                         <Font size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <HBox spacing="10.0">
+                                                                <HBox spacing="10.0" styleClass="file-upload">
                                                                     <children>
                                                                         <TextField fx:id="photoPathField" editable="false" prefHeight="40.0" promptText="No file selected" styleClass="form-text-field" HBox.hgrow="ALWAYS" />
                                                                         <Button fx:id="browsePhotoButton" mnemonicParsing="false" onAction="#handleBrowsePhoto" prefHeight="40.0" prefWidth="100.0" styleClass="browse-button" text="Browse" />
@@ -497,7 +483,7 @@
                                                         </VBox>
                                                     </children>
                                                 </HBox>
-                                                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                                                <HBox alignment="CENTER_RIGHT" spacing="15.0" styleClass="form-buttons">
                                                     <children>
                                                         <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClearFields" prefHeight="40.0" prefWidth="120.0" styleClass="secondary-button" text="Clear Fields">
                                                             <font>

@@ -58,22 +58,22 @@
                             <font>
                                 <Font size="14.0" />
                             </font>
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.6959811449050903" green="0.5239376425743103" blue="0.9368420839309692" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="0.6959811449050903" green="0.5239376425743103" blue="0.9368420839309692" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
                         </Label>
                         <Button mnemonicParsing="false" styleClass="header-button" text="Help">
                             <HBox.margin>
@@ -207,22 +207,22 @@
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin>
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.9052631855010986" green="0.6605068445205688" blue="0.6605068445205688" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
+                            <textFill>
+                                <LinearGradient endX="1.0" endY="1.0">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="0.9052631855010986" green="0.6605068445205688" blue="0.6605068445205688" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </textFill>
                         </Label>
                     </children>
                 </VBox>
@@ -267,9 +267,9 @@
                                 </Label>
                                 <ComboBox fx:id="departmentComboBox" prefWidth="150.0" promptText="Department" />
                                 <ComboBox fx:id="batchComboBox" prefWidth="120.0" promptText="Batch">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets></ComboBox>
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets></ComboBox>
                                 <Button mnemonicParsing="false" onAction="#handleRefresh" prefHeight="30.0" prefWidth="100.0" styleClass="secondary-button" text="Refresh">
                                     <graphic>
                                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">

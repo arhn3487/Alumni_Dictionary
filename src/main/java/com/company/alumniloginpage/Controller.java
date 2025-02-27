@@ -318,12 +318,14 @@ public class Controller
         stage.setScene(scene);
         stage.show();
         stage.setFullScreen(true);
+        stage.setFullScreenExitHint("");
+        stage.show();
     }
 
     public void switchtoScene1(ActionEvent event) throws IOException {
 
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("scene1.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("scene2.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -412,7 +414,7 @@ public class Controller
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+
         stage.setFullScreen(true);
     }
 
