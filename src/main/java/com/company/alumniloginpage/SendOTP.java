@@ -22,7 +22,7 @@ public class SendOTP
         String password = "icde xfka vrxx jyxc";
 
         // Setup mail server properties
-        Properties properties = new Properties();
+         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
