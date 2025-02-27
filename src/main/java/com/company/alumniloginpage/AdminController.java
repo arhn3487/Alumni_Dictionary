@@ -24,6 +24,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,25 +39,44 @@ public class AdminController implements Initializable {
     private ComboBox<String> batchComboBox;
 
     @FXML
-    private ComboBox<String> userTypeComboBox;
-
-    @FXML
     private Button searchButton;
 
     @FXML
     private TableView<AlumniData> alumniListView;
 
+    // Updated column declarations to match FXML
     @FXML
-    private TableColumn<AlumniData, String> idColumn;
+    private TableColumn<AlumniData, String> studentIdColumn;
 
     @FXML
-    private TableColumn<AlumniData, String> typeColumn;
+    private TableColumn<AlumniData, String> nameColumn;
 
     @FXML
-    private TableColumn<AlumniData, ImageView> pictureColumn;
+    private TableColumn<AlumniData, String> batchColumn;
+
+    @FXML
+    private TableColumn<AlumniData, String> departmentColumn;
+
+    @FXML
+    private TableColumn<AlumniData, String> degreeColumn;
+
+    @FXML
+    private TableColumn<AlumniData, String> graduationYearColumn;
+
+    @FXML
+    private TableColumn<AlumniData, String> workplaceColumn;
 
     @FXML
     private TableColumn<AlumniData, String> emailColumn;
+
+    @FXML
+    private TableColumn<AlumniData, String> phoneColumn;
+
+    @FXML
+    private TableColumn<AlumniData, String> addressColumn;
+
+    @FXML
+    private TableColumn<AlumniData, ImageView> imageColumn;
 
     @FXML
     private TableColumn<AlumniData, Void> actionColumn;
@@ -65,10 +85,13 @@ public class AdminController implements Initializable {
     private Label totalCountLabel;
 
     @FXML
-    private Button viewDetailsButton;
+    private Label contactNumberLabel;
 
     @FXML
-    private Button refreshButton;
+    private ImageView profileImageView;
+
+    @FXML
+    private ImageView bannerImageView;
 
     private ObservableList<AlumniData> alumniDataList = FXCollections.observableArrayList();
 
@@ -77,6 +100,7 @@ public class AdminController implements Initializable {
 
     // Default image path
     private final String DEFAULT_IMAGE_PATH = "/photos/profile_holder.png";
+    private final String BANNER_IMAGE_PATH = "/photos/campus_banner.jpg";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -90,6 +114,19 @@ public class AdminController implements Initializable {
         // Set up TableColumns
         setupTableColumns();
 
+        // Set up contact information
+        contactNumberLabel.setText("Contact: 01540194651");
+
+        // Load banner image if available
+        try {
+            InputStream bannerIs = getClass().getResourceAsStream(BANNER_IMAGE_PATH);
+            if (bannerIs != null) {
+                bannerImageView.setImage(new Image(bannerIs));
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to load banner image: " + e.getMessage());
+        }
+
         // Load initial data
         loadAlumniData();
     }
@@ -97,38 +134,34 @@ public class AdminController implements Initializable {
     private void setupComboBoxes() {
         // Populate department ComboBox
         departmentComboBox.getItems().addAll(
-                "All Departments", "Computer Science", "Electrical Engineering",
-                "Mechanical Engineering", "Civil Engineering", "Aerospace Engineering"
+                "All Department", "CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME", "NAME", "IPE", "BME", "ARCH", "NSE"
         );
-        departmentComboBox.setValue("All Departments");
+        departmentComboBox.setValue("Department List");
 
         // Populate batch ComboBox
         batchComboBox.getItems().addAll(
-                "All Batches", "2022", "2021", "2020", "2019", "2018", "2017", "2016"
+                "All Batch", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010",
+                "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020",
+                "2021", "2022", "2023"
         );
         batchComboBox.setValue("All Batches");
-
-        // Populate userType ComboBox
-        userTypeComboBox.getItems().addAll(
-                "All Types", "Alumni", "Faculty", "Student"
-        );
-        userTypeComboBox.setValue("All Types");
     }
 
     private void setupTableColumns() {
-        // Setup ID column
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        // Setup Type column
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-
-        // Setup Picture column
-        pictureColumn.setCellValueFactory(new PropertyValueFactory<>("pictureView"));
-
-        // Setup Email column
+        // Setup all columns
+        studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        batchColumn.setCellValueFactory(new PropertyValueFactory<>("batch"));
+        departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
+        degreeColumn.setCellValueFactory(new PropertyValueFactory<>("degree"));
+        graduationYearColumn.setCellValueFactory(new PropertyValueFactory<>("graduationYear"));
+        workplaceColumn.setCellValueFactory(new PropertyValueFactory<>("workplace"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+        imageColumn.setCellValueFactory(new PropertyValueFactory<>("pictureView"));
 
-        // Setup Action column with Remove and Email buttons
+        // Setup Action column with Remove button only
         setupActionColumn();
     }
 
@@ -139,24 +172,16 @@ public class AdminController implements Initializable {
                     public TableCell<AlumniData, Void> call(final TableColumn<AlumniData, Void> param) {
                         return new TableCell<AlumniData, Void>() {
                             private final Button removeBtn = new Button("Remove");
-                            private final Button emailBtn = new Button("Email");
-                            private final HBox actionBox = new HBox(10, removeBtn, emailBtn);
+                            private final HBox actionBox = new HBox(10, removeBtn);
 
                             {
                                 // Set button styles
                                 removeBtn.getStyleClass().add("warning-button");
-                                emailBtn.getStyleClass().add("secondary-button");
 
                                 // Set remove button action
                                 removeBtn.setOnAction(event -> {
                                     AlumniData data = getTableView().getItems().get(getIndex());
                                     removeUser(data);
-                                });
-
-                                // Set email button action
-                                emailBtn.setOnAction(event -> {
-                                    AlumniData data = getTableView().getItems().get(getIndex());
-                                    sendEmail(data);
                                 });
                             }
 
@@ -184,15 +209,28 @@ public class AdminController implements Initializable {
         int count = 0;
 
         for (Document doc : documents) {
+            // Extract all fields from the document
             String id = doc.getObjectId("_id").toString();
-            String type = doc.getString("type");
+            String name = doc.getString("name");
+            String batch = doc.getString("batch");
+            String department = doc.getString("department");
+            String degree = doc.getString("degree");
+            String graduationYear = doc.getString("graduationYear");
+            String workplace = doc.getString("workplace");
             String email = doc.getString("email");
-            String picturePath = doc.getString("picturePath");
+            String phone = doc.getString("phone");
+            String address = doc.getString("address");
+            String picturePath = doc.getString("Image");
+            String userType = doc.getString("type");
 
             // Create ImageView for the picture
             ImageView pictureView = createImageView(picturePath);
 
-            AlumniData alumniData = new AlumniData(id, type, email, pictureView);
+            AlumniData alumniData = new AlumniData(
+                    id, name, batch, department, degree, graduationYear,
+                    workplace, email, phone, address, pictureView, userType
+            );
+
             alumniDataList.add(alumniData);
             count++;
         }
@@ -231,12 +269,12 @@ public class AdminController implements Initializable {
                     image = new Image(defaultIs);
                 } else {
                     // Create a placeholder image if all else fails
-                    //image = new Image(50, 50, true, true); // Empty image
+                    image = new Image(new ByteArrayInputStream(new byte[0]), 50, 50, true, true);
                 }
             } catch (Exception e) {
                 System.err.println("Failed to load default image. Error: " + e.getMessage());
-                // Last resort - empty image
-                //image = new Image(50, 50, true, true);
+                // Last resort - empty image using a data URI for a 1x1 transparent pixel
+                image = new Image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=", 50, 50, true, true);
             }
         }
 
@@ -250,7 +288,7 @@ public class AdminController implements Initializable {
 
     private void removeUser(AlumniData data) {
         try {
-            // Remove user from the database
+            // Remove user from the database using _id
             collection.deleteOne(Filters.eq("_id", new ObjectId(data.getId())));
 
             // Remove from the table
@@ -266,33 +304,22 @@ public class AdminController implements Initializable {
         }
     }
 
-    private void sendEmail(AlumniData data) {
-        // Email functionality implementation
-        System.out.println("Sending email to: " + data.getEmail());
-        // This would typically open an email composition window or form
-    }
-
     @FXML
     private void handleSearch(ActionEvent event) {
         String department = departmentComboBox.getValue();
         String batch = batchComboBox.getValue();
-        String userType = userTypeComboBox.getValue();
 
         alumniDataList.clear();
 
         // Build the query based on selected filters
         Document filter = new Document();
 
-        if (!department.equals("All Departments")) {
+        if (department != null && !department.equals("All") && !department.equals("Department List")) {
             filter.append("department", department);
         }
 
-        if (!batch.equals("All Batches")) {
+        if (batch != null && !batch.equals("All") && !batch.equals("All Batches")) {
             filter.append("batch", batch);
-        }
-
-        if (!userType.equals("All Types")) {
-            filter.append("type", userType);
         }
 
         // Perform the search
@@ -300,15 +327,28 @@ public class AdminController implements Initializable {
         int count = 0;
 
         for (Document doc : documents) {
+            // Extract all fields from the document
             String id = doc.getObjectId("_id").toString();
-            String type = doc.getString("type");
+            String name = doc.getString("name");
+            String batchVal = doc.getString("batch");
+            String departmentVal = doc.getString("department");
+            String degree = doc.getString("degree");
+            String graduationYear = doc.getString("graduationYear");
+            String workplace = doc.getString("workplace");
             String email = doc.getString("email");
-            String picturePath = doc.getString("picturePath");
+            String phone = doc.getString("phone");
+            String address = doc.getString("address");
+            String picturePath = doc.getString("Image");
+            String userTypeVal = doc.getString("type");
 
-            // Create ImageView for the picture using the improved method
+            // Create ImageView for the picture
             ImageView pictureView = createImageView(picturePath);
 
-            AlumniData alumniData = new AlumniData(id, type, email, pictureView);
+            AlumniData alumniData = new AlumniData(
+                    id, name, batchVal, departmentVal, degree, graduationYear,
+                    workplace, email, phone, address, pictureView, userTypeVal
+            );
+
             alumniDataList.add(alumniData);
             count++;
         }
@@ -333,17 +373,70 @@ public class AdminController implements Initializable {
 
     @FXML
     private void switchToHome() {
-        // Implement switching to home page
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("admin-dashboard.fxml"));
+            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void switchalumniList() {
         // Already on alumni list page
+        System.out.println("Already on alumni list page");
     }
 
     @FXML
     private void switchBroadcast() {
-        // Implement switching to broadcast page
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("admin-broadcast.fxml"));
+            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void switchToEvents() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("admin-events.fxml"));
+            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void switchToJobs() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("admin-jobs.fxml"));
+            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void switchToWebsite() {
+        try {
+            // If you have an external browser opening capability, use that
+            // This is a placeholder for website navigation
+            System.out.println("Opening MIST website");
+
+            // Example to open in browser if possible
+            java.awt.Desktop.getDesktop().browse(new java.net.URI("https://mist.ac.bd"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

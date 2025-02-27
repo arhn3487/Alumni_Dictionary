@@ -43,6 +43,14 @@
             </VBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
+                  <Label fx:id="contactNumberLabel" styleClass="contact-label" text="Contact: 01540194651">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                   <Button mnemonicParsing="false" styleClass="header-button" text="Help">
                      <HBox.margin>
                         <Insets right="10.0" />
@@ -66,7 +74,7 @@
    <left>
       <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@photos/profile_holder.png" />
                </image>
@@ -91,9 +99,11 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
+            <Button mnemonicParsing="false" onAction="#switchToEvents" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+            <Button mnemonicParsing="false" onAction="#switchToJobs" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Website">
             </Button>
          </children>
       </VBox>
@@ -109,8 +119,15 @@
                      </font>
                   </Label>
 
+                  <!-- Banner Image -->
+                  <ImageView fx:id="bannerImageView" fitHeight="120.0" fitWidth="839.0" layoutX="20.0" layoutY="60.0" pickOnBounds="true" preserveRatio="false" styleClass="banner-image">
+                     <image>
+                        <Image url="@photos/banner.png" />
+                     </image>
+                  </ImageView>
+
                   <!-- Filter Area with ComboBoxes -->
-                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="70.0" prefHeight="50.0" prefWidth="820.0" spacing="15.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="190.0" prefHeight="50.0" prefWidth="820.0" spacing="15.0">
                      <children>
                         <Label text="Filter By:">
                            <font>
@@ -119,37 +136,38 @@
                         </Label>
                         <ComboBox fx:id="departmentComboBox" prefWidth="150.0" promptText="Department" />
                         <ComboBox fx:id="batchComboBox" prefWidth="120.0" promptText="Batch" />
-                        <ComboBox fx:id="userTypeComboBox" prefWidth="120.0" promptText="User Type" />
+                        <Button mnemonicParsing="false" onAction="#handleRefresh" prefHeight="30.0" prefWidth="100.0" styleClass="secondary-button" text="Refresh" />
                         <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" prefHeight="30.0" prefWidth="100.0" styleClass="primary-button" text="Search" />
                      </children>
                   </HBox>
 
-                  <!-- Alumni Table with Columns -->
-                  <TableView fx:id="alumniListView" layoutX="20.0" layoutY="140.0" prefHeight="350.0" prefWidth="820.0" styleClass="alumni-list">
+                  <!-- Enhanced Alumni Table without usertype column -->
+                  <TableView fx:id="alumniListView" layoutX="20.0" layoutY="250.0" prefHeight="370.0" prefWidth="820.0" styleClass="alumni-list" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
                      <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="100.0" text="ID" />
-                        <TableColumn fx:id="typeColumn" prefWidth="120.0" text="Type" />
-                        <TableColumn fx:id="pictureColumn" prefWidth="150.0" text="Picture" />
-                        <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email" />
-                        <TableColumn fx:id="actionColumn" prefWidth="200.0" text="Action" />
+                        <TableColumn fx:id="studentIdColumn" prefWidth="90.0" text="Student ID" />
+                        <TableColumn fx:id="nameColumn" prefWidth="110.0" text="Name" />
+                        <TableColumn fx:id="batchColumn" prefWidth="60.0" text="Batch" />
+                        <TableColumn fx:id="departmentColumn" prefWidth="90.0" text="Department" />
+                        <TableColumn fx:id="degreeColumn" prefWidth="90.0" text="Degree" />
+                        <TableColumn fx:id="graduationYearColumn" prefWidth="90.0" text="Graduation Year" />
+                        <TableColumn fx:id="workplaceColumn" prefWidth="110.0" text="Workplace" />
+                        <TableColumn fx:id="emailColumn" prefWidth="120.0" text="Email" />
+                        <TableColumn fx:id="phoneColumn" prefWidth="90.0" text="Phone" />
+                        <TableColumn fx:id="addressColumn" prefWidth="120.0" text="Address" />
+                        <TableColumn fx:id="imageColumn" prefWidth="70.0" text="Image" />
+                        <TableColumn fx:id="actionColumn" prefWidth="80.0" text="Action" />
                      </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
 
-                  <!-- Action Buttons -->
-                  <HBox alignment="CENTER_RIGHT" layoutX="20.0" layoutY="510.0" prefHeight="50.0" prefWidth="820.0" spacing="15.0">
-                     <children>
-                        <Label fx:id="totalCountLabel" text="Total Records: 0">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="50.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Button fx:id="viewDetailsButton" mnemonicParsing="false" onAction="#handleViewDetails" prefHeight="40.0" prefWidth="150.0" styleClass="secondary-button" text="View Details" />
-                        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="40.0" prefWidth="120.0" styleClass="primary-button" text="Refresh" />
-                     </children>
-                  </HBox>
+                  <!-- Total Records Label -->
+                  <Label fx:id="totalCountLabel" layoutX="20.0" layoutY="620.0" text="Total Records: 0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
                <padding>
                   <Insets bottom="20.0" />

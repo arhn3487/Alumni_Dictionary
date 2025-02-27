@@ -4,15 +4,33 @@ import javafx.scene.image.ImageView;
 
 public class AlumniData {
     private String id;
-    private String type;
+    private String name;
+    private String batch;
+    private String department;
+    private String degree;
+    private String graduationYear;
+    private String workplace;
     private String email;
+    private String phone;
+    private String address;
     private ImageView pictureView;
+    private String userType;
 
-    public AlumniData(String id, String type, String email, ImageView pictureView) {
+    public AlumniData(String id, String name, String batch, String department, String degree,
+                      String graduationYear, String workplace, String email, String phone,
+                      String address, ImageView pictureView, String userType) {
         this.id = id;
-        this.type = type;
+        this.name = name;
+        this.batch = batch;
+        this.department = department;
+        this.degree = degree;
+        this.graduationYear = graduationYear;
+        this.workplace = workplace;
         this.email = email;
+        this.phone = phone;
+        this.address = address;
         this.pictureView = pictureView;
+        this.userType = userType;
     }
 
     // Getters and setters
@@ -24,12 +42,52 @@ public class AlumniData {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
+        this.batch = batch;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getGraduationYear() {
+        return graduationYear;
+    }
+
+    public void setGraduationYear(String graduationYear) {
+        this.graduationYear = graduationYear;
+    }
+
+    public String getWorkplace() {
+        return workplace;
+    }
+
+    public void setWorkplace(String workplace) {
+        this.workplace = workplace;
     }
 
     public String getEmail() {
@@ -40,11 +98,35 @@ public class AlumniData {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public ImageView getPictureView() {
         return pictureView;
     }
 
     public void setPictureView(ImageView pictureView) {
         this.pictureView = pictureView;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
