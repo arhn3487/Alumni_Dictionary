@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,19 +40,19 @@ public class AlumniCardController
     private AnchorPane alumniCardPane;
 
     @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField studentIdField;
-
-    @FXML
-    private TextField departmentField;
-
-    @FXML
-    private TextField sessionField;
-
-    @FXML
     private ImageView userImageView;
+
+    @FXML
+    private Label namelbl;
+
+    @FXML
+    private Label studentIdlbl;
+
+    @FXML
+    private Label departmentlbl;
+
+    @FXML
+    private Label batchlbl;
 
     @FXML
     public void initialize()
@@ -79,10 +80,10 @@ public class AlumniCardController
 
             if (user != null)
             {
-                nameField.setText(user.getString("name"));
-                studentIdField.setText(user.getString("studentId"));
-                departmentField.setText(user.getString("department"));
-                sessionField.setText(user.getString("batch"));
+                namelbl.setText(user.getString("name"));
+                studentIdlbl.setText(user.getString("studentId"));
+                departmentlbl.setText(user.getString("department"));
+                batchlbl.setText(user.getString("batch"));
 
                 String imagePath = user.getString("Image");
                 if (imagePath != null && !imagePath.isEmpty())

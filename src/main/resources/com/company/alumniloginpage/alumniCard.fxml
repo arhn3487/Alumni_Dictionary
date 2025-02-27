@@ -347,7 +347,7 @@
                                         <Font name="System Bold" size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="nameLabel" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="Arafat Hasan" textFill="#333333">
+                                <Label fx:id="namelbl" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" textFill="#333333">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -358,7 +358,7 @@
                                         <Font name="System Bold" size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="studentIdLabel" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="202314069" textFill="#333333">
+                                <Label fx:id="studentIdlbl" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" textFill="#333333">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
@@ -369,18 +369,18 @@
                                         <Font name="System Bold" size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="departmentLabel" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="Computer Science and Engineering" textFill="#333333">
+                                <Label fx:id="departmentlbl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" textFill="#333333">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
                                 </Label>
 
-                                <Label layoutX="20.0" layoutY="220.0" text="Session" textFill="#0066cc">
+                                <Label layoutX="20.0" layoutY="220.0" text="Batch" textFill="#0066cc">
                                     <font>
                                         <Font name="System Bold" size="16.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="sessionLabel" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" text="2022-2025" textFill="#333333">
+                                <Label fx:id="batchlbl" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" style="-fx-border-color: #0066cc; -fx-border-width: 0 0 1 0; -fx-padding: 0 0 5 0;" textFill="#333333">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
