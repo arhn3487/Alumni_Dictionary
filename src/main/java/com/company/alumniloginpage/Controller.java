@@ -12,8 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -63,6 +66,12 @@ public class Controller
     @FXML
     private Button clearButton;
 
+    @FXML
+    private Label namelbl;
+
+    @FXML
+    private ImageView userImageView;
+
     Stage stage;
     Scene scene;
 
@@ -70,6 +79,43 @@ public class Controller
     @FXML
     public void initialize() {
         mongoDBConnection = new MongoDBConnection();
+
+        String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
+
+        if (loggedInUserId != null)
+        {
+            try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+            {
+                MongoDatabase database = mongoClient.getDatabase("alumni");
+                MongoCollection<Document> collection = database.getCollection("info");
+
+                Document user = collection.find(new Document("studentId", loggedInUserId)).first();
+
+                if (user != null)
+                {
+                    namelbl.setText(user.getString("name"));
+
+                    String imagePath = user.getString("Image");
+                    if (imagePath != null && !imagePath.isEmpty())
+                    {
+                        javafx.scene.image.Image image = new Image(new File(imagePath).toURI().toString());
+                        userImageView.setImage(image);
+                    }
+                }
+                else
+                {
+                    System.err.println("User not found in the database.");
+                }
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error loading user data: " + e.getMessage());
+            }
+        }
+        else
+        {
+            System.err.println("No logged-in user ID found.");
+        }
 
         initializeComboBox(degree, "degree", "BSc", "MSc");
         initializeComboBox(department, "department", "All", "CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME", "NAME", "IPE", "BME", "ARCH", "NSE");
