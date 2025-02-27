@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@AdminController.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="header-bar">
+            <children>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/MISTLogo.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="20.0" right="15.0" />
+                    </HBox.margin>
+                </ImageView>
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="university-name" text="Military Institute of Science and Technology">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label styleClass="alumni-portal" text="Alumni Portal">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button mnemonicParsing="false" styleClass="header-button" text="Help">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar">
+            <children>
+                <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@photos/profile_holder.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets left="60.0" top="30.0" />
+                    </VBox.margin>
+                </ImageView>
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome, Admin">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Control">
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                </Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area">
+            <content>
+                <AnchorPane prefHeight="640.0" prefWidth="860.0" styleClass="content-pane">
+                    <children>
+                        <Label layoutX="20.0" layoutY="20.0" styleClass="page-title" text="Alumni Directory Management">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+
+                        <!-- Filter Area with ComboBoxes -->
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="70.0" prefHeight="50.0" prefWidth="820.0" spacing="15.0">
+                            <children>
+                                <Label text="Filter By:">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <ComboBox fx:id="departmentComboBox" prefWidth="150.0" promptText="Department" />
+                                <ComboBox fx:id="batchComboBox" prefWidth="120.0" promptText="Batch" />
+                                <ComboBox fx:id="userTypeComboBox" prefWidth="120.0" promptText="User Type" />
+                                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" prefHeight="30.0" prefWidth="100.0" styleClass="primary-button" text="Search" />
+                            </children>
+                        </HBox>
+
+                        <!-- Alumni Table with Columns -->
+                        <TableView fx:id="alumniListView" layoutX="20.0" layoutY="140.0" prefHeight="350.0" prefWidth="820.0" styleClass="alumni-list">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="100.0" text="ID" />
+                                <TableColumn fx:id="typeColumn" prefWidth="120.0" text="Type" />
+                                <TableColumn fx:id="pictureColumn" prefWidth="150.0" text="Picture" />
+                                <TableColumn fx:id="emailColumn" prefWidth="200.0" text="Email" />
+                                <TableColumn fx:id="actionColumn" prefWidth="200.0" text="Action" />
+                            </columns>
+                        </TableView>
+
+                        <!-- Action Buttons -->
+                        <HBox alignment="CENTER_RIGHT" layoutX="20.0" layoutY="510.0" prefHeight="50.0" prefWidth="820.0" spacing="15.0">
+                            <children>
+                                <Label fx:id="totalCountLabel" text="Total Records: 0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets right="50.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Button fx:id="viewDetailsButton" mnemonicParsing="false" onAction="#handleViewDetails" prefHeight="40.0" prefWidth="150.0" styleClass="secondary-button" text="View Details" />
+                                <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="40.0" prefWidth="120.0" styleClass="primary-button" text="Refresh" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" />
+                    </padding>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
