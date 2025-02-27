@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="714.0" style="-fx-background-color: linear-gradient(to bottom, #000000, #000033);" styleClass="home_page_final" stylesheets="@home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+    <children>
+        <!-- Header Section -->
+        <AnchorPane layoutX="-5.0" prefHeight="114.0" prefWidth="721.0" style="-fx-background-color: linear-gradient(to right, #2E3192, #1BFFFF);" styleClass="home_page_up" stylesheets="@home.css">
+            <children>
+                <Text layoutX="206.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" textAlignment="CENTER">
+                    <font>
+                        <Font size="64.0" />
+                    </font>
+                    <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.16959063708782196" green="0.10721247643232346" blue="0.2631579041481018" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.1921568661928177" green="0.11764705926179886" blue="0.30588236451148987" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                </Text>
+            </children>
+        </AnchorPane>
+
+        <!-- Buttons Grid -->
+        <AnchorPane layoutX="20.0" layoutY="140.0" prefHeight="350.0" prefWidth="674.0">
+            <children>
+                <!-- Row 1 -->
+                <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); -fx-background-radius: 20;" stylesheets="@home.css" text="Home" textFill="#311e4e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="gradient-button home-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+
+                <Button layoutX="460.0" layoutY="20.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #43cea2, #185a9d); -fx-background-radius: 20;" text="Events" textFill="#311e4e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Announcement.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="gradient-button events-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+
+                <!-- Row 2 -->
+                <Button layoutX="237.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #ff6e7f, #bfe9ff); -fx-background-radius: 20;" text="ID Card" textFill="#311e4e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/idcard.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="gradient-button alumni-card-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+
+                <Button layoutX="240.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchalumniList" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #f46b45, #eea849); -fx-background-radius: 20;" text="Alumni List" textFill="#311e4e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Alumni List.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="gradient-button alumni-list-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+
+                <Button layoutX="20.0" layoutY="140.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #1d976c, #93f9b9); -fx-background-radius: 20;" text="Job Board" textFill="#311e4e">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/job.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="gradient-button job-board-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+
+                <!-- Sign Out Button -->
+                <Button layoutX="523.0" layoutY="286.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to right, #ff416c, #ff4b2b); -fx-background-radius: 20;" text="Sign Out" textFill="#311e4e">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/logOut.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="gradient-button sign-out-button" />
+                        <String fx:value="gradient-button" />
+                    </styleClass>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

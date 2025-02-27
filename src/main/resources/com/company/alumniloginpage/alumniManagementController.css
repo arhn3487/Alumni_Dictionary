@@ -1,0 +1,293 @@
+/* Main Color Palette */
+* {
+    -fx-primary: #72d639;
+    -fx-primary-dark: #4caf00;
+    -fx-primary-light: #a8ff70;
+    -fx-accent: #8bc34a;
+    -fx-secondary: #9ceb60;
+    -fx-secondary-light: #e7ffcf;
+    -fx-background: #f4fff0;
+    -fx-card-background: white;
+    -fx-text-primary: #1b5e20;
+    -fx-text-secondary: #388e3c;
+    -fx-divider: #BDBDBD;
+}
+
+/* Main Container */
+.main-container {
+    -fx-background-color: -fx-background;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+/* Header Bar Styling */
+.header-bar {
+    -fx-background-color: -fx-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 3);
+}
+
+.university-name {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+.alumni-portal {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-opacity: 0.9;
+}
+
+.contact-label {
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.header-button {
+    -fx-background-color: -fx-primary-dark;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+.header-button:hover {
+    -fx-background-color: derive(-fx-primary-dark, 10%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.logout-button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+}
+
+.logout-button:hover {
+    -fx-background-color: derive(-fx-accent, 10%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    -fx-background-color: #4caf00;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 3, 0);
+}
+
+.welcome-text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 3, 0, 0, 2);
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f4fff0;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 25px;
+    -fx-border-width: 0 0 0 4px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: derive(#4caf00, 15%);
+    -fx-border-color: -fx-accent;
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: derive(#4caf00, 10%);
+    -fx-border-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Content Area Styling */
+.content-area {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+.content-area .viewport {
+    -fx-background-color: transparent;
+}
+
+.content-area .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.content-area .scroll-bar .thumb {
+    -fx-background-color: -fx-primary-light;
+    -fx-background-radius: 4px;
+}
+
+.content-pane {
+    -fx-background-color: -fx-card-background;
+    -fx-background-radius: 8px;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);
+}
+
+/* Page Title */
+.page-title {
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 1);
+}
+
+/* Banner Image */
+.banner-image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
+    -fx-background-radius: 8px;
+    -fx-arc-width: 8px;
+    -fx-arc-height: 8px;
+}
+
+/* Filter Area Styling */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: -fx-divider;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 5px;
+}
+
+.combo-box:hover {
+    -fx-border-color: -fx-primary;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 0 4px 4px 0;
+}
+
+.combo-box .arrow {
+    -fx-background-color: white;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 5px 10px;
+}
+
+.primary-button {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+}
+
+.primary-button:hover {
+    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.secondary-button {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+}
+
+.secondary-button:hover {
+    -fx-background-color: derive(-fx-secondary, 10%);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Table View Styling */
+.alumni-list {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 8, 0, 0, 2);
+}
+
+.alumni-list .column-header {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: transparent;
+    -fx-padding: 8px;
+}
+
+.alumni-list .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.alumni-list .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent -fx-divider transparent;
+    -fx-padding: 2px 0;
+}
+
+.alumni-list .table-row-cell:odd {
+    -fx-background-color: derive(-fx-background, 1%);
+}
+
+.alumni-list .table-row-cell:hover {
+    -fx-background-color: derive(-fx-primary-light, 90%);
+    -fx-cursor: hand;
+}
+
+.alumni-list .table-row-cell:selected {
+    -fx-background-color: derive(-fx-primary-light, 80%);
+    -fx-text-fill: -fx-primary-dark;
+}
+
+.alumni-list .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-primary-dark;
+}
+
+/* Total Records Label */
+#totalCountLabel {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-style: italic;
+}
+
+/* Profile Image */
+#profileImageView {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}
+
+/* Animation and Transitions */
+.nav-button, .header-button, .logout-button, .primary-button, .secondary-button {
+    -fx-transition-duration: 0.2s;
+}
+
+/* Custom ScrollBar */
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track, .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-primary-light;
+    -fx-background-radius: 5em;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}

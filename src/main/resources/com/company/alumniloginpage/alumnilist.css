@@ -1,0 +1,259 @@
+/* Main container styles */
+.main-container {
+    -fx-background-color: #f0f5ff;
+    -fx-background-image: url('photos/subtle-pattern.png');
+    -fx-background-repeat: repeat;
+}
+
+/* Top bar styles */
+.top-bar {
+    -fx-background-color: linear-gradient(to right, #1a237e, #4a148c, #0d47a1);
+    -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 3);
+}
+
+.university-name {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
+}
+
+.alumni-portal {
+    -fx-text-fill: #e0e0ff;
+    -fx-font-style: italic;
+}
+
+.header-button {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 5 10 5 10;
+}
+
+.header-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.2), 10, 0, 0, 0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.logout-button {
+    -fx-background-color: linear-gradient(to bottom, #ff5252, #d32f2f);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.logout-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff6b6b, #e33e3e);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+}
+
+/* Sidebar styles */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #1e2747, #2c3e67);
+    -fx-padding: 0 0 20 0;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.profile-circle {
+    -fx-stroke: white;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 0);
+}
+
+.welcome-text {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 1, 0, 0, 1);
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 20;
+    -fx-cursor: hand;
+    -fx-border-width: 0 0 0 0;
+    -fx-transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-translate-x: 3;
+}
+
+.nav-button-active {
+    -fx-background-color: linear-gradient(to right, rgba(103, 58, 183, 0.5), rgba(93, 139, 232, 0.1));
+    -fx-border-color: #7c4dff;
+    -fx-border-width: 0 0 0 4;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+/* Content area styles */
+.content-area {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+
+.content-area .viewport {
+    -fx-background-color: transparent;
+}
+
+.section-heading {
+    -fx-fill: #1a237e;
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 1, 0, 0, 1);
+}
+
+/* Card styles */
+.feature-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 0);
+    -fx-border-color: rgba(93, 139, 232, 0.3);
+    -fx-border-radius: 15;
+    -fx-border-width: 1;
+}
+
+.card-title {
+    -fx-fill: #3f51b5;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.card-subtitle {
+    -fx-fill: #666666;
+    -fx-font-size: 14px;
+}
+
+/* Form styles for alumni directory */
+.input-label {
+    -fx-text-fill: #455a64;
+    -fx-font-weight: bold;
+}
+
+.form-combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #bbdefb;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 0);
+}
+
+.form-combo-box:focused {
+    -fx-border-color: #5d8be8;
+    -fx-effect: dropshadow(gaussian, rgba(93, 139, 232, 0.4), 10, 0, 0, 0);
+}
+
+/* Search button style */
+.search-button {
+    -fx-background-color: linear-gradient(to bottom, #3949ab, #283593);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.search-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #3f51b5, #303f9f);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* Table styles */
+.alumni-table {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-border-color: #e3e8fa;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+}
+
+.alumni-table .column-header {
+    -fx-background-color: linear-gradient(to bottom, #e8eaf6, #c5cae9);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3f51b5;
+    -fx-padding: 8 5 8 5;
+}
+
+.alumni-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.alumni-table .table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f4ff;
+    -fx-border-width: 0 0 1 0;
+}
+
+.alumni-table .table-row-cell:odd {
+    -fx-background-color: #f8f9ff;
+}
+
+.alumni-table .table-row-cell:selected {
+    -fx-background-color: #e8eaf6;
+    -fx-text-fill: #283593;
+}
+
+.alumni-table .table-row-cell:hover {
+    -fx-background-color: #e8eaf6;
+}
+
+/* Action buttons */
+.action-button {
+    -fx-background-color: linear-gradient(to bottom, #42a5f5, #1976d2);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+    -fx-padding: 8 15 8 15;
+}
+
+.action-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #64b5f6, #1e88e5);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 0);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* Scrollbar styling */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #bbdefb;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #90caf9;
+}
+
+/* Animation effects */
+.nav-button, .header-button, .search-button, .action-button {
+    -fx-transition-duration: 0.2s;
+}
+
+/* Additional hover effects */
+.feature-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(93, 139, 232, 0.2), 20, 0, 0, 0);
+    -fx-border-color: rgba(93, 139, 232, 0.5);
+}
