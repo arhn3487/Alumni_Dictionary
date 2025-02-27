@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="rootPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.LoginController">
+   <!-- Full screen BorderPane to ensure centering -->
+   <BorderPane>
+      <!-- Background Image with binding for full screen -->
+      <center>
+         <StackPane>
+            <!-- Background Image -->
+            <ImageView fx:id="backgroundImage" fitHeight="${rootPane.height}" fitWidth="${rootPane.width}" pickOnBounds="true" preserveRatio="false">
+               <image>
+                  <Image url="@photos/background.png" />
+               </image>
+            </ImageView>
+
+            <!-- Dark semi-transparent overlay -->
+            <StackPane style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+               <!-- Centered colorful login box -->
+               <VBox fx:id="loginBox" alignment="CENTER" maxHeight="550.0" maxWidth="400.0" minHeight="450.0" minWidth="320.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom right, #3a7bd5, #3a6073); -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0, 0, 5);">
+                  <effect>
+                     <DropShadow height="40.0" radius="19.5" width="40.0" />
+                  </effect>
+
+                  <!-- MIST Logo (If you have one) -->
+                  <StackPane maxHeight="80.0" minHeight="80.0">
+                     <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@photos/MISTLogo.png" />
+                        </image>
+                     </ImageView>
+                  </StackPane>
+
+                  <!-- Welcome Text with gradient coloring -->
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to MIST" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold" size="28.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="#e8f4f8" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <DropShadow height="6.0" radius="2.5" width="6.0" />
+                     </effect>
+                  </Text>
+
+                  <!-- User Type ComboBox -->
+                  <VBox alignment="CENTER_LEFT" spacing="8.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Type:">
+                        <font>
+                           <Font name="Arial Bold" size="16.0" />
+                        </font>
+                        <effect>
+                           <DropShadow height="4.0" radius="1.5" width="4.0" />
+                        </effect>
+                     </Text>
+                     <ComboBox fx:id="userType" maxWidth="Infinity" prefHeight="45.0" promptText="Select User Type" style="-fx-background-radius: 8; -fx-font-size: 14; -fx-background-color: rgba(255,255,255,0.9);">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Admin" />
+                              <String fx:value="Alumni" />
+                              <String fx:value="Student" />
+                           </FXCollections>
+                        </items>
+                        <effect>
+                           <InnerShadow color="rgba(0,0,0,0.2)" />
+                        </effect>
+                     </ComboBox>
+                  </VBox>
+
+                  <!-- User ID Field -->
+                  <VBox alignment="CENTER_LEFT" spacing="8.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID:">
+                        <font>
+                           <Font name="Arial Bold" size="16.0" />
+                        </font>
+                        <effect>
+                           <DropShadow height="4.0" radius="1.5" width="4.0" />
+                        </effect>
+                     </Text>
+                     <TextField fx:id="userIdField" maxWidth="Infinity" prefHeight="45.0" promptText="Enter your ID" style="-fx-background-radius: 8; -fx-padding: 10 15; -fx-font-size: 14; -fx-background-color: rgba(255,255,255,0.9);">
+                        <effect>
+                           <InnerShadow color="rgba(0,0,0,0.2)" />
+                        </effect>
+                     </TextField>
+                  </VBox>
+
+                  <!-- Password Field -->
+                  <VBox alignment="CENTER_LEFT" spacing="8.0">
+                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+                        <font>
+                           <Font name="Arial Bold" size="16.0" />
+                        </font>
+                        <effect>
+                           <DropShadow height="4.0" radius="1.5" width="4.0" />
+                        </effect>
+                     </Text>
+                     <PasswordField fx:id="passwordField" maxWidth="Infinity" prefHeight="45.0" promptText="Enter your password" style="-fx-background-radius: 8; -fx-padding: 10 15; -fx-font-size: 14; -fx-background-color: rgba(255,255,255,0.9);">
+                        <effect>
+                           <InnerShadow color="rgba(0,0,0,0.2)" />
+                        </effect>
+                     </PasswordField>
+                  </VBox>
+
+                  <!-- Login Button -->
+                  <Button fx:id="loginButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogin" prefHeight="50.0" style="-fx-background-color: linear-gradient(to right, #00b09b, #96c93d); -fx-background-radius: 8; -fx-text-fill: white; -fx-font-size: 16; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);" text="LOGIN">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="rgba(0,0,0,0.1)" />
+                     </effect>
+                  </Button>
+
+                  <!-- Registration Link -->
+                  <VBox alignment="CENTER" spacing="5.0">
+                     <Text fill="white" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+                        <font>
+                           <Font name="Arial" size="14.0" />
+                        </font>
+                        <effect>
+                           <DropShadow height="2.0" radius="0.5" width="2.0" />
+                        </effect>
+                     </Text>
+                     <Button mnemonicParsing="false" onAction="#switchToSignupForm" style="-fx-background-color: transparent; -fx-text-fill: #96c93d; -fx-font-weight: bold; -fx-cursor: hand;" text="REGISTER NOW">
+                        <font>
+                           <Font name="Arial Bold" size="14.0" />
+                        </font>
+                        <effect>
+                           <DropShadow height="4.0" radius="1.5" width="4.0" />
+                        </effect>
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                  </VBox>
+               </VBox>
+            </StackPane>
+         </StackPane>
+      </center>
+   </BorderPane>
+</StackPane>

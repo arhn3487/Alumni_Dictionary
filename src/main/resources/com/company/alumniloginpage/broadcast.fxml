@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@broadcast.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@photos/MISTLogo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="20.0" right="15.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox alignment="CENTER_LEFT">
+               <children>
+                  <Label styleClass="university-name" text="Military Institute of Science and Technology">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="alumni-portal" text="Alumni Portal">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" styleClass="header-button" text="Help">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/logOut.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="50.0" styleClass="profile-circle">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.10588235408067703" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/profile_holder.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome, Alumni">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/idcard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Alumni List.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Announcements">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Invitation.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/Announcement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/job.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/donate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
+         <content>
+            <VBox spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Broadcast">
+                           <font>
+                              <Font name="System Bold" size="28.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <VBox styleClass="feature-card" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Create Announcement">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-subtitle" text="Send important messages to specific alumni groups or the entire community">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="300.0" styleClass="form-group" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label styleClass="form-label" text="Target Audience">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label styleClass="input-label" text="Session">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ComboBox fx:id="graduationYear" prefHeight="40.0" prefWidth="200.0" promptText="All Sessions" styleClass="form-combo-box" />
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label styleClass="input-label" text="Department">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ComboBox fx:id="department" prefHeight="40.0" prefWidth="200.0" promptText="All Departments" styleClass="form-combo-box" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="input-label" text="Subject">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="broadsubject" prefHeight="40.0" promptText="Enter subject" styleClass="form-text-field" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="input-label" text="Message">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <!-- Modified TextArea with increased height from 250.0 to 350.0 -->
+                              <TextArea fx:id="broadtext" prefHeight="350.0" prefWidth="836.0" promptText="Compose your email message here..." styleClass="form-text-area" wrapText="true" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox spacing="10.0">
+                           <children>
+                              <Label styleClass="input-label" text="Attachment">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="attachmentPath" editable="false" prefHeight="40.0" prefWidth="452.0" promptText="No file selected" styleClass="form-text-field" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="choosefile" mnemonicParsing="false" onAction="#chooseAttachment" prefHeight="40.0" prefWidth="100.0" styleClass="browse-button" text="Browse">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                           <children>
+                              <!-- Removed the Cancel button -->
+                              <Button fx:id="sendmail" layoutX="507.0" layoutY="459.0" mnemonicParsing="false" onAction="#BroadcastMail" prefHeight="40.0" prefWidth="120.0" styleClass="send-button" text="Send">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox styleClass="feature-card">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Recent Broadcasts">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <VBox fx:id="recentBroadcastsContainer" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                           <!-- This container will be populated dynamically with recent broadcasts -->
+                           <children>
+                              <HBox alignment="CENTER_LEFT" styleClass="announcement-item">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@photos/Invitation.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="15.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="announcement-title" text="Annual Alumni Reunion Invitation">
+                                                   <font>
+                                                      <Font name="System Bold" size="16.0" />
+                                                   </font>
+                                                </Text>
+                                                <Label styleClass="broadcast-metadata" text="Feb 15, 2025">
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label styleClass="broadcast-metadata" text="All Departments">
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="announcement-text" text="Join us for the biggest event of the year at MIST Campus. All alumni are invited to attend this special gathering to reconnect with former classmates and professors." wrappingWidth="750.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <HBox alignment="CENTER_RIGHT">
+                                             <children>
+                                                <Button mnemonicParsing="false" styleClass="action-button" text="View Details">
+                                                   <graphic>
+                                                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@photos/filter.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" styleClass="announcement-item">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@photos/job.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="15.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="announcement-title" text="Career Fair - Registration Now Open">
+                                                   <font>
+                                                      <Font name="System Bold" size="16.0" />
+                                                   </font>
+                                                </Text>
+                                                <Label styleClass="broadcast-metadata" text="Jan 28, 2025">
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label styleClass="broadcast-metadata" text="CSE, EEE Departments">
+                                                   <HBox.margin>
+                                                      <Insets left="15.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="announcement-text" text="Registration is now open for the upcoming Career Fair on April 10th. Over 50 companies will be recruiting. Perfect opportunity for recent graduates." wrappingWidth="750.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <HBox alignment="CENTER_RIGHT">
+                                             <children>
+                                                <Button mnemonicParsing="false" styleClass="action-button" text="View Details">
+                                                   <graphic>
+                                                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@photos/filter.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </Button>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

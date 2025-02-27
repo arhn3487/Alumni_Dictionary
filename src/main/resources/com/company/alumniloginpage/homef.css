@@ -1,0 +1,77 @@
+/* Main Container Styles */
+.main-container {
+    -fx-background-color: #f5f7fa;
+}
+
+/* Top Bar Styles */
+.top-bar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 10px;
+}
+
+.university-name {
+    -fx-text-fill: #2e3d49;
+    -fx-font-weight: bold;
+}
+
+.alumni-portal {
+    -fx-text-fill: #4a5568;
+}
+
+.header-button {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #1e293b;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+}
+
+.header-button:hover {
+    -fx-background-color: #e2e8f0;
+}
+
+.logout-button {
+    -fx-background-color: #e53e3e;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c53030;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-background-color: #2d3748;
+    -fx-padding: 15px 0;
+}
+
+.profile-circle {
+    -fx-stroke: white;
+    -fx-stroke-width: 3px;
+}
+
+.welcome-text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e0;
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 20px;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-border-width: 0 0 0 3px;
+    -fx-border-color: transparent;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+    -fx-
