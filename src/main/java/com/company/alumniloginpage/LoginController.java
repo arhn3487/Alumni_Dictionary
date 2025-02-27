@@ -52,7 +52,7 @@ public class LoginController
             if (user == null)
             {
                 showAlert("Error", "User ID not found.");
-                clearFields();
+                //clearFields();
             }
             else
             {
@@ -66,7 +66,9 @@ public class LoginController
 
                     System.out.println("Logged in user ID: " + userId);
 
-                    switchToHome();
+                    if(usertype.equals("Admin")) switchToAdminHome();
+                    //else if(usertype)
+                    else switchToHome();
 
                 }
                 else
@@ -115,4 +117,17 @@ public class LoginController
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private void switchToAdminHome() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Admin_deshboard.fxml"));
+            stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

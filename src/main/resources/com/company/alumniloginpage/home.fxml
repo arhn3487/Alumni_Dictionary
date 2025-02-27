@@ -21,7 +21,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -89,7 +89,7 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
@@ -119,7 +119,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
+            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" stylesheets="@broadcast.css" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -196,7 +196,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
          <content>
-            <VBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <VBox spacing="20.0" style="-fx-background-color: #F0F5FF;" VBox.vgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER_LEFT">
                      <children>
@@ -374,7 +374,7 @@
                               </Text>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="35.0" prefWidth="250.0" styleClass="quick-link-button" text="University Website">
+                                    <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #d1daed;" styleClass="quick-link-button" stylesheets="@broadcast.css" text="University Website">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -383,7 +383,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" styleClass="quick-link-button" text="Update Profile">
+                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #d1daed;" styleClass="quick-link-button" text="Update Profile">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -392,7 +392,7 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" styleClass="quick-link-button" text="Contact Support">
+                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #d1daed;" styleClass="quick-link-button" text="Contact Support">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

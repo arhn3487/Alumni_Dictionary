@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,10 +22,13 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -96,38 +101,52 @@ public class AlumniManagementController implements Initializable {
     }
 
     private void initializeComboBoxes() {
-        // User Type ComboBox
-        userTypeComboBox.setItems(FXCollections.observableArrayList("All Users", "Alumni", "Student", "Admin"));
-        userTypeComboBox.getSelectionModel().selectFirst();
-
-        // Department ComboBoxes (both search and add user)
-        List<String> departments = List.of("All", "CSE", "EEE", "ME", "CE", "IPE", "AE", "NAME", "BME", "EWCE", "NSE");
-        departmentComboBox.setItems(FXCollections.observableArrayList(departments));
-        departmentComboBox.getSelectionModel().selectFirst();
-
-        addDepartmentComboBox.setItems(FXCollections.observableArrayList(
-                "CSE", "EEE", "ME", "CE", "IPE", "AE", "NAME", "BME", "EWCE", "NSE"));
-
-        // Batch ComboBox
-        List<String> batches = new ArrayList<>();
-        batches.add("All Batches");
-        for (int i = 2002; i <= 2005; i++) {
-            batches.add(String.format("%02d", i));
+        // Check if userTypeComboBox is not null
+        if (userTypeComboBox != null) {
+            userTypeComboBox.setItems(FXCollections.observableArrayList("All Users", "Alumni", "Student", "Admin"));
+            userTypeComboBox.getSelectionModel().selectFirst();
         }
-        batchComboBox.setItems(FXCollections.observableArrayList(batches));
-        batchComboBox.getSelectionModel().selectFirst();
 
-        // Gender ComboBox
-        genderComboBox.setItems(FXCollections.observableArrayList("Male", "Female", "Other"));
+        // Check if departmentComboBox is not null
+        if (departmentComboBox != null) {
+            List<String> departments = List.of("All", "CSE", "EEE", "ME", "CE", "IPE", "AE", "NAME", "BME", "EWCE", "NSE");
+            departmentComboBox.setItems(FXCollections.observableArrayList(departments));
+            departmentComboBox.getSelectionModel().selectFirst();
+        }
 
-        // Degree ComboBox
-        degreeComboBox.setItems(FXCollections.observableArrayList("BSc", "MSc", "PhD"));
+        // Check if addDepartmentComboBox is not null
+        if (addDepartmentComboBox != null) {
+            addDepartmentComboBox.setItems(FXCollections.observableArrayList(
+                    "CSE", "EEE", "ME", "CE", "IPE", "AE", "NAME", "BME", "EWCE", "NSE"));
+        }
+
+        // Check if batchComboBox is not null
+        if (batchComboBox != null) {
+            List<String> batches = new ArrayList<>();
+            batches.add("All Batches");
+            for (int i = 2002; i <= 2005; i++) {
+                batches.add(String.format("%02d", i));
+            }
+            batchComboBox.setItems(FXCollections.observableArrayList(batches));
+            batchComboBox.getSelectionModel().selectFirst();
+        }
+
+        // Check if genderComboBox is not null
+        if (genderComboBox != null) {
+            genderComboBox.setItems(FXCollections.observableArrayList("Male", "Female", "Other"));
+        }
+
+        // Check if degreeComboBox is not null
+        if (degreeComboBox != null) {
+            degreeComboBox.setItems(FXCollections.observableArrayList("BSc", "MSc", "PhD"));
+        }
     }
+
 
     private void initializeTableView() {
         // Configure table columns with proper cell factories
-        photoColumn.setCellValueFactory(new PropertyValueFactory<>("photoView"));
-        photoColumn.setCellFactory(column -> {
+        if(photoColumn!=null)photoColumn.setCellValueFactory(new PropertyValueFactory<>("photoView"));
+        if(photoColumn!=null)photoColumn.setCellFactory(column -> {
             return new TableCell<AlumniModel, ImageView>() {
                 @Override
                 protected void updateItem(ImageView item, boolean empty) {
@@ -491,5 +510,9 @@ public class AlumniManagementController implements Initializable {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Navigation Error", "Could not load " + fxmlFile);
         }
+    }
+
+    public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{
+        Desktop.getDesktop().browse(new URI("https://mist.ac.bd/"));
     }
 }

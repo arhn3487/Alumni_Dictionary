@@ -372,7 +372,7 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void switchToHome() {
+    private void switchToAdminHome() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("admin-dashboard.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
@@ -392,7 +392,7 @@ public class AdminController implements Initializable {
     @FXML
     private void switchBroadcast() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("admin-broadcast.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("broadcast.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
