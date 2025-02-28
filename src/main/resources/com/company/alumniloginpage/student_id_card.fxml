@@ -88,7 +88,7 @@
         </HBox>
     </top>
     <left>
-        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+        <VBox prefHeight="640.0" prefWidth="219.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
             <children>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
@@ -135,7 +135,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" styleClass="nav-button, nav-button-active" text="Alumni ID Card">
+                <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="205.0" styleClass="nav-button, nav-button-active" text="Alumni ID Card">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -144,7 +144,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+                <Button mnemonicParsing="false" onAction="#switchtoAlumniListStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -171,7 +171,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false"  prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -189,11 +189,6 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0">
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin>
-                </Text>
             </children>
         </VBox>
     </left>
