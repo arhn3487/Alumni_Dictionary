@@ -213,12 +213,34 @@
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="406.0" prefWidth="810.0" styleClass="alumni-table" stylesheets="@alumnilist.css">
+                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="titleColumn" prefWidth="179.9999656677246" text="Event Title" />
-                                        <TableColumn fx:id="dateColumn" prefWidth="176.80006408691406" text="Date" />
-                                        <TableColumn fx:id="locationColumn" prefWidth="194.39996337890625" text="Location" />
-                                        <TableColumn fx:id="descriptionColumn" prefWidth="252.0" text="Description" />
+                                        <TableColumn fx:id="titleColumn" prefWidth="159.9999656677246" text="Event Title" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="156.80006408691406" text="Date" />
+                                        <TableColumn fx:id="locationColumn" prefWidth="174.39996337890625" text="Location" />
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="212.0" text="Description" />
+                                        <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action" />
+                                    </columns>
+                                </TableView>
+
+                                <HBox alignment="CENTER" layoutX="20.0" layoutY="355.0" spacing="10.0">
+                                    <children>
+                                        <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Event Participants">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="action-button" text="View Participants" />
+                                    </children>
+                                </HBox>
+
+                                <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                    <columns>
+                                        <TableColumn fx:id="participantNameColumn" prefWidth="200.0" text="Name" />
+                                        <TableColumn fx:id="participantIdColumn" prefWidth="100.0" text="Student ID" />
+                                        <TableColumn fx:id="participantBatchColumn" prefWidth="144.79998779296875" text="Batch" />
+                                        <TableColumn fx:id="participantDeptColumn" prefWidth="188.0" text="Department" />
+                                        <TableColumn fx:id="participantPhoneColumn" prefWidth="176.0" text="Phone Number" />
                                     </columns>
                                 </TableView>
                             </children>

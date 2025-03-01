@@ -4,8 +4,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -15,8 +18,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1080.0" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
@@ -35,7 +39,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label styleClass="alumni-portal" text="Alumni Information System">
+                  <Label styleClass="alumni-portal" text="Alumni Portal">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -68,7 +72,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#switchToLogin" styleClass="logout-button" text="Sign Out">
+                  <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,11 +112,7 @@
                         </LinearGradient>
                      </fill>
                   </Circle>
-                  <ImageView fx:id="profileImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/profile_holder.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </StackPane>
             <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
@@ -125,7 +125,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Dashboard">
+            <Button mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -137,7 +137,16 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+            <Button mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Student ID">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/idcard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchtoAlumniListStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -146,16 +155,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/Invitation.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+            <Button mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -164,7 +164,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+            <Button mnemonicParsing="false" onAction="#eventstudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Events">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -173,20 +173,11 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
+            <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@photos/Announcement.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Personal Info">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/idcard.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -197,10 +188,89 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
          <content>
-            <VBox spacing="15.0" style="-fx-background-color: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);">
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
+            <VBox spacing="20.0" style="-fx-background-color: #F0F5FF;" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Events">
+                           <font>
+                              <Font name="System Bold" size="28.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="20.0" top="10.0" />
+                     </padding>
+                  </HBox>
+
+                  <AnchorPane prefHeight="519.0" prefWidth="861.0" styleClass="feature-card">
+                     <children>
+                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" prefWidth="810.0" styleClass="alumni-table" stylesheets="@alumnilist.css">
+                           <columns>
+                              <TableColumn fx:id="titleColumn" prefWidth="159.9999656677246" text="Event Title" />
+                              <TableColumn fx:id="dateColumn" prefWidth="156.80006408691406" text="Date" />
+                              <TableColumn fx:id="locationColumn" prefWidth="174.39996337890625" text="Location" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="212.0" text="Description" />
+                              <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action" />
+                           </columns>
+                        </TableView>
+
+                        <HBox alignment="CENTER" layoutX="20.0" layoutY="355.0" spacing="10.0">
+                           <children>
+                              <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Event Participants">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="action-button" text="View Participants" />
+                           </children>
+                        </HBox>
+
+                        <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" prefWidth="810.0" styleClass="alumni-table" stylesheets="@alumnilist.css">
+                           <columns>
+                              <TableColumn fx:id="participantNameColumn" prefWidth="200.0" text="Name" />
+                              <TableColumn fx:id="participantIdColumn" prefWidth="100.0" text="Student ID" />
+                              <TableColumn fx:id="participantBatchColumn" prefWidth="144.79998779296875" text="Batch" />
+                              <TableColumn fx:id="participantDeptColumn" prefWidth="188.0" text="Department" />
+                              <TableColumn fx:id="participantPhoneColumn" prefWidth="176.0" text="Phone Number" />
+                           </columns>
+                        </TableView>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </AnchorPane>
+
+                  <AnchorPane styleClass="footer" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="265.0" layoutY="31.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="© 2025 MIST Alumni Association" />
+                              <Label text="|" />
+                              <Label text="Email: arhasan3487@gmail.com" />
+                              <Label text="|" />
+                              <Label text="Phone: 01540194651" />
+                              <Label text="|" />
+                              <Label text="Website: mist.ac.bd" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+               </children>
             </VBox>
          </content>
       </ScrollPane>
