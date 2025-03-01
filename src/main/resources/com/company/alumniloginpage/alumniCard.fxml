@@ -135,7 +135,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" styleClass="nav-button, nav-button-active" text="Alumni ID Card">
+                <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Alumni ID Card">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
