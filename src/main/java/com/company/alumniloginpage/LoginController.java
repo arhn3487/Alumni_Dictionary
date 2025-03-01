@@ -14,6 +14,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.bson.Document;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class LoginController
@@ -58,7 +61,10 @@ public class LoginController
                 String storedPassword = user.getString("password");
                 String storedType = user.getString("usertype");
 
-                if (storedPassword.equals(password) && storedType.equals(usertype))
+                // Hash the input password and compare with stored hash
+                String hashedInputPassword = hashPassword(password);
+
+                if (hashedInputPassword != null && storedPassword.equals(hashedInputPassword) && storedType.equals(usertype))
                 {
                     SharedData.getInstance().setLoggedInUserId(userId);
                     //showAlert("Success", "Login successful!");
@@ -68,11 +74,10 @@ public class LoginController
                     if(usertype.equals("Admin")) switchToAdminHome();
                     else if(usertype.equals("Student")) switchToStudenTHome();
                     else switchToHome();
-
                 }
                 else
                 {
-                    showAlert("Error", "Something Wrong !!!.");
+                    showAlert("Error", "Invalid credentials. Please try again.");
                     clearFields();
                 }
             }
@@ -81,6 +86,32 @@ public class LoginController
         {
             System.err.println("Error during login: " + e.getMessage());
             showAlert("Error", "An error occurred. Please try again.");
+        }
+    }
+
+    private String hashPassword(String password) {
+        try {
+            // Add the salt "arafat" to the password before hashing
+            String saltedPassword = password + "arafat";
+
+            // Create SHA-256 hash
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedHash = digest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
+
+            // Convert byte array to hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -95,7 +126,6 @@ public class LoginController
 
     private void clearFields()
     {
-        userIdField.clear();
         passwordField.clear();
     }
 
@@ -105,6 +135,17 @@ public class LoginController
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void switchToForgotPassword(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("forgotPassword.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.show();
     }
 
@@ -116,6 +157,7 @@ public class LoginController
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     private void switchToAdminHome() {
         try {
@@ -138,6 +180,4 @@ public class LoginController
             e.printStackTrace();
         }
     }
-
-
 }

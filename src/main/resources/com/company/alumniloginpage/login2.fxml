@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -160,6 +159,17 @@
                                     <Cursor fx:constant="HAND" />
                                 </cursor>
                             </Button>
+                     <Button mnemonicParsing="false" onAction="#switchToForgotPassword" style="-fx-background-color: transparent; -fx-text-fill: #96c93d; -fx-font-weight: bold; -fx-cursor: hand;" text="FORGOT PASSWORD">
+                        <font>
+                           <Font name="Arial Bold" size="14.0" />
+                        </font>
+                        <effect>
+                           <DropShadow height="4.0" radius="1.5" width="4.0" />
+                        </effect>
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
                         </VBox>
                     </VBox>
                 </StackPane>
