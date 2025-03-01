@@ -4,9 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.bson.Document;
@@ -26,7 +28,11 @@ import javafx.event.ActionEvent;
 
 public class EventController {
     // FXML Injected Controls
-    @FXML private ListView<Event> eventListView;
+    @FXML private TableView<Event> eventTableView;
+    @FXML private TableColumn<Event, String> titleColumn;
+    @FXML private TableColumn<Event, LocalDate> dateColumn;
+    @FXML private TableColumn<Event, String> locationColumn;
+    @FXML private TableColumn<Event, String> descriptionColumn;
     @FXML private TextField eventTitle;
     @FXML private DatePicker eventDate;
     @FXML private TextField eventLocation;
@@ -58,23 +64,17 @@ public class EventController {
 
     // Method to initialize event management functionality
     public void initializeEventManagement() {
-        // Set up the ListView with custom cell factory to display events
-        eventListView.setItems(eventList);
-        eventListView.setCellFactory(param -> new ListCell<Event>() {
-            @Override
-            protected void updateItem(Event event, boolean empty) {
-                super.updateItem(event, empty);
+        // Set up the TableView with columns
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-                if (empty || event == null) {
-                    setText(null);
-                } else {
-                    setText(event.getTitle() + " - " + event.getDate() + " - " + event.getLocation());
-                }
-            }
-        });
+        // Set up the TableView with data
+        eventTableView.setItems(eventList);
 
         // Add event selection listener
-        eventListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        eventTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 displayEventDetails(newValue);
             }
@@ -142,29 +142,29 @@ public class EventController {
             String id = objectId.toString();
             Event newEvent = new Event(id, title, date, location, description);
 
-            // Add the event to the list view
+            // Add the event to the table view
             eventList.add(newEvent);
             clearEventFields();
 
-            //showAlert("Success", "Event added successfully");
+            showAlert("Success", "Event added successfully");
         } catch (Exception e) {
-            //showAlert("Error", "Failed to add event: " + e.getMessage());
+            showAlert("Error", "Failed to add event: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     // Method to remove an event
     private void removeEvent() {
-        Event selectedEvent = eventListView.getSelectionModel().getSelectedItem();
+        Event selectedEvent = eventTableView.getSelectionModel().getSelectedItem();
         if (selectedEvent == null) {
-            //showAlert("Selection Error", "Please select an event to remove");
+            showAlert("Selection Error", "Please select an event to remove");
             return;
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Remove Event");
-        //alert.setContentText("Are you sure you want to remove: " + selectedEvent.getTitle() + "?");
+        alert.setContentText("Are you sure you want to remove: " + selectedEvent.getTitle() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -174,13 +174,13 @@ public class EventController {
                 ObjectId objectId = new ObjectId(selectedEvent.getId());
                 eventsCollection.deleteOne(new Document("_id", objectId));
 
-                // Remove from list view
+                // Remove from table view
                 eventList.remove(selectedEvent);
                 clearEventFields();
 
-                //showAlert("Success", "Event removed successfully");
+                showAlert("Success", "Event removed successfully");
             } catch (Exception e) {
-                //showAlert("Error", "Failed to remove event: " + e.getMessage());
+                showAlert("Error", "Failed to remove event: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -192,7 +192,7 @@ public class EventController {
         eventDate.setValue(null);
         eventLocation.clear();
         eventDescription.clear();
-        eventListView.getSelectionModel().clearSelection();
+        eventTableView.getSelectionModel().clearSelection();
     }
 
     // Method to display event details in form fields
@@ -238,6 +238,7 @@ public class EventController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 
     @FXML

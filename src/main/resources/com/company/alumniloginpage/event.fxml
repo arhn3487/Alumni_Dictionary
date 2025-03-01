@@ -1,124 +1,320 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@event.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
-    <left>
-        <AnchorPane prefHeight="700.0" prefWidth="200.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
             <children>
-                <!-- Logo added here -->
-                <ImageView fitHeight="33.0" fitWidth="136.0" layoutX="25.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@photos/alumni.png" />
+                        <Image url="@photos/MISTLogo.png" />
                     </image>
+                    <HBox.margin>
+                        <Insets left="20.0" right="15.0" />
+                    </HBox.margin>
                 </ImageView>
-                <Text fill="WHITE" layoutX="22.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-title" text="Alumni Directory" wrappingWidth="155.0">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Text>
-                <Button layoutX="25.0" layoutY="130.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Home" textAlignment="CENTER" textFill="WHITE" />
-                <Button layoutX="25.0" layoutY="185.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Alumni List" textAlignment="CENTER" textFill="WHITE" />
-                <Button layoutX="25.0" layoutY="240.0" mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Alumni Card" textAlignment="CENTER" textFill="WHITE" />
-                <Button layoutX="25.0" layoutY="295.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Job Board" textAlignment="CENTER" textFill="WHITE" />
-                <Button layoutX="25.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button-active" text="Event Management" textAlignment="CENTER" textFill="WHITE" />
-                <Button layoutX="25.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="40.0" prefWidth="150.0" styleClass="sidebar-button" text="Broadcasting" textAlignment="CENTER" textFill="WHITE" />
-                <Button layoutX="25.0" layoutY="620.0" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="150.0" styleClass="logout-button" text="Sign Out" textAlignment="CENTER" textFill="WHITE" />
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label styleClass="university-name" text="Military Institute of Science and Technology">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label styleClass="alumni-portal" text="Alumni Portal">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button mnemonicParsing="false" styleClass="header-button" text="Help">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/help.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/settings.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@photos/logOut.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
             </children>
-        </AnchorPane>
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+            <children>
+                <StackPane prefHeight="150.0" prefWidth="200.0">
+                    <children>
+                        <Circle radius="50.0" styleClass="profile-circle">
+                            <fill>
+                                <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
+                                    <stops>
+                                        <Stop>
+                                            <color>
+                                                <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
+                                            </color>
+                                        </Stop>
+                                        <Stop offset="1.0">
+                                            <color>
+                                                <Color red="0.10588235408067703" green="1.0" blue="1.0" />
+                                            </color>
+                                        </Stop>
+                                    </stops>
+                                </LinearGradient>
+                            </fill>
+                        </Circle>
+                        <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                    </children>
+                </StackPane>
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" stylesheets="@broadcast.css" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/idcard.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Alumni List.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Invitation.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Announcement.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/job.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Event Management">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/donate.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
     </left>
     <center>
-        <AnchorPane prefHeight="700.0" prefWidth="800.0" styleClass="main-content" BorderPane.alignment="CENTER">
-            <children>
-                <Text fill="#333333" layoutX="30.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-text" text="Event Management" wrappingWidth="503.0">
-                    <font>
-                        <Font name="System Bold" size="28.0" />
-                    </font>
-                </Text>
-                <Text fill="#666666" layoutX="30.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheader-text" text="Add, remove, and manage alumni events" wrappingWidth="503.0">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Text>
-
-                <!-- Featured event image added here -->
-                <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="550.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="event-image">
-                    <image>
-                        <Image url="@images/featured_event.jpg" />
-                    </image>
-                </ImageView>
-
-                <AnchorPane layoutX="30.0" layoutY="100.0" prefHeight="280.0" prefWidth="740.0" styleClass="list-container">
+        <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
+            <content>
+                <VBox spacing="20.0" style="-fx-background-color: #F0F5FF;" VBox.vgrow="ALWAYS">
                     <children>
-                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-title" text="Upcoming Events" wrappingWidth="251.0">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Text>
-                        <ListView fx:id="eventListView" layoutX="20.0" layoutY="45.0" prefHeight="215.0" prefWidth="700.0" styleClass="event-list" />
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Event Management">
+                                    <font>
+                                        <Font name="System Bold" size="28.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                            <padding>
+                                <Insets left="20.0" top="10.0" />
+                            </padding>
+                        </HBox>
+
+                        <AnchorPane prefHeight="300.0" prefWidth="740.0" styleClass="feature-card">
+                            <children>
+                                <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Text>
+                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="230.0" prefWidth="810.0" styleClass="event-table">
+                                    <columns>
+                                        <TableColumn fx:id="titleColumn" prefWidth="179.9999656677246" text="Event Title" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="176.80006408691406" text="Date" />
+                                        <TableColumn fx:id="locationColumn" prefWidth="194.39996337890625" text="Location" />
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="252.0" text="Description" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </AnchorPane>
+
+                        <AnchorPane prefHeight="280.0" prefWidth="740.0" styleClass="feature-card">
+                            <children>
+                                <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Add New Event" wrappingWidth="251.0">
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Text>
+
+                                <Text fill="#333333" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Title:" wrappingWidth="100.0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="694.0" promptText="Enter event title" styleClass="form-field" />
+
+                                <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="200.0" promptText="Select date" styleClass="form-field" />
+
+                                <Text fill="#333333" layoutX="452.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="eventLocation" layoutX="532.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter location" styleClass="form-field" />
+
+                                <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="98.0" prefWidth="694.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
+
+                                <HBox alignment="CENTER_RIGHT" layoutX="132.0" layoutY="247.0" prefHeight="35.0" prefWidth="693.0" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="quick-link-button" text="Clear Fields" textFill="#333333" />
+                                        <Button fx:id="addEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="module-button" text="Add Event" textFill="WHITE" />
+                                        <Button fx:id="removeEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="logout-button" text="Remove Event" textFill="WHITE" />
+                                    </children>
+                                </HBox>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </AnchorPane>
+
+                        <AnchorPane styleClass="footer" VBox.vgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER" layoutX="265.0" layoutY="31.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label text="© 2025 MIST Alumni Association" />
+                                        <Label text="|" />
+                                        <Label text="Email: arhasan3487@gmail.com" />
+                                        <Label text="|" />
+                                        <Label text="Phone: 01540194651" />
+                                        <Label text="|" />
+                                        <Label text="Website: mist.ac.bd" />
+                                    </children>
+                                </HBox>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </AnchorPane>
                     </children>
-                </AnchorPane>
-
-                <AnchorPane layoutX="30.0" layoutY="400.0" prefHeight="280.0" prefWidth="740.0" styleClass="form-container">
-                    <children>
-                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-title" text="Add New Event" wrappingWidth="251.0">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Text>
-
-                        <Text fill="#333333" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Title:" wrappingWidth="100.0">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="590.0" promptText="Enter event title" styleClass="form-field" />
-
-                        <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="200.0" promptText="Select date" styleClass="form-field" />
-
-                        <Text fill="#333333" layoutX="350.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <TextField fx:id="eventLocation" layoutX="430.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter location" styleClass="form-field" />
-
-                        <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="90.0" prefWidth="590.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
-
-                        <!-- Upload image button added here -->
-                        <Text fill="#333333" layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Image:" wrappingWidth="100.0">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Text>
-                        <Button fx:id="uploadImageButton" layoutX="130.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="secondary-button" text="Upload Image" textFill="#333333" />
-
-                        <Button fx:id="addEventButton" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="action-button" text="Add Event" textFill="WHITE" />
-                        <Button fx:id="removeEventButton" layoutX="600.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="delete-button" text="Remove" textFill="WHITE" />
-                        <Button fx:id="clearButton" layoutX="340.0" layoutY="235.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="secondary-button" text="Clear Fields" textFill="#333333" />
-                    </children>
-                </AnchorPane>
-            </children>
-        </AnchorPane>
+                </VBox>
+            </content>
+        </ScrollPane>
     </center>
 </BorderPane>

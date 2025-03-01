@@ -67,7 +67,7 @@ public class LoginController
                     System.out.println("Logged in user ID: " + userId);
 
                     if(usertype.equals("Admin")) switchToAdminHome();
-                    //else if(usertype)
+                    else if(usertype.equals("Student")) switchToStudenTHome();
                     else switchToHome();
 
                 }
@@ -121,6 +121,17 @@ public class LoginController
     private void switchToAdminHome() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Admin_deshboard.fxml"));
+            stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void switchToStudenTHome() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
             stage.show();

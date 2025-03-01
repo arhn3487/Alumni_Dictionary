@@ -19,7 +19,7 @@ public class Main extends Application
         Parent root  = FXMLLoader.load(getClass().getResource("login2.fxml"));
 
         Scene scene =new Scene(root);
-        Stage stage=new Stage();
+        Stage stage=new Stage() ;
 
         stage.setTitle("MIST Alumni Portal");
 
