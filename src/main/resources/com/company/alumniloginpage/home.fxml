@@ -47,7 +47,7 @@
             </VBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" styleClass="header-button" text="Help">
+                  <Button fx:id="helpbutton" mnemonicParsing="false" styleClass="header-button" text="Help">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

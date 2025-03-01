@@ -41,6 +41,7 @@ public class Controller
     @FXML private TextArea broadtext;
     @FXML private TextField broadsubject;
     @FXML private TableView<AlumniListController.Alumni> alumniTable;
+    @FXML private Button helpbutton;
     @FXML
     private ListView<Event> eventListView;
 
@@ -129,6 +130,13 @@ public class Controller
 
         // Uncomment if TableView columns need to be set up
         // setupTableView();
+        Tooltip helpTooltip = new Tooltip("This is a alumni portal for MIST \n" +
+                "If you need any type of help you may contruct with \nemail : arhasan3487@gmail.com\n phone : 01540194651");
+        if(helpbutton!=null)
+        {
+            helpbutton.setTooltip(helpTooltip);
+            //helpTooltip.setTooltipDuration(helpTooltip, 500, 10000, 500);
+        }
     }
 
     private void initializeComboBox(ComboBox<String> comboBox, String name, String... values)
@@ -286,7 +294,10 @@ public class Controller
                         doc.getString("studentId"),
                         doc.getString("batch"),
                         doc.getString("graduationYear"),
-                        doc.getString("department")
+                        doc.getString("department"),
+                        doc.getString("workplace"),
+                        doc.getString("email")
+
                 );
                 alumniList.add(alumni);
             }

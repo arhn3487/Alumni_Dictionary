@@ -173,18 +173,18 @@
                         </DropShadow>
                     </effect>
                 </Label>
-            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow height="3.0" radius="1.0" width="3.0">
-                     <color>
-                        <Color opacity="0.4" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Label>
+                <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <effect>
+                        <DropShadow height="3.0" radius="1.0" width="3.0">
+                            <color>
+                                <Color opacity="0.4" />
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </Label>
                 <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -430,29 +430,39 @@
                                 </Text>
                                 <TableView fx:id="alumniTable" prefHeight="350.0" prefWidth="798.0" styleClass="alumni-table">
                                     <columns>
-                                        <TableColumn prefWidth="200.0" styleClass="table-column" text="Name">
+                                        <TableColumn prefWidth="120.0" styleClass="table-column" text="Name">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="name" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="136.00001525878906" styleClass="table-column" text="Student ID">
+                                        <TableColumn prefWidth="100.0" styleClass="table-column" text="Student ID">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="studentId" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="138.4000244140625" styleClass="table-column" text="Batch">
+                                        <TableColumn prefWidth="120.0" styleClass="table-column" text="Department">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="department" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="100.0" styleClass="table-column" text="Batch">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="batch" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="128.00003051757812" styleClass="table-column" text="Graduation Year">
+                                        <TableColumn prefWidth="120.0" styleClass="table-column" text="Graduation Year">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="graduationYear" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn prefWidth="156.800048828125" styleClass="table-column" text="Department">
+                                        <TableColumn prefWidth="140.0" styleClass="table-column" text="Workplace">
                                             <cellValueFactory>
-                                                <PropertyValueFactory property="department" />
+                                                <PropertyValueFactory property="workplace" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="198.0" styleClass="table-column" text="Email">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="email" />
                                             </cellValueFactory>
                                         </TableColumn>
                                     </columns>
@@ -466,6 +476,9 @@
                                             </color>
                                         </DropShadow>
                                     </effect>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
                                 </TableView>
                                 <HBox alignment="CENTER_RIGHT" spacing="15.0" styleClass="action-buttons-container">
                                     <children>
