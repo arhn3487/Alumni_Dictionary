@@ -191,15 +191,15 @@ public class Controller
         String ddepartment = department.getValue();
         String dgraduationYear = graduationYear.getValue();
 
-        SendOTP sendtheOTP = new SendOTP();
-        String generatedOTP = sendtheOTP.generateOTP();
-        sendtheOTP.sendOTP(demail, generatedOTP);
+        //SendOTP sendtheOTP = new SendOTP();
+        String generatedOTP = "1234";
+        //sendtheOTP.sendOTP(demail, generatedOTP);
 
         // Prompt the user to enter the OTP
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("OTP Verification");
-        dialog.setHeaderText("An OTP has been sent to your email.");
-        dialog.setContentText("Please enter the OTP:");
+        dialog.setTitle("Confirmation for create user");
+        dialog.setHeaderText("An PIN has been assigned for this ID.");
+        dialog.setContentText("Please enter the PIN:");
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
