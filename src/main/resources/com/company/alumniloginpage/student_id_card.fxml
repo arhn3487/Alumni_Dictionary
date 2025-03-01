@@ -123,7 +123,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+                <Button mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -135,7 +135,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="205.0" styleClass="nav-button, nav-button-active" text="Alumni ID Card">
+                <Button mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="41.0" prefWidth="205.0" styleClass="nav-button, nav-button-active" text="Student ID" textAlignment="CENTER">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -153,25 +153,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Invitation.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Announcement.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                <Button mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -180,11 +162,20 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+                <Button mnemonicParsing="false" onAction="#eventstudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@photos/donate.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Announcement.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -200,7 +191,7 @@
                         <!-- Page Title -->
                         <HBox alignment="CENTER_LEFT" spacing="15.0">
                             <children>
-                                <Label styleClass="page-title" text="Your Alumni ID Card">
+                                <Label styleClass="page-title" text="Your Student ID Card">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
@@ -215,7 +206,7 @@
                         </HBox>
 
                         <!-- Instruction text -->
-                        <Label styleClass="instruction-text" text="Your official MIST alumni identification card has been automatically generated. Please verify your information below." wrapText="true">
+                        <Label styleClass="instruction-text" text="Your official MIST student identification card has been automatically generated. Please verify your information below." wrapText="true">
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />
                             </VBox.margin>
@@ -229,7 +220,7 @@
                                         <Image url="@photos/img_2.png" />
                                     </image>
                                 </ImageView>
-                                <Label styleClass="status-message" text="Your alumni ID card has been automatically generated and is ready for download." />
+                                <Label styleClass="status-message" text="Your ID card has been automatically generated and is ready for download." />
                             </children>
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />
@@ -275,7 +266,7 @@
                                             <!-- User Image -->
                                             <AnchorPane layoutX="410.0" layoutY="60.0" prefHeight="140.0" prefWidth="120.0" styleClass="user-image-container">
                                                 <children>
-                                                    <ImageView fx:id="cardUserImageView" fitHeight="130.0" fitWidth="110.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                                    <ImageView fx:id="carduserImageView" fitHeight="130.0" fitWidth="110.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
                                                 </children>
                                             </AnchorPane>
 
@@ -285,28 +276,40 @@
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="cardNamelbl" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="cardnamelbl" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <Label layoutX="20.0" layoutY="120.0" styleClass="field-label" text="Student ID">
                                                 <font>
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="studentIdlbl" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="studentIdlbl" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <Label layoutX="20.0" layoutY="170.0" styleClass="field-label" text="Department">
                                                 <font>
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="departmentlbl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="departmentlbl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <Label layoutX="20.0" layoutY="220.0" styleClass="field-label" text="Batch">
                                                 <font>
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="batchlbl" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="batchlbl" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <!-- Card Footer -->
                                             <AnchorPane layoutX="0.0" layoutY="280.0" prefHeight="60.0" prefWidth="540.0" styleClass="card-footer">

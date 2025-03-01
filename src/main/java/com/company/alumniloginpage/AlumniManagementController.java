@@ -39,7 +39,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
-public class AlumniManagementController implements Initializable {
+public class AlumniManagementController //implements Initializable
+{
 
     // FXML components for the Alumni Table
     @FXML private TableView<AlumniModel> alumniTableView;
@@ -84,21 +85,21 @@ public class AlumniManagementController implements Initializable {
     private File selectedPhotoFile;
     private static final String PHOTO_DIRECTORY = "src/main/resources/com/company/alumniloginpage/photos/profiles/";
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Initialize MongoDB connection
-        MongoDBConnection dbConnection = MongoDBConnection.getInstance();
-        alumniCollection = dbConnection.getDatabase().getCollection("info");
-
-        // Initialize ComboBoxes
-        initializeComboBoxes();
-
-        // Initialize TableView
-        initializeTableView();
-
-        // Load data from MongoDB
-        loadAlumniData();
-    }
+    //@Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        // Initialize MongoDB connection
+//        MongoDBConnection dbConnection = MongoDBConnection.getInstance();
+//        alumniCollection = dbConnection.getDatabase().getCollection("info");
+//
+//        // Initialize ComboBoxes
+//        initializeComboBoxes();
+//
+//        // Initialize TableView
+//        initializeTableView();
+//
+//        // Load data from MongoDB
+//        loadAlumniData();
+//    }
 
     private void initializeComboBoxes() {
         // Check if userTypeComboBox is not null

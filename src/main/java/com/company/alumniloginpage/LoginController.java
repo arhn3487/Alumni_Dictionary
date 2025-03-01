@@ -30,7 +30,6 @@ public class LoginController
     @FXML
     private Button loginButton;
 
-
     @FXML
     private ComboBox<String> userType;
 
