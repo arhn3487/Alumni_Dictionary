@@ -268,5 +268,14 @@ public class AlumniCardController
         stage.setFullScreen(true);
     }
 
+    public void switchalumniCard(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniCard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+        stage.setFullScreen(true);
+    }
+
 
 }

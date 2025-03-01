@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 
-public class PasswordController {
-
+public class PasswordController
+{
     private Stage stage;
     private Scene scene;
     

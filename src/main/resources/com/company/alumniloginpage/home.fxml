@@ -181,6 +181,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
          </children>
       </VBox>
    </left>
@@ -467,7 +468,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Text>
-                              <Button mnemonicParsing="false" styleClass="module-button" text="View Jobs">
+                              <Button mnemonicParsing="false" onAction="#switchToJobBoard" styleClass="module-button" text="View Jobs">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -497,7 +498,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Text>
-                              <Button mnemonicParsing="false" styleClass="module-button" text="View Events">
+                              <Button mnemonicParsing="false" onAction="#switchtoEvent" styleClass="module-button" text="View Events">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
