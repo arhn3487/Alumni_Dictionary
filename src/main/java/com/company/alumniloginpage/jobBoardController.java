@@ -151,13 +151,13 @@ public class jobBoardController implements Initializable
         });
 
         // Populate category dropdown
-        category.getItems().addAll(
+        if(category!=null)category.getItems().addAll(
                 "Engineering", "IT & Software", "Business", "Healthcare",
                 "Education", "Marketing", "Finance", "Government", "Other"
         );
 
         // Set current date as default
-        datePosted.setValue(LocalDate.now());
+        if(datePosted!=null)datePosted.setValue(LocalDate.now());
 
         // Load jobs from database
         loadJobsFromDatabase();

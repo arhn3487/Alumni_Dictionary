@@ -2,13 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -209,14 +206,14 @@
                             </padding>
                         </HBox>
 
-                        <AnchorPane prefHeight="300.0" prefWidth="740.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="519.0" prefWidth="861.0" styleClass="feature-card">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="230.0" prefWidth="810.0" styleClass="event-table">
+                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="406.0" prefWidth="810.0" styleClass="alumni-table" stylesheets="@alumnilist.css">
                                     <columns>
                                         <TableColumn fx:id="titleColumn" prefWidth="179.9999656677246" text="Event Title" />
                                         <TableColumn fx:id="dateColumn" prefWidth="176.80006408691406" text="Date" />
@@ -224,58 +221,6 @@
                                         <TableColumn fx:id="descriptionColumn" prefWidth="252.0" text="Description" />
                                     </columns>
                                 </TableView>
-                            </children>
-                            <VBox.margin>
-                                <Insets left="20.0" right="20.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </padding>
-                        </AnchorPane>
-
-                        <AnchorPane prefHeight="280.0" prefWidth="740.0" styleClass="feature-card">
-                            <children>
-                                <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Add New Event" wrappingWidth="251.0">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                </Text>
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Title:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="694.0" promptText="Enter event title" styleClass="form-field" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="200.0" promptText="Select date" styleClass="form-field" />
-
-                                <Text fill="#333333" layoutX="452.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="eventLocation" layoutX="532.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter location" styleClass="form-field" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="98.0" prefWidth="694.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
-
-                                <HBox alignment="CENTER_RIGHT" layoutX="132.0" layoutY="247.0" prefHeight="35.0" prefWidth="693.0" spacing="15.0">
-                                    <children>
-                                        <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="quick-link-button" text="Clear Fields" textFill="#333333" />
-                                        <Button fx:id="addEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="module-button" text="Add Event" textFill="WHITE" />
-                                        <Button fx:id="removeEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="logout-button" text="Remove Event" textFill="WHITE" />
-                                    </children>
-                                </HBox>
                             </children>
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />

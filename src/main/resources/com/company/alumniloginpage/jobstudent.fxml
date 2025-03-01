@@ -2,14 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -211,9 +207,9 @@
                             </padding>
                         </HBox>
 
-                        <AnchorPane prefHeight="314.0" prefWidth="856.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="474.0" prefWidth="818.0" styleClass="feature-card">
                             <children>
-                                <TableView fx:id="jobTableView" layoutX="0.0" layoutY="0.0" styleClass="job-table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <TableView fx:id="jobTableView" layoutX="30.4" layoutY="30.4" prefHeight="439.0" prefWidth="788.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
                                     <columns>
                                         <TableColumn fx:id="titleColumn" prefWidth="127.99996566772461" text="Job Title" />
                                         <TableColumn fx:id="companyColumn" prefWidth="127.99998474121094" text="Company" />
@@ -227,89 +223,6 @@
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                     </columnResizePolicy>
                                 </TableView>
-                            </children>
-                            <VBox.margin>
-                                <Insets left="20.0" right="20.0" />
-                            </VBox.margin>
-                            <padding>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </padding>
-                        </AnchorPane>
-
-                        <AnchorPane prefHeight="320.0" prefWidth="740.0" styleClass="feature-card" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                            <children>
-                                <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Post New Job Opportunity" wrappingWidth="251.0">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                </Text>
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Title:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="jobTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter job title" styleClass="form-field" />
-
-                                <Text fill="#333333" layoutX="452.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="company" layoutX="532.0" layoutY="50.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter company name" styleClass="form-field" AnchorPane.rightAnchor="20.0" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="jobLocation" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter job location" styleClass="form-field" />
-
-                                <Text fill="#333333" layoutX="452.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="salary" layoutX="532.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter salary range" styleClass="form-field" AnchorPane.rightAnchor="20.0" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <ComboBox fx:id="category" layoutX="130.0" layoutY="130.0" prefHeight="30.0" prefWidth="290.0" promptText="Select job category" styleClass="form-field" />
-
-                                <Text fill="#333333" layoutX="452.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Posted:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <DatePicker fx:id="datePosted" layoutX="532.0" layoutY="130.0" prefHeight="30.0" prefWidth="290.0" promptText="Select posting date" styleClass="form-field" AnchorPane.rightAnchor="20.0" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circular URL:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextField fx:id="circularUrl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" promptText="Enter job circular URL (e.g., https://example.com/job/123)" styleClass="form-field" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="20.0" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <TextArea fx:id="jobDescription" layoutX="130.0" layoutY="210.0" prefHeight="98.0" promptText="Enter job description" styleClass="form-field" wrapText="true" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="20.0" />
-
-                                <HBox alignment="CENTER_RIGHT" layoutX="132.0" layoutY="350.0" prefHeight="35.0" spacing="15.0" AnchorPane.rightAnchor="20.0">
-                                    <children>
-                                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClearFields" prefHeight="35.0" prefWidth="120.0" styleClass="quick-link-button" text="Clear Fields" textFill="#333333" />
-                                        <Button fx:id="addJobButton" mnemonicParsing="false" onAction="#handleAddJob" prefHeight="35.0" prefWidth="120.0" styleClass="module-button" text="Post Job" textFill="WHITE" />
-                                        <Button fx:id="removeJobButton" mnemonicParsing="false" onAction="#handleRemoveJob" prefHeight="35.0" prefWidth="120.0" styleClass="logout-button" text="Remove Job" textFill="WHITE" />
-                                    </children>
-                                    <padding>
-                                        <Insets top="20.0" />
-                                    </padding>
-                                </HBox>
                             </children>
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />

@@ -127,9 +127,9 @@ public class EventController
         });
 
         // Add event handlers for buttons
-        addEventButton.setOnAction(event -> addEvent());
-        removeEventButton.setOnAction(event -> removeEvent());
-        clearButton.setOnAction(event -> clearEventFields());
+        if(addEventButton!=null)addEventButton.setOnAction(event -> addEvent());
+        if(removeEventButton!=null)removeEventButton.setOnAction(event -> removeEvent());
+        if(clearButton!=null)clearButton.setOnAction(event -> clearEventFields());
 
         // Load events from database
         loadEventsFromDatabase();
