@@ -32,7 +32,6 @@ import java.util.Objects;
 
 public class AlumniCardController
 {
-
     private Stage stage;
     private Scene scene;
 
@@ -53,6 +52,12 @@ public class AlumniCardController
 
     @FXML
     private Label batchlbl;
+
+    @FXML
+    private Label cardnamelbl;
+
+    @FXML
+    private ImageView carduserImageView;
 
     @FXML
     public void initialize()
@@ -81,6 +86,7 @@ public class AlumniCardController
             if (user != null)
             {
                 namelbl.setText(user.getString("name"));
+                cardnamelbl.setText(user.getString("name"));
                 studentIdlbl.setText(user.getString("studentId"));
                 departmentlbl.setText(user.getString("department"));
                 batchlbl.setText(user.getString("batch"));
@@ -90,6 +96,7 @@ public class AlumniCardController
                 {
                     Image image = new Image(new File(imagePath).toURI().toString());
                     userImageView.setImage(image);
+                    carduserImageView.setImage(image);
                 }
             }
             else
@@ -104,8 +111,8 @@ public class AlumniCardController
     }
 
     @FXML
-    private void handleDownload() {
-
+    private void handleDownload()
+    {
         WritableImage writableImage = alumniCardPane.snapshot(new SnapshotParameters(), null);
 
         int width = (int) writableImage.getWidth();
@@ -139,7 +146,8 @@ public class AlumniCardController
         }
     }
 
-    public void switchBroadcast(ActionEvent event) throws IOException {
+    public void switchBroadcast(ActionEvent event) throws IOException
+    {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -147,7 +155,8 @@ public class AlumniCardController
         stage.show();
     }
 
-    public void switchToHome(ActionEvent event) throws IOException {
+    public void switchToHome(ActionEvent event) throws IOException
+    {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -155,7 +164,8 @@ public class AlumniCardController
         stage.show();
     }
 
-    public void switchalumniList(ActionEvent event) throws IOException {
+    public void switchalumniList(ActionEvent event) throws IOException
+    {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniList.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -163,7 +173,8 @@ public class AlumniCardController
         stage.show();
     }
 
-    public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{
+    public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException
+    {
         Desktop.getDesktop().browse(new URI("https://mist.ac.bd/"));
     }
 
@@ -176,7 +187,8 @@ public class AlumniCardController
         stage.show();
     }
 
-    public void switchtoEvent(ActionEvent event) throws IOException {
+    public void switchtoEvent(ActionEvent event) throws IOException
+    {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("event.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -184,8 +196,18 @@ public class AlumniCardController
         stage.show();
     }
 
-    public void logOut(ActionEvent event) throws IOException {
+    public void switchToJobBoard(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("job.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
 
+    public void logOut(ActionEvent event) throws IOException
+    {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -200,6 +222,4 @@ public class AlumniCardController
             stage.close();
         }
     }
-
-
 }

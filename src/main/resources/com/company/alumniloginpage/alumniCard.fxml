@@ -171,7 +171,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false"  prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                <Button mnemonicParsing="false" onAction="#switchToJobBoard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -189,7 +189,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
@@ -280,7 +280,7 @@
                                             <!-- User Image -->
                                             <AnchorPane layoutX="410.0" layoutY="60.0" prefHeight="140.0" prefWidth="120.0" styleClass="user-image-container">
                                                 <children>
-                                                    <ImageView fx:id="cardUserImageView" fitHeight="130.0" fitWidth="110.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                                    <ImageView fx:id="carduserImageView" fitHeight="130.0" fitWidth="110.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
                                                 </children>
                                             </AnchorPane>
 
@@ -290,28 +290,40 @@
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="cardNamelbl" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="cardnamelbl" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <Label layoutX="20.0" layoutY="120.0" styleClass="field-label" text="Student ID">
                                                 <font>
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="studentIdlbl" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="studentIdlbl" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <Label layoutX="20.0" layoutY="170.0" styleClass="field-label" text="Department">
                                                 <font>
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="departmentlbl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="departmentlbl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <Label layoutX="20.0" layoutY="220.0" styleClass="field-label" text="Batch">
                                                 <font>
                                                     <Font name="System Bold" size="16.0" />
                                                 </font>
                                             </Label>
-                                            <Label fx:id="batchlbl" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value" />
+                                            <Label fx:id="batchlbl" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font></Label>
 
                                             <!-- Card Footer -->
                                             <AnchorPane layoutX="0.0" layoutY="280.0" prefHeight="60.0" prefWidth="540.0" styleClass="card-footer">

@@ -1,5 +1,6 @@
 package com.company.alumniloginpage;
 
+import com.mongodb.client.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,10 +12,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.bson.Document;
 import org.bson.types.ObjectId;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
+
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -26,7 +29,8 @@ import javafx.scene.Node;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
-public class EventController {
+public class EventController
+{
     // FXML Injected Controls
     @FXML private TableView<Event> eventTableView;
     @FXML private TableColumn<Event, String> titleColumn;
@@ -40,6 +44,8 @@ public class EventController {
     @FXML private Button addEventButton;
     @FXML private Button removeEventButton;
     @FXML private Button clearButton;
+    @FXML private Label namelbl;
+    @FXML private ImageView userImageView;
 
     // MongoDB Connection
     private MongoDBConnection mongoDBConnection;
@@ -52,13 +58,48 @@ public class EventController {
     private ObservableList<Event> eventList = FXCollections.observableArrayList();
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    // Initialize method called when the FXML is loaded
     @FXML
-    public void initialize() {
-        // Initialize MongoDB connection
+    public void initialize()
+    {
         mongoDBConnection = MongoDBConnection.getInstance();
 
-        // Initialize event management features
+        String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
+
+        if (loggedInUserId != null)
+        {
+            try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+            {
+                MongoDatabase database = mongoClient.getDatabase("alumni");
+                MongoCollection<Document> collection = database.getCollection("info");
+
+                Document user = collection.find(new Document("studentId", loggedInUserId)).first();
+
+                if (user != null)
+                {
+                    namelbl.setText(user.getString("name"));
+
+                    String imagePath = user.getString("Image");
+                    if (imagePath != null && !imagePath.isEmpty())
+                    {
+                        javafx.scene.image.Image image = new Image(new File(imagePath).toURI().toString());
+                        userImageView.setImage(image);
+                    }
+                }
+                else
+                {
+                    System.err.println("User not found in the database.");
+                }
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error loading user data: " + e.getMessage());
+            }
+        }
+        else
+        {
+            System.err.println("No logged-in user ID found.");
+        }
+
         initializeEventManagement();
     }
 

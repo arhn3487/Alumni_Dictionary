@@ -150,10 +150,7 @@
                                 </DropShadow>
                             </effect>
                         </Circle>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/profile_holder.png" />
-                            </image>
+                        <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                             <effect>
                                 <DropShadow height="10.0" radius="4.5" width="10.0">
                                     <color>
@@ -164,7 +161,7 @@
                         </ImageView>
                     </children>
                 </StackPane>
-                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome, Alumni">
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -176,6 +173,18 @@
                         </DropShadow>
                     </effect>
                 </Label>
+            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="3.0" radius="1.0" width="3.0">
+                     <color>
+                        <Color opacity="0.4" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
                 <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">

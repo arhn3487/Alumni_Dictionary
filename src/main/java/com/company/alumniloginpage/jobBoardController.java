@@ -1,5 +1,6 @@
 package com.company.alumniloginpage;
 
+import com.mongodb.client.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,17 +12,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import org.bson.Document;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import static com.mongodb.client.model.Filters.eq;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -75,6 +76,47 @@ public class jobBoardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
+
+        if (loggedInUserId != null)
+        {
+            try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+            {
+                MongoDatabase database = mongoClient.getDatabase("alumni");
+                MongoCollection<Document> collection = database.getCollection("info");
+
+                Document user = collection.find(new Document("studentId", loggedInUserId)).first();
+
+                if (user != null)
+                {
+                    namelbl.setText(user.getString("name"));
+
+                    String imagePath = user.getString("Image");
+                    if (imagePath != null && !imagePath.isEmpty())
+                    {
+                        javafx.scene.image.Image image = new Image(new File(imagePath).toURI().toString());
+                        userImageView.setImage(image);
+                    }
+                }
+                else
+                {
+                    System.err.println("User not found in the database.");
+                }
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error loading user data: " + e.getMessage());
+            }
+        }
+        else
+        {
+            System.err.println("No logged-in user ID found.");
+        }
+
+
+
         // Initialize MongoDB connection
         initializeDatabase();
 

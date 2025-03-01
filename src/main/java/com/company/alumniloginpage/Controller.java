@@ -33,7 +33,6 @@ import java.net.URISyntaxException;
 import java.util.*;
 import java.util.List;
 
-
 public class Controller
 {
     @FXML private TextField name, studentId, batch, workplace, email, linkedin, phone, facebook, address, attachmentPath, imagePathField;
@@ -77,7 +76,8 @@ public class Controller
 
     private MongoDBConnection mongoDBConnection;
     @FXML
-    public void initialize() {
+    public void initialize()
+    {
         mongoDBConnection = new MongoDBConnection();
 
         String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
@@ -131,17 +131,22 @@ public class Controller
         // setupTableView();
     }
 
-    private void initializeComboBox(ComboBox<String> comboBox, String name, String... values) {
-        if (comboBox == null) {
+    private void initializeComboBox(ComboBox<String> comboBox, String name, String... values)
+    {
+        if (comboBox == null)
+        {
             System.out.println("Not found any fx-id named " + name);
-        } else {
+        }
+        else
+        {
             comboBox.setItems(FXCollections.observableArrayList(values));
             comboBox.setVisibleRowCount(5);
             System.out.println("Successfully initialized " + name);
         }
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message)
+    {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -152,7 +157,6 @@ public class Controller
     @FXML
     private void saveinfo()
     {
-        // Collect data from TextFields
         String dname = name.getText();
         String did = studentId.getText();
         String dbatch = batch.getText();
@@ -165,16 +169,17 @@ public class Controller
         String dImage=imagePathField.getText();
         String duserType=userType.getValue();
 
-        // Collect data from RadioButtons
         String dgender = "";
-        if (male.isSelected()) {
+        if (male.isSelected())
+        {
             dgender = "Male";
-        } else if (female.isSelected()) {
+        }
+        else if (female.isSelected())
+        {
             dgender = "Female";
         }
 
-        // Collect data from ComboBoxes
-        String ddegree = degree.getValue(); // Get selected value from ComboBox
+        String ddegree = degree.getValue();
         String ddepartment = department.getValue();
         String dgraduationYear = graduationYear.getValue();
 
