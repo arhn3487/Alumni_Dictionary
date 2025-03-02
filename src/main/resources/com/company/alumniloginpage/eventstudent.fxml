@@ -206,21 +206,24 @@
                             </padding>
                         </HBox>
 
-                        <AnchorPane prefHeight="519.0" prefWidth="861.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="519.0" prefWidth="861.0" styleClass="feature-card" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" prefWidth="821.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="titleColumn" prefWidth="159.9999656677246" text="Event Title" />
-                                        <TableColumn fx:id="dateColumn" prefWidth="156.80006408691406" text="Date" />
-                                        <TableColumn fx:id="locationColumn" prefWidth="174.39996337890625" text="Location" />
-                                        <TableColumn fx:id="descriptionColumn" prefWidth="212.0" text="Description" />
-                                        <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action" />
+                                        <TableColumn fx:id="titleColumn" text="Event Title" />
+                                        <TableColumn fx:id="dateColumn" text="Date" />
+                                        <TableColumn fx:id="locationColumn" text="Location" />
+                                        <TableColumn fx:id="descriptionColumn" text="Description" />
+                                        <TableColumn fx:id="actionColumn" text="Action" />
                                     </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
                                 </TableView>
 
                                 <HBox alignment="CENTER" layoutX="20.0" layoutY="355.0" spacing="10.0">
@@ -234,14 +237,17 @@
                                     </children>
                                 </HBox>
 
-                                <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" prefWidth="821.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="participantNameColumn" prefWidth="200.0" text="Name" />
-                                        <TableColumn fx:id="participantIdColumn" prefWidth="100.0" text="Student ID" />
-                                        <TableColumn fx:id="participantBatchColumn" prefWidth="144.79998779296875" text="Batch" />
-                                        <TableColumn fx:id="participantDeptColumn" prefWidth="188.0" text="Department" />
-                                        <TableColumn fx:id="participantPhoneColumn" prefWidth="176.0" text="Phone Number" />
+                                        <TableColumn fx:id="participantNameColumn" text="Name" />
+                                        <TableColumn fx:id="participantIdColumn" text="Student ID" />
+                                        <TableColumn fx:id="participantBatchColumn" text="Batch" />
+                                        <TableColumn fx:id="participantDeptColumn" text="Department" />
+                                        <TableColumn fx:id="participantPhoneColumn" text="Phone Number" />
                                     </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
                                 </TableView>
                             </children>
                             <VBox.margin>

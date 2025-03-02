@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
+<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@Deshboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.DashboardController">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+      <HBox fx:id="topBar" alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@photos/MISTLogo.png" />
                </image>
@@ -32,23 +29,23 @@
                   <Insets left="20.0" right="15.0" />
                </HBox.margin>
             </ImageView>
-            <VBox alignment="CENTER_LEFT">
+            <VBox fx:id="titleContainer" alignment="CENTER_LEFT">
                <children>
-                  <Label styleClass="university-name" text="Military Institute of Science and Technology">
+                  <Label fx:id="universityNameLabel" styleClass="university-name" text="Military Institute of Science and Technology">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label styleClass="alumni-portal" text="Alumni Portal">
+                  <Label fx:id="portalLabel" styleClass="alumni-portal" text="Alumni Portal">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <HBox fx:id="headerButtonContainer" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" stylesheets="@broadcast.css" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" styleClass="header-button" text="Help">
+                  <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -60,7 +57,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
+                  <Button fx:id="settingsButton" mnemonicParsing="false" styleClass="header-button" text="Settings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -72,7 +69,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                  <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -90,42 +87,24 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+      <VBox fx:id="sidebar" prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
+            <VBox fx:id="profileContainer" alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Circle radius="50.0" styleClass="profile-circle">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.10588235408067703" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Circle>
-                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-image" />
                </children>
-            </StackPane>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
+            </VBox>
+            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" stylesheets="@broadcast.css" textAlignment="CENTER">
+            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+            <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Dashboard">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -137,7 +116,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Student ID">
+            <Button fx:id="studentIdButton" mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Student ID">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -146,7 +125,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchtoAlumniListStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+            <Button fx:id="alumniDirectoryButton" mnemonicParsing="false" onAction="#switchtoAlumniListStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -155,7 +134,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+            <Button fx:id="jobOpportunitiesButton" mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -164,7 +143,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#eventstudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Events">
+            <Button fx:id="jobOpportunitiesButton1" mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -173,7 +152,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
+            <Button fx:id="mistWebsiteButton" mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST website">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -186,93 +165,100 @@
       </VBox>
    </left>
    <center>
-      <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
-         <content>
-            <VBox spacing="20.0" style="-fx-background-color: #F0F5FF;" VBox.vgrow="ALWAYS">
-               <children>
-                  <HBox alignment="CENTER_LEFT">
+      <AnchorPane fx:id="contentArea" styleClass="content-area" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="chartsContainer" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <!-- Chart Container -->
+               <HBox fx:id="pieChartsContainer" spacing="20.0" VBox.vgrow="ALWAYS">
+                  <!-- First Pie Chart -->
+                  <VBox fx:id="userDistributionContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Events">
+                        <Label fx:id="userDistributionLabel" styleClass="chart-title" text="User Distribution">
                            <font>
-                              <Font name="System Bold" size="28.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
-                        </Text>
+                        </Label>
+                        <PieChart fx:id="userDistributionChart" animated="true" legendVisible="true" VBox.vgrow="ALWAYS" />
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets left="20.0" top="10.0" />
-                     </padding>
-                  </HBox>
-
-                  <AnchorPane prefHeight="519.0" prefWidth="861.0" styleClass="feature-card">
-                     <children>
-                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Text>
-                        <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" prefWidth="810.0" styleClass="alumni-table" stylesheets="@alumnilist.css">
-                           <columns>
-                              <TableColumn fx:id="titleColumn" prefWidth="159.9999656677246" text="Event Title" />
-                              <TableColumn fx:id="dateColumn" prefWidth="156.80006408691406" text="Date" />
-                              <TableColumn fx:id="locationColumn" prefWidth="174.39996337890625" text="Location" />
-                              <TableColumn fx:id="descriptionColumn" prefWidth="212.0" text="Description" />
-                              <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action" />
-                           </columns>
-                        </TableView>
-
-                        <HBox alignment="CENTER" layoutX="20.0" layoutY="355.0" spacing="10.0">
-                           <children>
-                              <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Event Participants">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                              <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="action-button" text="View Participants" />
-                           </children>
-                        </HBox>
-
-                        <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" prefWidth="810.0" styleClass="alumni-table" stylesheets="@alumnilist.css">
-                           <columns>
-                              <TableColumn fx:id="participantNameColumn" prefWidth="200.0" text="Name" />
-                              <TableColumn fx:id="participantIdColumn" prefWidth="100.0" text="Student ID" />
-                              <TableColumn fx:id="participantBatchColumn" prefWidth="144.79998779296875" text="Batch" />
-                              <TableColumn fx:id="participantDeptColumn" prefWidth="188.0" text="Department" />
-                              <TableColumn fx:id="participantPhoneColumn" prefWidth="176.0" text="Phone Number" />
-                           </columns>
-                        </TableView>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="20.0" right="20.0" />
-                     </VBox.margin>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
-                  </AnchorPane>
+                  </VBox>
 
-                  <AnchorPane styleClass="footer" VBox.vgrow="ALWAYS">
+                  <!-- Email Communication Section -->
+                  <!-- Email Communication Section -->
+                  <VBox fx:id="emailCommunicationContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
                      <children>
-                        <HBox alignment="CENTER" layoutX="265.0" layoutY="31.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="emailCommunicationLabel" styleClass="chart-title" text="Communicate with Admin">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <VBox spacing="10.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="© 2025 MIST Alumni Association" />
-                              <Label text="|" />
-                              <Label text="Email: arhasan3487@gmail.com" />
-                              <Label text="|" />
-                              <Label text="Phone: 01540194651" />
-                              <Label text="|" />
-                              <Label text="Website: mist.ac.bd" />
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Label styleClass="form-label" text="Subject:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="emailSubject" promptText="Enter subject" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <TextArea fx:id="emailContent" prefHeight="200.0" promptText="Compose your message..." VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextArea>
+                              <HBox alignment="BOTTOM_RIGHT">
+                                 <children>
+                                    <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" styleClass="send-button" text="Send">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@photos/submit.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
                      </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </AnchorPane>
-               </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </HBox>
+
+               <!-- Department Distribution Chart -->
+               <VBox fx:id="departmentChartContainer" styleClass="chart-card" VBox.vgrow="ALWAYS">
+                  <children>
+                     <Label fx:id="departmentDistributionLabel" styleClass="section-heading" text="Department Distribution">
+                        <font>
+                           <Font name="System Bold" size="20.0" />
+                        </font>
+                     </Label>
+                     <BarChart fx:id="departmentChart" animated="true" legendVisible="false" VBox.vgrow="ALWAYS">
+                        <xAxis>
+                           <CategoryAxis fx:id="departmentAxis" side="BOTTOM" />
+                        </xAxis>
+                        <yAxis>
+                           <NumberAxis fx:id="percentageAxis" label="Percentage (%)" side="LEFT" />
+                        </yAxis>
+                     </BarChart>
+                  </children>
+                  <padding>
+                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                  </padding>
+               </VBox>
             </VBox>
-         </content>
-      </ScrollPane>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>

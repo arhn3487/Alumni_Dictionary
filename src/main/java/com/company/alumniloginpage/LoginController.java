@@ -164,6 +164,7 @@ public class LoginController
             Parent root = FXMLLoader.load(getClass().getResource("Admin_deshboard.fxml"));
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -173,6 +174,7 @@ public class LoginController
     private void switchToStudenTHome() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("scene1.fxml"));
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
             stage.show();

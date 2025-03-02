@@ -1,0 +1,166 @@
+/* dashboard.css */
+
+/* Main Container */
+.main-container {
+    -fx-background-color: #F0F5FF;
+}
+
+/* Top Bar Styling */
+.top-bar {
+    -fx-background-color: #1A2F60;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+.university-name {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.alumni-portal {
+    -fx-text-fill: #B2C2E0;
+}
+
+/* Header Buttons */
+.header-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-padding: 8px 12px;
+    -fx-border-radius: 4px;
+}
+
+.header-button:hover {
+    -fx-background-color: rgba(255,255,255,0.1);
+}
+
+.logout-button {
+    -fx-background-color: #3A5999;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-padding: 8px 12px;
+    -fx-border-radius: 4px;
+}
+
+.logout-button:hover {
+    -fx-background-color: #4A69B9;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    -fx-background-color: #1A2F60;
+    -fx-padding: 0;
+}
+
+.profile-image {
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.welcome-text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 20px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255,255,255,0.1);
+}
+
+.nav-button-active {
+    -fx-background-color: #3A5999;
+    -fx-border-color: #5B8BE7;
+    -fx-border-width: 0 0 0 4px;
+}
+
+/* Chart Styling */
+.content-area {
+    -fx-background-color: #F0F5FF;
+    -fx-padding: 20px;
+}
+
+.chart-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);
+    -fx-padding: 15px;
+}
+
+.chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A2F60;
+}
+
+.section-heading {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A2F60;
+}
+
+/* PieChart Colors */
+.chart-pie {
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+}
+
+.data0.chart-pie { -fx-pie-color: #3A5999; }
+.data1.chart-pie { -fx-pie-color: #5B8BE7; }
+.data2.chart-pie { -fx-pie-color: #7FACFF; }
+.data3.chart-pie { -fx-pie-color: #A3C5FF; }
+.data4.chart-pie { -fx-pie-color: #D1E1FF; }
+
+/* BarChart Colors */
+.data0.chart-bar { -fx-bar-fill: #3A5999; }
+.data1.chart-bar { -fx-bar-fill: #5B8BE7; }
+.data2.chart-bar { -fx-bar-fill: #7FACFF; }
+.data3.chart-bar { -fx-bar-fill: #A3C5FF; }
+.data4.chart-bar { -fx-bar-fill: #D1E1FF; }
+.data5.chart-bar { -fx-bar-fill: #3F6ABF; }
+.data6.chart-bar { -fx-bar-fill: #4F7BD4; }
+.data7.chart-bar { -fx-bar-fill: #638CE8; }
+
+/* Chart Labels */
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #333333;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #8A8A8A;
+    -fx-fill: #8A8A8A;
+}
+
+.chart-pie-label {
+    -fx-fill: #333333;
+    -fx-font-size: 1em;
+}
+
+.axis {
+    -fx-font-size: 1.2em;
+    -fx-tick-label-fill: #1A2F60;
+    -fx-font-family: Verdana;
+}
+
+.axis-label {
+    -fx-text-fill: #1A2F60;
+}
+
+/* Animation Support */
+.animated-bar {
+    -fx-opacity: 0;
+}
