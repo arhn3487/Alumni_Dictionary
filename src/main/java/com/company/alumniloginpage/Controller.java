@@ -581,6 +581,24 @@ public class Controller
         stage.setFullScreen(true);
     }
 
+    public void switchToAdminHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
     public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{
         Desktop.getDesktop().browse(new URI("https://mist.ac.bd/"));
     }

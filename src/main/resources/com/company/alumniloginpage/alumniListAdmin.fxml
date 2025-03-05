@@ -14,128 +14,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@AdminController.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AdminController">
-    <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="header-bar">
-            <children>
-                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@photos/MISTLogo.png" />
-                    </image>
-                    <HBox.margin>
-                        <Insets left="20.0" right="15.0" />
-                    </HBox.margin>
-                    <effect>
-                        <DropShadow color="rgba(0,0,0,0.3)" radius="5.0" />
-                    </effect>
-                </ImageView>
-                <VBox alignment="CENTER_LEFT">
-                    <children>
-                        <Label styleClass="university-name" text="Military Institute of Science and Technology">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </Label>
-                        <Label styleClass="alumni-portal" text="Alumni Portal">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </VBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                    <children>
-                        <Label fx:id="contactNumberLabel" styleClass="contact-label" text="Contact: 01540194651">
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                            <textFill>
-                                <LinearGradient endX="1.0" endY="1.0">
-                                    <stops>
-                                        <Stop>
-                                            <color>
-                                                <Color red="0.6959811449050903" green="0.5239376425743103" blue="0.9368420839309692" />
-                                            </color>
-                                        </Stop>
-                                        <Stop offset="1.0">
-                                            <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                            </color>
-                                        </Stop>
-                                    </stops>
-                                </LinearGradient>
-                            </textFill>
-                        </Label>
-                        <Button mnemonicParsing="false" styleClass="header-button" text="Help">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                            <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/help.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                            <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" styleClass="alumni-list">
-                                    <image>
-                                        <Image url="@photos/settings2.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                            <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/logout_icon.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                    </children>
-                </HBox>
-            </children>
-        </HBox>
-    </top>
     <left>
-        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar">
+        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css">
             <children>
-                <VBox alignment="CENTER">
-                    <children>
-                        <Circle fx:id="profileCircle" radius="50.0" styleClass="profile-circle" />
-                        <ImageView fx:id="profileImageView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/profile_holder.png" />
-                            </image>
-                            <VBox.margin>
-                                <Insets top="-90.0" />
-                            </VBox.margin>
-                        </ImageView>
-                    </children>
-                    <VBox.margin>
-                        <Insets left="60.0" top="30.0" />
-                    </VBox.margin>
-                </VBox>
-                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome, Admin">
+            <VBox fx:id="profileContainer" alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-image" />
+               </children>
+            </VBox>
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -143,6 +33,11 @@
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
+            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
                 <Button mnemonicParsing="false" onAction="#switchToAdminHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                     <VBox.margin>
                         <Insets top="20.0" />
@@ -155,16 +50,16 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Control">
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Alumni Directory Manage">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@photos/time.png" />
+                                <Image url="@photos/Alumni%20List.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Announcements">
+                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Broadcast">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -173,59 +68,33 @@
                         </ImageView>
                     </graphic>
                 </Button>
+                <Button mnemonicParsing="false" onAction="#switchToJobs" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Job%20board.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
                 <Button mnemonicParsing="false" onAction="#switchToEvents" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@photos/Event.png" />
+                                <Image url="@photos/event_icon.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchToJobs" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+                <Button mnemonicParsing="false" onAction="#switchToWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@photos/MISTLogo.png" />
+                                <Image url="@photos/Announcement.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchToWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Website">
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/wave.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-
-                <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Label styleClass="version-label" text="Version 1.0.0">
-                            <VBox.margin>
-                                <Insets bottom="10.0" />
-                            </VBox.margin>
-                            <textFill>
-                                <LinearGradient endX="1.0" endY="1.0">
-                                    <stops>
-                                        <Stop>
-                                            <color>
-                                                <Color red="0.9052631855010986" green="0.6605068445205688" blue="0.6605068445205688" />
-                                            </color>
-                                        </Stop>
-                                        <Stop offset="1.0">
-                                            <color>
-                                                <Color red="1.0" green="1.0" blue="1.0" />
-                                            </color>
-                                        </Stop>
-                                    </stops>
-                                </LinearGradient>
-                            </textFill>
-                        </Label>
-                    </children>
-                </VBox>
             </children>
         </VBox>
     </left>
@@ -345,4 +214,69 @@
             </content>
         </ScrollPane>
     </center>
+   <top>
+      <HBox fx:id="topBar" alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@photos/MISTLogo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="20.0" right="15.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox fx:id="titleContainer" alignment="CENTER_LEFT">
+               <children>
+                  <Label fx:id="universityNameLabel" styleClass="university-name" text="Military Institute of Science and Technology">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="portalLabel" styleClass="alumni-portal" text="Alumni Portal">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox fx:id="headerButtonContainer" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" stylesheets="@broadcast.css" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/help.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="settingsButton" mnemonicParsing="false" styleClass="header-button" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@photos/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="90.0" styleClass="logout-button" text="Sign Out">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/logOut.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

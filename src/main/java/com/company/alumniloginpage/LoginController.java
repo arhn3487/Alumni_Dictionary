@@ -89,8 +89,10 @@ public class LoginController
         }
     }
 
-    private String hashPassword(String password) {
-        try {
+    private String hashPassword(String password)
+    {
+        try
+        {
             // Add the salt "arafat" to the password before hashing
             String saltedPassword = password + "arafat";
 
@@ -109,7 +111,9 @@ public class LoginController
             }
             return hexString.toString();
 
-        } catch (NoSuchAlgorithmException e) {
+        }
+        catch (NoSuchAlgorithmException e)
+        {
             e.printStackTrace();
             return null;
         }
@@ -159,26 +163,34 @@ public class LoginController
     }
 
     @FXML
-    private void switchToAdminHome() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Admin_deshboard.fxml"));
+    private void switchToAdminHome()
+    {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("Admin_dashboard.fxml"));
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
             stage.setFullScreen(true);
             stage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    private void switchToStudenTHome() {
-        try {
+    private void switchToStudenTHome()
+    {
+        try
+        {
             Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
             //Parent root = FXMLLoader.load(getClass().getResource("scene1.fxml"));
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }

@@ -1,12 +1,13 @@
 package com.company.alumniloginpage;
 
-import javafx.beans.property.SimpleStringProperty;
+import com.mongodb.client.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,8 +21,6 @@ import javafx.util.Callback;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
 import java.io.ByteArrayInputStream;
@@ -29,9 +28,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 
-public class AdminController implements Initializable {
+public class AdminController implements Initializable
+{
     @FXML
     private ComboBox<String> departmentComboBox;
 
@@ -93,6 +95,12 @@ public class AdminController implements Initializable {
     @FXML
     private ImageView bannerImageView;
 
+    @FXML
+    private Label namelbl;
+
+    @FXML
+    private ImageView userImageView;
+
     private ObservableList<AlumniData> alumniDataList = FXCollections.observableArrayList();
 
     private MongoDBConnection dbConnection;
@@ -108,6 +116,50 @@ public class AdminController implements Initializable {
         dbConnection = MongoDBConnection.getInstance();
         collection = dbConnection.getDatabase().getCollection("info");
 
+
+
+
+        String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
+
+        if (loggedInUserId != null)
+        {
+            try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+            {
+                MongoDatabase database = mongoClient.getDatabase("alumni");
+                MongoCollection<Document> collection = database.getCollection("info");
+
+                Document user = collection.find(new Document("studentId", loggedInUserId)).first();
+
+                if (user != null)
+                {
+                    namelbl.setText(user.getString("name"));
+
+                    String imagePath = user.getString("Image");
+                    if (imagePath != null && !imagePath.isEmpty())
+                    {
+                        javafx.scene.image.Image image = new Image(new File(imagePath).toURI().toString());
+                        userImageView.setImage(image);
+                    }
+                }
+                else
+                {
+                    System.err.println("User not found in the database.");
+                }
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error loading user data: " + e.getMessage());
+            }
+        }
+        else
+        {
+            System.err.println("No logged-in user ID found.");
+        }
+
+
+
+
+
         // Set up ComboBoxes
         setupComboBoxes();
 
@@ -115,7 +167,7 @@ public class AdminController implements Initializable {
         setupTableColumns();
 
         // Set up contact information
-        contactNumberLabel.setText("Contact: 01540194651");
+        //contactNumberLabel.setText("Contact: 01540194651");
 
         // Load banner image if available
         try {
@@ -374,7 +426,7 @@ public class AdminController implements Initializable {
     @FXML
     private void switchToAdminHome() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("admin-dashboard.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Admin_dashboard.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -404,7 +456,7 @@ public class AdminController implements Initializable {
     @FXML
     private void switchToEvents() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("admin-events.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("event.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -416,7 +468,7 @@ public class AdminController implements Initializable {
     @FXML
     private void switchToJobs() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("admin-jobs.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("job.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
@@ -440,14 +492,25 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void logOut() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-            Stage stage = (Stage) totalCountLabel.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void logOut(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Log Out");
+        alert.setHeaderText("You're about to logout");
+        alert.setContentText("Do you want to log out?");
+
+        // Get the user's response
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Proceed with logout only if user confirms
+            Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.close();
+        } else {
+            // User clicked Cancel, so do nothing
+            System.out.println("Logout cancelled");
         }
     }
 }

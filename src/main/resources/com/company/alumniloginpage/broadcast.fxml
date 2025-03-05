@@ -127,7 +127,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+            <Button mnemonicParsing="false" onAction="#switchToAdminHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -139,16 +139,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni ID Card">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/idcard.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+            <Button mnemonicParsing="false" onAction="#switchtoAlumniListAdmin" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory Manage">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -157,7 +148,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Announcements">
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Broadcast">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -166,16 +157,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events Calendar">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/Announcement.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#switchToJobBoard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+            <Button mnemonicParsing="false" onAction="#switchToJobBoard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -184,11 +166,20 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
+            <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/event_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photos/donate.png" />
+                        <Image url="@photos/Announcement.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -148,6 +148,7 @@ public class EventController {
     // Method to initialize participant management functionality
     private void initializeParticipantManagement() {
         // Set up the participant TableView with columns
+        if(participantNameColumn==null) return;
         participantNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         participantIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         participantBatchColumn.setCellValueFactory(new PropertyValueFactory<>("batch"));
