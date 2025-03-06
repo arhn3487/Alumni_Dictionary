@@ -12,6 +12,7 @@ module com.company.alumniloginpage {
     requires org.mongodb.driver.core;
     requires java.mail;
     requires activation;
+    requires org.apache.pdfbox;
 
     opens com.company.alumniloginpage to javafx.fxml;
     exports com.company.alumniloginpage;

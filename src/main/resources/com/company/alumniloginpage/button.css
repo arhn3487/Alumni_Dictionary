@@ -1,0 +1,323 @@
+/* Main hover effect for any element */
+.hover-effect {
+  transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Apply to pie chart segments */
+.chart-segment {
+  transition: all 0.3s ease;
+}
+
+.chart-segment:hover {
+  transform: translateY(-5px) scale(1.03);
+  filter: brightness(1.1);
+}
+
+/* Apply to bar chart columns */
+.bar-column {
+  transition: all 0.3s ease;
+}
+
+.bar-column:hover {
+  transform: translateY(-5px);
+  filter: brightness(1.1);
+}
+
+/* 20 Responsive Button Styles with Different Colors */
+
+/* Base button style */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button 1 - Blue */
+.btn-blue {
+  background-color: #4285F4;
+  color: white;
+}
+
+.btn-blue:hover {
+  background-color: #5a95f5;
+}
+
+/* Button 2 - Red */
+.btn-red {
+  background-color: #EA4335;
+  color: white;
+}
+
+.btn-red:hover {
+  background-color: #ef5a4e;
+}
+
+/* Button 3 - Green */
+.btn-green {
+  background-color: #34A853;
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #40b761;
+}
+
+/* Button 4 - Yellow */
+.btn-yellow {
+  background-color: #FBBC05;
+  color: white;
+}
+
+.btn-yellow:hover {
+  background-color: #fcc426;
+}
+
+/* Button 5 - Purple */
+.btn-purple {
+  background-color: #8E44AD;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #9b59b6;
+}
+
+/* Button 6 - Orange */
+.btn-orange {
+  background-color: #FF5722;
+  color: white;
+}
+
+.btn-orange:hover {
+  background-color: #ff7043;
+}
+
+/* Button 7 - Teal */
+.btn-teal {
+  background-color: #009688;
+  color: white;
+}
+
+.btn-teal:hover {
+  background-color: #00b09b;
+}
+
+/* Button 8 - Pink */
+.btn-pink {
+  background-color: #E91E63;
+  color: white;
+}
+
+.btn-pink:hover {
+  background-color: #ec407a;
+}
+
+/* Button 9 - Gray */
+.btn-gray {
+  background-color: #607D8B;
+  color: white;
+}
+
+.btn-gray:hover {
+  background-color: #78909c;
+}
+
+/* Button 10 - Brown */
+.btn-brown {
+  background-color: #795548;
+  color: white;
+}
+
+.btn-brown:hover {
+  background-color: #8d6e63;
+}
+
+/* Button 11 - Indigo */
+.btn-indigo {
+  background-color: #3F51B5;
+  color: white;
+}
+
+.btn-indigo:hover {
+  background-color: #5c6bc0;
+}
+
+/* Button 12 - Light Blue */
+.btn-lightblue {
+  background-color: #03A9F4;
+  color: white;
+}
+
+.btn-lightblue:hover {
+  background-color: #29b6f6;
+}
+
+/* Button 13 - Lime */
+.btn-lime {
+  background-color: #CDDC39;
+  color: white;
+}
+
+.btn-lime:hover {
+  background-color: #d4e157;
+}
+
+/* Button 14 - Amber */
+.btn-amber {
+  background-color: #FFC107;
+  color: white;
+}
+
+.btn-amber:hover {
+  background-color: #ffca28;
+}
+
+/* Button 15 - Cyan */
+.btn-cyan {
+  background-color: #00BCD4;
+  color: white;
+}
+
+.btn-cyan:hover {
+  background-color: #26c6da;
+}
+
+/* Button 16 - Deep Orange */
+.btn-deep-orange {
+  background-color: #FF5722;
+  color: white;
+}
+
+.btn-deep-orange:hover {
+  background-color: #ff7043;
+}
+
+/* Button 17 - Navy */
+.btn-navy {
+  background-color: #1A237E;
+  color: white;
+}
+
+.btn-navy:hover {
+  background-color: #283593;
+}
+
+/* Button 18 - Gradient Blue-Purple */
+.btn-gradient-blue-purple {
+  background: linear-gradient(45deg, #2196F3, #9C27B0);
+  color: white;
+}
+
+.btn-gradient-blue-purple:hover {
+  background: linear-gradient(45deg, #42a5f5, #ab47bc);
+}
+
+/* Button 19 - Gradient Green-Teal */
+.btn-gradient-green-teal {
+  background: linear-gradient(45deg, #4CAF50, #009688);
+  color: white;
+}
+
+.btn-gradient-green-teal:hover {
+  background: linear-gradient(45deg, #66bb6a, #26a69a);
+}
+
+/* Button 20 - Gradient Orange-Red */
+.btn-gradient-orange-red {
+  background: linear-gradient(45deg, #FF9800, #F44336);
+  color: white;
+}
+
+.btn-gradient-orange-red:hover {
+  background: linear-gradient(45deg, #ffa726, #ef5350);
+}
+
+/* Pulse effect button (can be combined with any color) */
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Ripple effect */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+.btn-ripple:active:after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Media queries for responsive buttons */
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+  }
+}

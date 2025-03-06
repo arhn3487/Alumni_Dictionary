@@ -23,9 +23,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
     <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1920.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -93,7 +93,7 @@
         </HBox>
     </top>
     <left>
-        <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+        <VBox prefHeight="1000.0" prefWidth="240.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
             <children>
                 <StackPane prefHeight="150.0" prefWidth="200.0">
                     <children>
@@ -118,17 +118,17 @@
                         <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </StackPane>
-                <Label alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="240.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" stylesheets="@broadcast.css" textAlignment="CENTER">
+                <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="240.0" styleClass="welcome-text" stylesheets="@broadcast.css" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -140,7 +140,16 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory Manage">
+                <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Alumni ID Card">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/idcard.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Alumni Directory">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -149,7 +158,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Broadcast">
+                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Announcements">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -158,25 +167,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchToJobBoard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/job.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Events">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/donate.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Events Calendar">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -185,7 +176,24 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Job Opportunities">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/job.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button, nav-button-active" text="Event Management">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/donate.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
             </children>
         </VBox>
     </left>
@@ -210,20 +218,46 @@
                             </padding>
                         </HBox>
 
-                        <AnchorPane prefHeight="300.0" prefWidth="740.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="580.0" prefWidth="1680.0" styleClass="feature-card">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="230.0" prefWidth="810.0" styleClass="event-table">
+                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" prefWidth="1640.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="titleColumn" prefWidth="179.9999656677246" text="Event Title" />
-                                        <TableColumn fx:id="dateColumn" prefWidth="176.80006408691406" text="Date" />
-                                        <TableColumn fx:id="locationColumn" prefWidth="194.39996337890625" text="Location" />
-                                        <TableColumn fx:id="descriptionColumn" prefWidth="252.0" text="Description" />
+                                        <TableColumn fx:id="titleColumn" prefWidth="400.0" text="Event Title" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="200.0" text="Date" />
+                                        <TableColumn fx:id="locationColumn" prefWidth="250.0" text="Location" />
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="600.0" text="Description" />
+                                        <TableColumn fx:id="actionColumn" prefWidth="150.0" text="Action" />
                                     </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                                <HBox alignment="CENTER" layoutX="20.0" layoutY="355.0" spacing="10.0">
+                                    <children>
+                                        <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Event Participants">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="action-button" text="View Participants" />
+                                    </children>
+                                </HBox>
+                                <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" prefWidth="1640.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                    <columns>
+                                        <TableColumn fx:id="participantNameColumn" prefWidth="350.0" text="Name" />
+                                        <TableColumn fx:id="participantIdColumn" prefWidth="200.0" text="Student ID" />
+                                        <TableColumn fx:id="participantBatchColumn" prefWidth="150.0" text="Batch" />
+                                        <TableColumn fx:id="participantDeptColumn" prefWidth="250.0" text="Department" />
+                                        <TableColumn fx:id="participantPhoneColumn" prefWidth="200.0" text="Phone Number" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
                                 </TableView>
                             </children>
                             <VBox.margin>
@@ -234,7 +268,7 @@
                             </padding>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="280.0" prefWidth="740.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="300.0" prefWidth="1680.0" styleClass="feature-card">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Add New Event" wrappingWidth="251.0">
                                     <font>
@@ -247,36 +281,43 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="694.0" promptText="Enter event title" styleClass="form-field" />
+                                <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="1400.0" promptText="Enter event title" styleClass="form-field" />
 
                                 <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="200.0" promptText="Select date" styleClass="form-field" />
+                                <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="400.0" promptText="Select date" styleClass="form-field" />
 
-                                <Text fill="#333333" layoutX="452.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
+                                <Text fill="#333333" layoutX="550.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="eventLocation" layoutX="532.0" layoutY="90.0" prefHeight="30.0" prefWidth="290.0" promptText="Enter location" styleClass="form-field" />
+                                <TextField fx:id="eventLocation" layoutX="650.0" layoutY="90.0" prefHeight="30.0" prefWidth="880.0" promptText="Enter location" styleClass="form-field" />
 
                                 <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="98.0" prefWidth="694.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
+                                <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="90.0" prefWidth="1400.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
 
-                                <HBox alignment="CENTER_RIGHT" layoutX="132.0" layoutY="247.0" prefHeight="35.0" prefWidth="693.0" spacing="15.0">
+                                <Text fill="#333333" layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Image:" wrappingWidth="100.0">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Text>
+                                <Button fx:id="uploadImageButton" layoutX="130.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="quick-link-button" text="Upload Image" textFill="#333333" />
+                                <HBox alignment="CENTER_RIGHT" layoutX="1090.0" layoutY="225.0" spacing="20.0">
                                     <children>
                                         <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="quick-link-button" text="Clear Fields" textFill="#333333" />
                                         <Button fx:id="addEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="module-button" text="Add Event" textFill="WHITE" />
-                                        <Button fx:id="removeEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="logout-button" text="Remove Event" textFill="WHITE" />
+                                        <Button fx:id="removeEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="logout-button" text="Remove" textFill="WHITE" />
                                     </children>
                                 </HBox>
+
                             </children>
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />

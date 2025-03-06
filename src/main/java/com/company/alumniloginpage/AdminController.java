@@ -429,6 +429,8 @@ public class AdminController implements Initializable
             Parent root = FXMLLoader.load(getClass().getResource("Admin_dashboard.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -499,12 +501,13 @@ public class AdminController implements Initializable
         alert.setContentText("Do you want to log out?");
 
         // Get the user's response
-        Optional<ButtonType> result = alert.showAndWait();
+        //alert.initOwner();
+        Optional<ButtonType> result = alert.showAndWait();Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        alert.initOwner(stage);
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Proceed with logout only if user confirms
             Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.close();

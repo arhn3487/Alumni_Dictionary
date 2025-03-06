@@ -171,7 +171,7 @@
                     <!-- Chart Container -->
                     <HBox fx:id="pieChartsContainer" spacing="20.0" VBox.vgrow="ALWAYS">
                         <!-- First Pie Chart -->
-                        <VBox fx:id="userDistributionContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
+                        <VBox fx:id="userDistributionContainer" styleClass="chart-card" stylesheets="@button.css" HBox.hgrow="ALWAYS">
                             <children>
                                 <Label fx:id="userDistributionLabel" styleClass="chart-title" text="User Distribution">
                                     <font>
@@ -213,7 +213,7 @@
                                         </TextArea>
                                         <HBox alignment="BOTTOM_RIGHT">
                                             <children>
-                                                <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" styleClass="send-button" text="Send">
+                                                <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" styleClass="send-button" stylesheets="@broadcast.css" text="Send">
                                                     <graphic>
                                                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                                             <image>

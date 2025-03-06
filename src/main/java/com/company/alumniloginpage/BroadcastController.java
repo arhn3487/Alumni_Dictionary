@@ -47,6 +47,8 @@ public class BroadcastController implements Initializable {
 
     private void initializeComboBoxes() {
         // Initialize department ComboBox
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Hide the exit hint message
         broad_dept.setItems(FXCollections.observableArrayList(
                 "CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME",
                 "NAME", "IPE", "BME", "ARCH", "NSE"

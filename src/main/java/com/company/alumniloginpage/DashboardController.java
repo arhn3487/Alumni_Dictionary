@@ -1,6 +1,6 @@
 package com.company.alumniloginpage;
 
-import com.mongodb.client.*;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,29 +16,27 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.animation.FadeTransition;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
 import java.awt.Desktop;
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.AggregateIterable;
 import org.bson.Document;
 
-public class DashboardController implements Initializable
-{
+public class DashboardController implements Initializable {
 
     @FXML
     private PieChart userDistributionChart;
@@ -66,9 +64,7 @@ public class DashboardController implements Initializable
 
     @FXML
     Stage stage;
-
-    @FXML
-    Scene scene;
+     @FXML Scene scene;
 
     // MongoDB connection
     private MongoDBConnection mongoConnection;
@@ -82,51 +78,13 @@ public class DashboardController implements Initializable
 
         // For testing, set a user ID (in production would come from login)
         // This should be replaced with the actual logged-in user's ID
-        //currentUserId = "user123"; // Example ID
+        currentUserId = "user123"; // Example ID
 
         // Set the stage to maximize (will be done when shown)
         javafx.application.Platform.runLater(this::maximizeStage);
 
         // Load user data first
-        //loadUserData();
-
-        String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
-
-        if (loggedInUserId != null)
-        {
-            try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
-            {
-                MongoDatabase database = mongoClient.getDatabase("alumni");
-                MongoCollection<Document> collection = database.getCollection("info");
-
-                Document user = collection.find(new Document("studentId", loggedInUserId)).first();
-
-                if (user != null)
-                {
-                    namelbl.setText(user.getString("name"));
-
-                    String imagePath = user.getString("Image");
-                    if (imagePath != null && !imagePath.isEmpty())
-                    {
-                        javafx.scene.image.Image image = new Image(new File(imagePath).toURI().toString());
-                        userImageView.setImage(image);
-                    }
-                }
-                else
-                {
-                    System.err.println("User not found in the database.");
-                }
-            }
-            catch (Exception e)
-            {
-                System.err.println("Error loading user data: " + e.getMessage());
-            }
-        }
-        else
-        {
-            System.err.println("No logged-in user ID found.");
-        }
-
+        loadUserData();
 
         // Initialize the charts with real data from MongoDB with delays
         // Use a sequential loading approach with delays
@@ -135,11 +93,11 @@ public class DashboardController implements Initializable
                     // Start by showing empty charts
                     initializeEmptyCharts();
                 }),
-                new KeyFrame(Duration.seconds(0.5), e -> {
+                new KeyFrame(Duration.seconds(1.5), e -> {
                     // Load the first chart after 0.5 seconds
                     loadUserDistributionData();
                 }),
-                new KeyFrame(Duration.seconds(1.5), e -> {
+                new KeyFrame(Duration.seconds(2.5), e -> {
                     // Load the third chart after 1.5 seconds
                     loadDepartmentData();
                 })
@@ -320,6 +278,15 @@ public class DashboardController implements Initializable
 
     private void loadDepartmentData() {
         try {
+            // Define all departments we want to display
+            String[] departments = {"CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME", "NAME", "IPE", "BME", "ARCH", "NSE"};
+            Map<String, Double> departmentPercentages = new HashMap<>();
+
+            // Initialize all departments with zero percentages
+            for (String dept : departments) {
+                departmentPercentages.put(dept, 0.0);
+            }
+
             // Get MongoDB collection
             MongoCollection<Document> userCollection = mongoConnection.getDatabase().getCollection("info");
 
@@ -331,10 +298,10 @@ public class DashboardController implements Initializable
             );
 
             // Process results and calculate percentages
-            Map<String, Integer> departmentCounts = new HashMap<>();
             int totalCount = 0;
 
             // First pass: collect counts
+            Map<String, Integer> departmentCounts = new HashMap<>();
             for (Document doc : departmentResults) {
                 String department = doc.getString("_id");
                 int count = doc.getInteger("count");
@@ -345,32 +312,37 @@ public class DashboardController implements Initializable
                 }
             }
 
-            // Define department series
+            // Calculate percentages for found departments
+            if (totalCount > 0) {
+                for (Map.Entry<String, Integer> entry : departmentCounts.entrySet()) {
+                    String department = entry.getKey();
+                    int count = entry.getValue();
+
+                    // Calculate percentage
+                    double percentage = (count * 100.0 / totalCount);
+
+                    // Update percentage if department is in our predefined list
+                    if (departmentPercentages.containsKey(department)) {
+                        departmentPercentages.put(department, percentage);
+                    }
+                }
+            } else {
+                System.out.println("No department data found, using placeholder data");
+                // Define placeholder percentages (optional - we could keep zeros)
+                double[] placeholderPercentages = {25, 18, 15, 12, 10, 8, 5, 3, 2, 1, 0.5, 0.5};
+
+                for (int i = 0; i < departments.length; i++) {
+                    departmentPercentages.put(departments[i], placeholderPercentages[i]);
+                }
+            }
+
+            // Create chart series with all departments
             XYChart.Series<String, Number> series = new XYChart.Series<>();
             series.setName("Percentage");
 
-            // Calculate percentages and create chart data
-            for (Map.Entry<String, Integer> entry : departmentCounts.entrySet()) {
-                String department = entry.getKey();
-                int count = entry.getValue();
-
-                // Calculate percentage
-                double percentage = (totalCount > 0) ? (count * 100.0 / totalCount) : 0;
-
-                // Add data to series
-                XYChart.Data<String, Number> data = new XYChart.Data<>(department, percentage);
-                series.getData().add(data);
-            }
-
-            // If no data was found, use placeholder departments
-            if (series.getData().isEmpty()) {
-                System.out.println("No department data found, using placeholder data");
-                String[] departments = {"CSE", "EEE", "ME", "CE", "EECE", "AE", "NAME", "IPE"};
-                double[] percentages = {25, 18, 15, 12, 10, 8, 7, 5}; // Example percentages
-
-                for (int i = 0; i < departments.length; i++) {
-                    series.getData().add(new XYChart.Data<>(departments[i], percentages[i]));
-                }
+            // Add all departments to the chart in the specified order
+            for (String department : departments) {
+                series.getData().add(new XYChart.Data<>(department, departmentPercentages.get(department)));
             }
 
             // Add the series to the chart with animation
@@ -384,8 +356,8 @@ public class DashboardController implements Initializable
             XYChart.Series<String, Number> series = new XYChart.Series<>();
             series.setName("Percentage");
 
-            String[] departments = {"CSE", "EEE", "ME", "CE", "EECE", "AE", "NAME", "IPE"};
-            double[] percentages = {25, 18, 15, 12, 10, 8, 7, 5}; // Example percentages
+            String[] departments = {"CSE", "EECE", "CE", "ME", "AE", "EWCE", "PME", "NAME", "IPE", "BME", "ARCH", "NSE"};
+            double[] percentages = {25, 18, 15, 12, 10, 8, 5, 3, 2, 1, 0.5, 0.5}; // Example percentages
 
             for (int i = 0; i < departments.length; i++) {
                 series.getData().add(new XYChart.Data<>(departments[i], percentages[i]));
@@ -403,45 +375,58 @@ public class DashboardController implements Initializable
             departmentChart.setTitle("");
             departmentChart.setAnimated(false); // We'll handle animations manually
 
-            // Create a timeline for adding bars with delay
-            Timeline timeline = new Timeline();
-
-            // First, add the series to the chart (with empty data)
+            // First, add the series to the chart
             XYChart.Series<String, Number> displaySeries = new XYChart.Series<>();
             displaySeries.setName(series.getName());
             departmentChart.getData().add(displaySeries);
 
-            // Then, add each data point with a delay
+            // Add all data points with initial value of 0
+            for (XYChart.Data<String, Number> originalData : series.getData()) {
+                XYChart.Data<String, Number> newData = new XYChart.Data<>(
+                        originalData.getXValue(),
+                        0  // Start all bars at zero
+                );
+                displaySeries.getData().add(newData);
+            }
+
+            // Create timeline for animating the growth of bars
+            Timeline timeline = new Timeline();
+
+            // Then, animate each bar one by one
             for (int i = 0; i < series.getData().size(); i++) {
                 final int index = i;
                 final XYChart.Data<String, Number> originalData = series.getData().get(i);
+                final XYChart.Data<String, Number> targetData = displaySeries.getData().get(i);
 
                 KeyFrame keyFrame = new KeyFrame(
-                        Duration.seconds(0.5 * i), // 0.5 second delay for each bar
+                        Duration.seconds(0.5 * i), // 0.5 second delay for each bar animation start
                         event -> {
-                            // Create a new data point
-                            XYChart.Data<String, Number> newData = new XYChart.Data<>(
-                                    originalData.getXValue(),
-                                    originalData.getYValue()
+                            // Animate the bar height from 0 to final value
+                            double targetValue = originalData.getYValue().doubleValue();
+
+                            Timeline barGrowth = new Timeline();
+                            barGrowth.getKeyFrames().add(
+                                    new KeyFrame(
+                                            Duration.millis(800),
+                                            new KeyValue(
+                                                    targetData.YValueProperty(),
+                                                    targetValue,
+                                                    Interpolator.EASE_OUT
+                                            )
+                                    )
                             );
 
-                            // Add this data point to the display series
-                            displaySeries.getData().add(newData);
+                            // Add highlight effect to the active bar
+                            Node node = targetData.getNode();
+                            if (node != null) {
+                                // Optional: add visual effect to the currently animating bar
+                                FadeTransition ft = new FadeTransition(Duration.millis(200), node);
+                                ft.setFromValue(0.7);
+                                ft.setToValue(1.0);
+                                ft.play();
+                            }
 
-                            // Animate the node once it's created
-                            javafx.animation.PauseTransition pause = new javafx.animation.PauseTransition(Duration.millis(50));
-                            pause.setOnFinished(e -> {
-                                Node node = newData.getNode();
-                                if (node != null) {
-                                    node.setOpacity(0);
-
-                                    FadeTransition ft = new FadeTransition(Duration.millis(800), node);
-                                    ft.setFromValue(0);
-                                    ft.setToValue(1);
-                                    ft.play();
-                                }
-                            });
-                            pause.play();
+                            barGrowth.play();
                         }
                 );
 
@@ -540,6 +525,7 @@ public class DashboardController implements Initializable
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Hide the exit hint message
         stage.show();
     }
 
@@ -560,6 +546,7 @@ public class DashboardController implements Initializable
         alert.setContentText("Do you want to log out?");
 
         // Get the user's response
+        alert.initOwner(stage);
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -574,25 +561,5 @@ public class DashboardController implements Initializable
             System.out.println("Logout canceled");
         }
     }
-
-    public void switchtoAdminHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
-    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
-
 
 }

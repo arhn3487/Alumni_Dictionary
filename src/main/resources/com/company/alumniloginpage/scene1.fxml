@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -14,14 +14,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@Deshboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.DashboardController">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" styleClass="main-container" stylesheets="@homef.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.EventController">
    <top>
-      <HBox fx:id="topBar" alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1920.0" styleClass="top-bar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@photos/MISTLogo.png" />
                </image>
@@ -29,23 +35,23 @@
                   <Insets left="20.0" right="15.0" />
                </HBox.margin>
             </ImageView>
-            <VBox fx:id="titleContainer" alignment="CENTER_LEFT">
+            <VBox alignment="CENTER_LEFT">
                <children>
-                  <Label fx:id="universityNameLabel" styleClass="university-name" text="Military Institute of Science and Technology">
+                  <Label styleClass="university-name" text="Military Institute of Science and Technology">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="portalLabel" styleClass="alumni-portal" text="Alumni Portal">
+                  <Label styleClass="alumni-portal" text="Alumni Portal">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <HBox fx:id="headerButtonContainer" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" stylesheets="@broadcast.css" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
+                  <Button mnemonicParsing="false" styleClass="header-button" text="Help">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,7 +63,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="settingsButton" mnemonicParsing="false" styleClass="header-button" text="Settings">
+                  <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -69,7 +75,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
+                  <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -87,24 +93,42 @@
       </HBox>
    </top>
    <left>
-      <VBox fx:id="sidebar" prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="1000.0" prefWidth="240.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="profileContainer" alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
+            <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-image" />
+                  <Circle radius="50.0" styleClass="profile-circle">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.10588235408067703" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                </children>
-            </VBox>
-            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
+            </StackPane>
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="240.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" textAlignment="CENTER">
+            <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="240.0" styleClass="welcome-text" stylesheets="@broadcast.css" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Dashboard">
+            <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Dashboard">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -116,7 +140,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="studentIdButton" mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Student ID">
+            <Button mnemonicParsing="false" onAction="#switchalumniCard" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Alumni ID Card">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -125,7 +149,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="alumniDirectoryButton" mnemonicParsing="false" onAction="#switchtoAlumniListStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
+            <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Alumni Directory">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -134,25 +158,16 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="jobOpportunitiesButton" mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
+            <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Announcements">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photos/job.png" />
+                        <Image url="@photos/Invitation.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="jobOpportunitiesButton1" mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/donate.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="mistWebsiteButton" mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST website">
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Events Calendar">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -161,104 +176,178 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Job Opportunities">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/job.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button, nav-button-active" text="Event Management">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/donate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="contentArea" styleClass="content-area" BorderPane.alignment="CENTER">
-         <children>
-            <VBox fx:id="chartsContainer" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-               <!-- Chart Container -->
-               <HBox fx:id="pieChartsContainer" spacing="20.0" VBox.vgrow="ALWAYS">
-                  <!-- First Pie Chart -->
-                  <VBox fx:id="userDistributionContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="content-area" BorderPane.alignment="CENTER">
+         <content>
+            <VBox spacing="20.0" style="-fx-background-color: #F0F5FF;" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
                      <children>
-                        <Label fx:id="userDistributionLabel" styleClass="chart-title" text="User Distribution">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section-heading" text="Event Management">
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="System Bold" size="28.0" />
                            </font>
-                        </Label>
-                        <PieChart fx:id="userDistributionChart" animated="true" legendVisible="true" VBox.vgrow="ALWAYS" />
+                        </Text>
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                      <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets left="20.0" top="10.0" />
                      </padding>
-                  </VBox>
+                  </HBox>
 
-                  <!-- Email Communication Section -->
-                  <!-- Email Communication Section -->
-                  <VBox fx:id="emailCommunicationContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
+                  <AnchorPane prefHeight="580.0" prefWidth="1680.0" styleClass="feature-card">
                      <children>
-                        <Label fx:id="emailCommunicationLabel" styleClass="chart-title" text="Communicate with Admin">
+                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
-                        </Label>
-                        <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                        </Text>
+                        <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" prefWidth="1640.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                           <columns>
+                              <TableColumn fx:id="titleColumn" prefWidth="400.0" text="Event Title" />
+                              <TableColumn fx:id="dateColumn" prefWidth="200.0" text="Date" />
+                              <TableColumn fx:id="locationColumn" prefWidth="250.0" text="Location" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="600.0" text="Description" />
+                              <TableColumn fx:id="actionColumn" prefWidth="150.0" text="Action" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="20.0" layoutY="355.0" spacing="10.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                 <children>
-                                    <Label styleClass="form-label" text="Subject:">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="emailSubject" promptText="Enter subject" HBox.hgrow="ALWAYS" />
-                                 </children>
-                              </HBox>
-                              <TextArea fx:id="emailContent" prefHeight="200.0" promptText="Compose your message..." VBox.vgrow="ALWAYS">
+                              <Text fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Event Participants">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
-                              </TextArea>
-                              <HBox alignment="BOTTOM_RIGHT">
-                                 <children>
-                                    <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" styleClass="send-button" text="Send">
-                                       <graphic>
-                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@photos/submit.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
+                              </Text>
+                              <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="action-button" text="View Participants" />
                            </children>
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
-                        </VBox>
+                        </HBox>
+                        <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" prefWidth="1640.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                           <columns>
+                              <TableColumn fx:id="participantNameColumn" prefWidth="350.0" text="Name" />
+                              <TableColumn fx:id="participantIdColumn" prefWidth="200.0" text="Student ID" />
+                              <TableColumn fx:id="participantBatchColumn" prefWidth="150.0" text="Batch" />
+                              <TableColumn fx:id="participantDeptColumn" prefWidth="250.0" text="Department" />
+                              <TableColumn fx:id="participantPhoneColumn" prefWidth="200.0" text="Phone Number" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
                      </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
-                  </VBox>
-               </HBox>
+                  </AnchorPane>
 
-               <!-- Department Distribution Chart -->
-               <VBox fx:id="departmentChartContainer" styleClass="chart-card" VBox.vgrow="ALWAYS">
-                  <children>
-                     <Label fx:id="departmentDistributionLabel" styleClass="section-heading" text="Department Distribution">
-                        <font>
-                           <Font name="System Bold" size="20.0" />
-                        </font>
-                     </Label>
-                     <BarChart fx:id="departmentChart" animated="true" legendVisible="false" VBox.vgrow="ALWAYS">
-                        <xAxis>
-                           <CategoryAxis fx:id="departmentAxis" side="BOTTOM" />
-                        </xAxis>
-                        <yAxis>
-                           <NumberAxis fx:id="percentageAxis" label="Percentage (%)" side="LEFT" />
-                        </yAxis>
-                     </BarChart>
-                  </children>
-                  <padding>
-                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                  </padding>
-               </VBox>
+                  <AnchorPane prefHeight="300.0" prefWidth="1680.0" styleClass="feature-card">
+                     <children>
+                        <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Add New Event" wrappingWidth="251.0">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Title:" wrappingWidth="100.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="1400.0" promptText="Enter event title" styleClass="form-field" />
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="400.0" promptText="Select date" styleClass="form-field" />
+
+                        <Text fill="#333333" layoutX="550.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="eventLocation" layoutX="650.0" layoutY="90.0" prefHeight="30.0" prefWidth="880.0" promptText="Enter location" styleClass="form-field" />
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="90.0" prefWidth="1400.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
+
+                        <Text fill="#333333" layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Image:" wrappingWidth="100.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="uploadImageButton" layoutX="130.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="quick-link-button" text="Upload Image" textFill="#333333" />
+                        <HBox alignment="CENTER_RIGHT" layoutX="1090.0" layoutY="225.0" spacing="20.0">
+                           <children>
+                              <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="quick-link-button" text="Clear Fields" textFill="#333333" />
+                              <Button fx:id="addEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="module-button" text="Add Event" textFill="WHITE" />
+                              <Button fx:id="removeEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="logout-button" text="Remove" textFill="WHITE" />
+                           </children>
+                        </HBox>
+
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </AnchorPane>
+
+                  <AnchorPane styleClass="footer" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="265.0" layoutY="31.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="© 2025 MIST Alumni Association" />
+                              <Label text="|" />
+                              <Label text="Email: arhasan3487@gmail.com" />
+                              <Label text="|" />
+                              <Label text="Phone: 01540194651" />
+                              <Label text="|" />
+                              <Label text="Website: mist.ac.bd" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+               </children>
             </VBox>
-         </children>
-      </AnchorPane>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

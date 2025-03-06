@@ -171,6 +171,7 @@ public class LoginController
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
             stage.setFullScreen(true);
+            stage.setFullScreenExitHint("");
             stage.show();
         }
         catch (IOException e)

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -46,7 +47,7 @@
                 </VBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Button mnemonicParsing="false" styleClass="header-button" text="Help">
+                        <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -57,18 +58,9 @@
                             <HBox.margin>
                                 <Insets right="10.0" />
                             </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
-                            <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/settings.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
+                            <tooltip>
+                                <Tooltip text="Get help with using your student ID card. Click for assistance with verification and download options." />
+                            </tooltip>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
                             <graphic>
@@ -135,7 +127,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="41.0" prefWidth="205.0" styleClass="nav-button, nav-button-active" text="Student ID" textAlignment="CENTER">
+                <Button mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="41.0" prefWidth="205.0" styleClass="nav-button, nav-button-active" text="Student ID">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -206,7 +198,7 @@
                         </HBox>
 
                         <!-- Instruction text -->
-                        <Label styleClass="instruction-text" text="Your official MIST student identification card has been automatically generated. Please verify your information below." wrapText="true">
+                        <Label styleClass="instruction-text" text="Your official MIST student identification card has been automatically generated. Please verify your information below. This card serves as your primary identification within the campus and for all university events." wrapText="true">
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />
                             </VBox.margin>
@@ -220,7 +212,7 @@
                                         <Image url="@photos/img_2.png" />
                                     </image>
                                 </ImageView>
-                                <Label styleClass="status-message" text="Your ID card has been automatically generated and is ready for download." />
+                                <Label styleClass="status-message" text="Your ID card has been automatically generated and is ready for download. You can download it in PNG or PDF format for digital or printed use." />
                             </children>
                             <VBox.margin>
                                 <Insets left="20.0" right="20.0" />
@@ -277,9 +269,9 @@
                                                 </font>
                                             </Label>
                                             <Label fx:id="cardnamelbl" layoutX="130.0" layoutY="70.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
-                                    <font>
-                                       <Font size="16.0" />
-                                    </font></Label>
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font></Label>
 
                                             <Label layoutX="20.0" layoutY="120.0" styleClass="field-label" text="Student ID">
                                                 <font>
@@ -287,9 +279,9 @@
                                                 </font>
                                             </Label>
                                             <Label fx:id="studentIdlbl" layoutX="130.0" layoutY="120.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
-                                    <font>
-                                       <Font size="16.0" />
-                                    </font></Label>
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font></Label>
 
                                             <Label layoutX="20.0" layoutY="170.0" styleClass="field-label" text="Department">
                                                 <font>
@@ -297,9 +289,9 @@
                                                 </font>
                                             </Label>
                                             <Label fx:id="departmentlbl" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
-                                    <font>
-                                       <Font size="16.0" />
-                                    </font></Label>
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font></Label>
 
                                             <Label layoutX="20.0" layoutY="220.0" styleClass="field-label" text="Batch">
                                                 <font>
@@ -307,9 +299,9 @@
                                                 </font>
                                             </Label>
                                             <Label fx:id="batchlbl" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="270.0" styleClass="field-value">
-                                    <font>
-                                       <Font size="16.0" />
-                                    </font></Label>
+                                                <font>
+                                                    <Font size="16.0" />
+                                                </font></Label>
 
                                             <!-- Card Footer -->
                                             <AnchorPane layoutX="0.0" layoutY="280.0" prefHeight="60.0" prefWidth="540.0" styleClass="card-footer">
@@ -331,47 +323,75 @@
                                 </children>
                             </VBox>
 
-                            <!-- Options Panel -->
+                            <!-- Modified Options Panel -->
                             <VBox styleClass="options-container">
                                 <children>
-                                    <Label styleClass="section-title" text="Card Options">
+                                    <Label styleClass="section-title" text="Card Management">
                                         <font>
                                             <Font name="System Bold" size="16.0" />
                                         </font>
                                         <VBox.margin>
-                                            <Insets bottom="20.0" left="15.0" top="15.0" />
+                                            <Insets bottom="10.0" left="15.0" top="15.0" />
                                         </VBox.margin>
                                     </Label>
 
-                                    <Button fx:id="verifyInfoButton" mnemonicParsing="false" styleClass="action-button, verify-button" text="Verify Information">
-                                        <graphic>
-                                            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@photos/submit.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
+                                    <!-- Added explanation text -->
+                                    <Label styleClass="option-description" text="Please verify that all your information is correct before proceeding. If any details need to be updated, use the 'Request Change' option. Once verified, you can download your ID card for both digital and physical use." wrapText="true">
                                         <VBox.margin>
                                             <Insets bottom="15.0" left="15.0" right="15.0" />
                                         </VBox.margin>
-                                    </Button>
+                                    </Label>
 
-                                    <Button fx:id="requestChangeButton" mnemonicParsing="false" onAction="#switchToSignupForm" styleClass="action-button, change-button" text="Request Change">
-                                        <graphic>
-                                            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@photos/edit.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
+                                    <!-- Improved action buttons with right alignment -->
+                                    <HBox alignment="CENTER_RIGHT">
+                                        <Button fx:id="verifyInfoButton" mnemonicParsing="false" styleClass="action-button, verify-button" text="Verify Information">
+                                            <graphic>
+                                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@photos/submit.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                            <tooltip>
+                                                <Tooltip text="Click to confirm that all your information is correct" />
+                                            </tooltip>
+                                        </Button>
                                         <VBox.margin>
-                                            <Insets bottom="20.0" left="15.0" right="15.0" />
+                                            <Insets bottom="10.0" left="15.0" right="15.0" />
                                         </VBox.margin>
-                                    </Button>
+                                    </HBox>
+
+                                    <HBox alignment="CENTER_RIGHT">
+                                        <Button fx:id="requestChangeButton" mnemonicParsing="false" onAction="#switchToSignupForm" styleClass="action-button, change-button" text="Request Change">
+                                            <graphic>
+                                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@photos/edit.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                            <tooltip>
+                                                <Tooltip text="Request to change any incorrect information on your ID card" />
+                                            </tooltip>
+                                        </Button>
+                                        <VBox.margin>
+                                            <Insets bottom="15.0" left="15.0" right="15.0" />
+                                        </VBox.margin>
+                                    </HBox>
+
+                                    <!-- Added separator -->
+                                    <HBox style="-fx-background-color: #c0c0c0; -fx-opacity: 0.5;" styleClass="separator">
+                                        <padding>
+                                            <Insets bottom="0.5" top="0.5" />
+                                        </padding>
+                                        <VBox.margin>
+                                            <Insets bottom="15.0" left="15.0" right="15.0" />
+                                        </VBox.margin>
+                                    </HBox>
 
                                     <VBox styleClass="download-section">
                                         <children>
-                                            <Label styleClass="section-subtitle" text="Download Options">
+                                            <Label styleClass="section-subtitle" text="Download Your ID Card">
                                                 <font>
                                                     <Font name="System Bold" size="14.0" />
                                                 </font>
@@ -380,25 +400,46 @@
                                                 </VBox.margin>
                                             </Label>
 
+                                            <!-- Enhanced download info -->
+                                            <Label styleClass="download-info" text="Choose your preferred format before downloading. PNG format is ideal for digital use and sharing on social media or mobile devices. PDF format is recommended for printing physical copies or for official submissions." wrapText="true">
+                                                <VBox.margin>
+                                                    <Insets bottom="15.0" />
+                                                </VBox.margin>
+                                            </Label>
+
                                             <HBox spacing="10.0">
                                                 <children>
-                                                    <Button fx:id="pngFormatButton" mnemonicParsing="false" styleClass="format-button, format-active" text="PNG" />
-                                                    <Button fx:id="pdfFormatButton" mnemonicParsing="false" styleClass="format-button" text="PDF" />
+                                                    <Button fx:id="pngFormatButton" mnemonicParsing="false" onAction="#selectPngFormat" styleClass="format-button, format-active" text="PNG">
+                                                        <tooltip>
+                                                            <Tooltip text="Download as PNG image file" />
+                                                        </tooltip>
+                                                    </Button>
+                                                    <Button fx:id="pdfFormatButton" mnemonicParsing="false" onAction="#selectPdfFormat" styleClass="format-button" text="PDF">
+                                                        <tooltip>
+                                                            <Tooltip text="Download as PDF document" />
+                                                        </tooltip>
+                                                    </Button>
                                                 </children>
                                                 <VBox.margin>
                                                     <Insets bottom="15.0" />
                                                 </VBox.margin>
                                             </HBox>
 
-                                            <Button fx:id="downloadButton" onAction="#handleDownload" styleClass="action-button, download-button" text="Download Card">
-                                                <graphic>
-                                                    <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                                        <image>
-                                                            <Image url="@photos/download.png" />
-                                                        </image>
-                                                    </ImageView>
-                                                </graphic>
-                                            </Button>
+                                            <!-- Right-aligned download button -->
+                                            <HBox alignment="CENTER_RIGHT">
+                                                <Button fx:id="downloadButton" onAction="#handleDownload" styleClass="action-button, download-button" text="Download Card">
+                                                    <graphic>
+                                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@photos/download.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                    </graphic>
+                                                    <tooltip>
+                                                        <Tooltip text="Download your ID card in the selected format" />
+                                                    </tooltip>
+                                                </Button>
+                                            </HBox>
                                         </children>
                                         <padding>
                                             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -407,9 +448,57 @@
                                             <Insets left="15.0" right="15.0" />
                                         </VBox.margin>
                                     </VBox>
+
+                                    <!-- Added new section for ID card usage -->
+                                    <VBox style="-fx-background-color: #e8f4ff; -fx-background-radius: 8;" styleClass="usage-section">
+                                        <children>
+                                            <Label styleClass="section-subtitle" text="ID Card Usage Guide">
+                                                <font>
+                                                    <Font name="System Bold" size="14.0" />
+                                                </font>
+                                                <VBox.margin>
+                                                    <Insets bottom="10.0" />
+                                                </VBox.margin>
+                                            </Label>
+                                            <Label styleClass="usage-tip" text="• Always carry your ID card while on campus" wrapText="true" />
+                                            <Label styleClass="usage-tip" text="• Use for library access and campus facilities" wrapText="true" />
+                                            <Label styleClass="usage-tip" text="• Required for exams and official events" wrapText="true" />
+                                            <Label styleClass="usage-tip" text="• Digital copies acceptable for most online services" wrapText="true" />
+                                        </children>
+                                        <padding>
+                                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                        </padding>
+                                        <VBox.margin>
+                                            <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                                        </VBox.margin>
+                                    </VBox>
                                 </children>
                             </VBox>
                         </HBox>
+
+                        <!-- Additional Information -->
+                        <VBox styleClass="info-section">
+                            <children>
+                                <Label styleClass="section-title" text="Important Information">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin>
+                                </Label>
+                                <Label styleClass="info-text" text="• This ID card is valid for all campus facilities and events" wrapText="true" />
+                                <Label styleClass="info-text" text="• Report lost or stolen cards immediately to the administration" wrapText="true" />
+                                <Label styleClass="info-text" text="• Keep a digital copy of your ID card for reference" wrapText="true" />
+                                <Label styleClass="info-text" text="• Present your ID card when requested by university staff or security personnel" wrapText="true" />
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                        </VBox>
 
                         <!-- Footer -->
                         <AnchorPane styleClass="footer" VBox.vgrow="ALWAYS">
