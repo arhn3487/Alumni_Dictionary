@@ -19,7 +19,9 @@ public class MongoDBConnection
     public MongoDBConnection()
     {
         // Connect to MongoDB
-        mongoClient = MongoClients.create("mongodb://localhost:27017");
+        //mongoClient = MongoClients.create("mongodb://localhost:27017");
+        mongoClient = MongoClients.create("mongodb+srv://arafatsakibisbat:Password123@alumni.meusu.mongodb.net/?retryWrites=true&w=majority&appName=alumni");
+        //mongoClient = mongodb+srv://arafatsakibisbat:Password123@alumni.meusu.mongodb.net/?retryWrites=true&w=majority&appName=alumni
         database = mongoClient.getDatabase("alumni");
         collection = database.getCollection("info");
     }
