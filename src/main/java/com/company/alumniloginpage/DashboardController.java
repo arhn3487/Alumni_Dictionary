@@ -1,5 +1,6 @@
 package com.company.alumniloginpage;
 
+import com.mongodb.client.*;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,21 +23,20 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.AggregateIterable;
 import org.bson.Document;
 
-public class DashboardController implements Initializable {
+public class DashboardController implements Initializable
+{
 
     @FXML
     private PieChart userDistributionChart;
@@ -84,7 +84,44 @@ public class DashboardController implements Initializable {
         javafx.application.Platform.runLater(this::maximizeStage);
 
         // Load user data first
-        loadUserData();
+        //loadUserData();
+
+        String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
+
+        if (loggedInUserId != null)
+        {
+            try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+            {
+                MongoDatabase database = mongoClient.getDatabase("alumni");
+                MongoCollection<Document> collection = database.getCollection("info");
+
+                Document user = collection.find(new Document("studentId", loggedInUserId)).first();
+
+                if (user != null)
+                {
+                    namelbl.setText(user.getString("name"));
+
+                    String imagePath = user.getString("Image");
+                    if (imagePath != null && !imagePath.isEmpty())
+                    {
+                        javafx.scene.image.Image image = new Image(new File(imagePath).toURI().toString());
+                        userImageView.setImage(image);
+                    }
+                }
+                else
+                {
+                    System.err.println("User not found in the database.");
+                }
+            }
+            catch (Exception e)
+            {
+                System.err.println("Error loading user data: " + e.getMessage());
+            }
+        }
+        else
+        {
+            System.err.println("No logged-in user ID found.");
+        }
 
         // Initialize the charts with real data from MongoDB with delays
         // Use a sequential loading approach with delays
@@ -536,6 +573,70 @@ public class DashboardController implements Initializable {
         } catch (IOException | URISyntaxException e) {
             System.err.println("Error opening MIST website: " + e.getMessage());
         }
+    }
+
+    public void switchToAdminHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void switchToAlumniHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    @FXML
+    public void switchtoAlumniIdCard(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniCard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+    }
+
+    public void switchtoAlumniListAlumni(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniList.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    @FXML
+    public void switchToJobBoardAlumni(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("job.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+    public void eventalumni(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventalumni.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Hide the exit hint message
+        stage.show();
     }
 
     @FXML

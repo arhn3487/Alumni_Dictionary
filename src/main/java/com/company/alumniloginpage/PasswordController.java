@@ -33,11 +33,13 @@ public class PasswordController
     }
 
     @FXML
-    private void handleSubmitPassword(ActionEvent event) throws IOException {
+    private void handleSubmitPassword(ActionEvent event) throws IOException
+    {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-        if (password.equals(confirmPassword)) {
+        if (password.equals(confirmPassword))
+        {
             // Add the password to the user data
             userData.append("password", password);
 
@@ -52,13 +54,16 @@ public class PasswordController
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else {
+        }
+        else
+        {
             // Show error message if passwords do not match
             showAlert("Error", "Passwords do not match. Please try again.");
         }
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message)
+    {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
