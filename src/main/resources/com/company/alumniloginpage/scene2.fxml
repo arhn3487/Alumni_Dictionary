@@ -1,265 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@Deshboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.DashboardController">
-    <top>
-        <HBox fx:id="topBar" alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1080.0" styleClass="top-bar" BorderPane.alignment="CENTER">
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.PasswordController">
+    <children>
+        <!-- Full-screen Background with Image -->
+        <AnchorPane>
             <children>
-                <ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <image>
-                        <Image url="@photos/MISTLogo.png" />
+                        <Image url="@photos/background3.png" />
                     </image>
-                    <HBox.margin>
-                        <Insets left="20.0" right="15.0" />
-                    </HBox.margin>
+                    <effect>
+                        <GaussianBlur radius="2.5" />
+                    </effect>
                 </ImageView>
-                <VBox fx:id="titleContainer" alignment="CENTER_LEFT">
-                    <children>
-                        <Label fx:id="universityNameLabel" styleClass="university-name" text="Military Institute of Science and Technology">
+
+                <!-- Gradient Overlay -->
+                <Rectangle arcHeight="0.0" arcWidth="0.0" fill="linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(30,30,60,0.8))" height="1080.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+        </AnchorPane>
+
+        <!-- Content Container -->
+        <VBox alignment="CENTER" maxWidth="450.0" spacing="30.0">
+            <!-- Logo or School Emblem (Optional) -->
+            <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@photos/MISTLogo.png" />
+                </image>
+            </ImageView>
+
+            <!-- Main Form Card -->
+            <AnchorPane maxWidth="450.0" minHeight="400.0" style="-fx-background-color: rgba(255, 255, 255, 0.9); -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 10);">
+                <children>
+                    <VBox alignment="TOP_CENTER" layoutX="40.0" layoutY="30.0" prefHeight="340.0" prefWidth="370.0" spacing="25.0">
+                        <!-- Title -->
+                        <Text fill="#2c3e50" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Your Password" textAlignment="CENTER">
                             <font>
-                                <Font name="System Bold" size="18.0" />
+                                <Font name="System Bold" size="28.0" />
                             </font>
-                        </Label>
-                        <Label fx:id="portalLabel" styleClass="alumni-portal" text="Alumni Portal">
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.1)" height="2.0" radius="0.5" width="2.0" />
+                            </effect>
+                        </Text>
+
+                        <!-- Subtitle -->
+                        <Text fill="#5d6d7e" strokeType="OUTSIDE" strokeWidth="0.0" text="Please create a secure password for your alumni account" textAlignment="CENTER">
                             <font>
                                 <Font size="14.0" />
                             </font>
-                        </Label>
-                    </children>
-                </VBox>
-                <HBox fx:id="headerButtonContainer" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                    <children>
-                        <Button fx:id="helpButton" mnemonicParsing="false" styleClass="header-button" text="Help">
-                            <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/help.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button fx:id="settingsButton" mnemonicParsing="false" styleClass="header-button" text="Settings">
-                            <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/settings.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
-                            <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/logOut.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-            </children>
-        </HBox>
-    </top>
-    <left>
-        <VBox fx:id="sidebar" prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
-            <children>
-                <VBox fx:id="profileContainer" alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
-                    <children>
-                        <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-image">
-                            <image>
-                                <Image url="@photos/default_profile.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </VBox>
-                <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-                <Label fx:id="namelbl" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="User" textAlignment="CENTER">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-                <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#switchToStudentHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Dashboard">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Home.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="20.0" />
-                    </VBox.margin>
-                </Button>
-                <Button fx:id="studentIdButton" mnemonicParsing="false" onAction="#switchtoStudentIdCard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Student ID">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/idcard.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="alumniDirectoryButton" mnemonicParsing="false" onAction="#switchtoAlumniListStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Alumni Directory">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Alumni List.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button fx:id="jobOpportunitiesButton" mnemonicParsing="false" onAction="#switchToJobBoardStudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Opportunities">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/job.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-            <Button fx:id="jobOpportunitiesButton1" mnemonicParsing="false" onAction="#eventstudent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@photos/donate.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-                <Button fx:id="mistWebsiteButton" mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST website">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Announcement.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-            </children>
-        </VBox>
-    </left>
-    <center>
-        <AnchorPane fx:id="contentArea" styleClass="content-area" BorderPane.alignment="CENTER">
-            <children>
-                <VBox fx:id="chartsContainer" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                    <!-- Chart Container -->
-                    <HBox fx:id="pieChartsContainer" spacing="20.0" VBox.vgrow="ALWAYS">
-                        <!-- First Pie Chart -->
-                        <VBox fx:id="userDistributionContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label fx:id="userDistributionLabel" styleClass="chart-title" text="User Distribution">
-                                    <font>
-                                        <Font name="System Bold" size="16.0" />
-                                    </font>
-                                </Label>
-                                <PieChart fx:id="userDistributionChart" animated="true" labelsVisible="true" legendVisible="true" VBox.vgrow="ALWAYS" />
-                            </children>
-                            <padding>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </padding>
-                        </VBox>
+                        </Text>
 
-                        <!-- Email Communication Section -->
-                        <VBox fx:id="emailCommunicationContainer" styleClass="chart-card" HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label fx:id="emailCommunicationLabel" styleClass="chart-title" text="Communicate with Admin">
-                                    <font>
-                                        <Font name="System Bold" size="16.0" />
-                                    </font>
-                                </Label>
-                                <VBox spacing="10.0" VBox.vgrow="ALWAYS">
-                                    <children>
-                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
-                                            <children>
-                                                <Label styleClass="chart-title" text="Subject:" />
-                                                <TextField fx:id="emailSubject" promptText="Email subject" HBox.hgrow="ALWAYS" />
-                                            </children>
-                                        </HBox>
-                                        <TextArea fx:id="emailContent" prefHeight="140.0" promptText="Compose your mail.....">
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                        </TextArea>
-                                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
-                                            <children>
-                                                <Button fx:id="attachmentButton" mnemonicParsing="false" onAction="#attachFile" styleClass="attach-button" text="Attach File">
-                                                    <graphic>
-                                                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@photos/attachment.png" />
-                                                            </image>
-                                                        </ImageView>
-                                                    </graphic>
-                                                </Button>
-                                                <Label fx:id="attachmentLabel" text="No file attached" />
-                                                <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmail" styleClass="send-button" text="Send" />
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                    <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                    </padding>
-                                </VBox>
-                            </children>
-                            <padding>
-                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                            </padding>
-                        </VBox>
-                    </HBox>
+                        <!-- Password Field -->
+                        <PasswordField fx:id="passwordField" maxWidth="350.0" prefHeight="45.0" promptText="Enter Password" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 10 15; -fx-font-size: 14;">
+                            <font>
+                                <Font name="System" size="14.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.05)" height="3.0" radius="1.0" width="3.0" />
+                            </effect>
+                        </PasswordField>
 
-                    <!-- Department Distribution Chart -->
-                    <VBox fx:id="departmentChartContainer" styleClass="chart-card" VBox.vgrow="ALWAYS">
-                        <children>
-                            <Label fx:id="departmentDistributionLabel" styleClass="section-heading" text="Department Distribution">
-                                <font>
-                                    <Font name="System Bold" size="20.0" />
-                                </font>
-                            </Label>
-                            <BarChart fx:id="departmentChart" animated="true" legendVisible="false" VBox.vgrow="ALWAYS">
-                                <xAxis>
-                                    <CategoryAxis fx:id="departmentAxis" side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                    <NumberAxis fx:id="percentageAxis" label="Percentage (%)" side="LEFT" />
-                                </yAxis>
-                            </BarChart>
-                        </children>
-                        <padding>
-                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                        </padding>
+                        <!-- Confirm Password Field -->
+                        <PasswordField fx:id="confirmPasswordField" maxWidth="350.0" prefHeight="45.0" promptText="Confirm Password" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 10 15; -fx-font-size: 14;">
+                            <font>
+                                <Font name="System" size="14.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="rgba(0,0,0,0.05)" height="3.0" radius="1.0" width="3.0" />
+                            </effect>
+                        </PasswordField>
+
+                        <!-- Submit Button -->
+                        <Button maxWidth="350.0" mnemonicParsing="false" onAction="#handleSubmitPassword" prefHeight="50.0" style="-fx-background-color: #3498db; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);" text="CREATE ACCOUNT">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Button>
+
+                        <!-- Optional - Password Requirements Text -->
+                        <Text fill="#7f8c8d" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must be at least 6 characters and include uppercase, lowercase, and a number" textAlignment="CENTER" wrappingWidth="350.0">
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </Text>
                     </VBox>
-                </VBox>
-            </children>
-        </AnchorPane>
-    </center>
-</BorderPane>
+                </children>
+            </AnchorPane>
+
+            <!-- Footer -->
+            <HBox alignment="CENTER" spacing="5.0">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" textAlignment="CENTER">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Text>
+                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #3498db; -fx-cursor: hand; -fx-underline: true; -fx-font-weight: bold;" text="Sign In">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </children>
+</StackPane>

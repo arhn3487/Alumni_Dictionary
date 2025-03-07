@@ -185,7 +185,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
             </children>
         </VBox>
     </left>
@@ -210,20 +210,20 @@
                             </padding>
                         </HBox>
 
-                        <AnchorPane prefHeight="580.0" prefWidth="1680.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="580.0" styleClass="feature-card">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Upcoming Events" wrappingWidth="251.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Text>
-                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" prefWidth="1640.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                <TableView fx:id="eventTableView" layoutX="20.0" layoutY="45.0" prefHeight="300.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="titleColumn" prefWidth="400.0" text="Event Title" />
-                                        <TableColumn fx:id="dateColumn" prefWidth="200.0" text="Date" />
-                                        <TableColumn fx:id="locationColumn" prefWidth="250.0" text="Location" />
-                                        <TableColumn fx:id="descriptionColumn" prefWidth="600.0" text="Description" />
-                                        <TableColumn fx:id="actionColumn" prefWidth="150.0" text="Action" />
+                                        <TableColumn fx:id="titleColumn" prefWidth="300.0" text="Event Title" />
+                                        <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date" />
+                                        <TableColumn fx:id="locationColumn" prefWidth="200.0" text="Location" />
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="400.0" text="Description" />
+                                        <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -236,16 +236,16 @@
                                                 <Font name="System Bold" size="16.0" />
                                             </font>
                                         </Text>
-                                        <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="action-button" text="View Participants" />
+                                        <Button fx:id="viewParticipantsButton" mnemonicParsing="false" styleClass="btn-gradient-blue-purple" stylesheets="@button.css" text="View Participants" />
                                     </children>
                                 </HBox>
-                                <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" prefWidth="1640.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                                <TableView fx:id="participantsTableView" layoutX="20.0" layoutY="385.0" prefHeight="200.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                                     <columns>
-                                        <TableColumn fx:id="participantNameColumn" prefWidth="350.0" text="Name" />
-                                        <TableColumn fx:id="participantIdColumn" prefWidth="200.0" text="Student ID" />
-                                        <TableColumn fx:id="participantBatchColumn" prefWidth="150.0" text="Batch" />
-                                        <TableColumn fx:id="participantDeptColumn" prefWidth="250.0" text="Department" />
-                                        <TableColumn fx:id="participantPhoneColumn" prefWidth="200.0" text="Phone Number" />
+                                        <TableColumn fx:id="participantNameColumn" prefWidth="250.0" text="Name" />
+                                        <TableColumn fx:id="participantIdColumn" prefWidth="150.0" text="Student ID" />
+                                        <TableColumn fx:id="participantBatchColumn" prefWidth="100.0" text="Batch" />
+                                        <TableColumn fx:id="participantDeptColumn" prefWidth="200.0" text="Department" />
+                                        <TableColumn fx:id="participantPhoneColumn" prefWidth="150.0" text="Phone Number" />
                                     </columns>
                                     <columnResizePolicy>
                                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -260,7 +260,7 @@
                             </padding>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="300.0" prefWidth="1680.0" styleClass="feature-card">
+                        <AnchorPane prefHeight="300.0" styleClass="feature-card">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Add New Event" wrappingWidth="251.0">
                                     <font>
@@ -273,36 +273,29 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="1400.0" promptText="Enter event title" styleClass="form-field" />
+                                <TextField fx:id="eventTitle" layoutX="130.0" layoutY="50.0" prefHeight="30.0" prefWidth="1400.0" promptText="Enter event title" styleClass="form-field" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="20.0" />
 
                                 <Text fill="#333333" layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" wrappingWidth="100.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <DatePicker fx:id="eventDate" layoutX="130.0" layoutY="90.0" prefHeight="30.0" prefWidth="400.0" promptText="Select date" styleClass="form-field" />
+                                <DatePicker fx:id="eventDate" layoutX="148.0" layoutY="90.0" prefHeight="30.0" prefWidth="382.0" promptText="Select date" styleClass="form-field" />
 
-                                <Text fill="#333333" layoutX="550.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
+                                <Text fill="#333333" layoutX="783.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" wrappingWidth="100.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <TextField fx:id="eventLocation" layoutX="650.0" layoutY="90.0" prefHeight="30.0" prefWidth="880.0" promptText="Enter location" styleClass="form-field" />
+                                <TextField fx:id="eventLocation" layoutX="866.4000000000001" layoutY="90.0" prefHeight="30.0" prefWidth="754.0" promptText="Enter location" styleClass="form-field" AnchorPane.leftAnchor="851.0" AnchorPane.rightAnchor="20.0" />
 
                                 <Text fill="#333333" layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" wrappingWidth="100.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Text>
-                                <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="90.0" prefWidth="1400.0" promptText="Enter event description" styleClass="form-field" wrapText="true" />
-
-                                <Text fill="#333333" layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Image:" wrappingWidth="100.0">
-                                    <font>
-                                        <Font size="14.0" />
-                                    </font>
-                                </Text>
-                                <Button fx:id="uploadImageButton" layoutX="130.0" layoutY="225.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="quick-link-button" text="Upload Image" textFill="#333333" />
-                                <HBox alignment="CENTER_RIGHT" layoutX="1090.0" layoutY="225.0" spacing="20.0">
+                                <TextArea fx:id="eventDescription" layoutX="130.0" layoutY="130.0" prefHeight="90.0" prefWidth="1400.0" promptText="Enter event description" styleClass="form-field" wrapText="true" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="20.0" />
+                                <HBox alignment="CENTER_RIGHT" layoutX="1090.0" layoutY="225.0" spacing="20.0" AnchorPane.rightAnchor="20.0">
                                     <children>
                                         <Button fx:id="clearButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="quick-link-button" text="Clear Fields" textFill="#333333" />
                                         <Button fx:id="addEventButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="module-button" text="Add Event" textFill="WHITE" />
