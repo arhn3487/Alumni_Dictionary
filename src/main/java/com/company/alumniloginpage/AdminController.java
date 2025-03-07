@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -424,96 +425,114 @@ public class AdminController implements Initializable
     }
 
     @FXML
-    private void switchToAdminHome() {
-        try {
+    private void switchToAdminHome()
+    {
+        try
+        {
             Parent root = FXMLLoader.load(getClass().getResource("Admin_dashboard.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setFullScreen(true);
             stage.setFullScreenExitHint("");
             stage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void switchalumniList() {
-        // Already on alumni list page
-        System.out.println("Already on alumni list page");
-    }
-
-    @FXML
-    private void switchBroadcast() {
-        try {
+    private void switchBroadcast()
+    {
+        try
+        {
             Parent root = FXMLLoader.load(getClass().getResource("broadcast.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
+    Stage stage;
+    Scene scene;
+
+    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
     @FXML
-    private void switchToEvents() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("event.fxml"));
+    private void switchToJobs()
+    {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("jobadmin.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void switchToJobs() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("job.fxml"));
+    private void switchToEvents()
+    {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("eventadmin.fxml"));
             Stage stage = (Stage) totalCountLabel.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void switchToWebsite() {
-        try {
-            // If you have an external browser opening capability, use that
-            // This is a placeholder for website navigation
+    private void switchToWebsite()
+    {
+        try
+        {
             System.out.println("Opening MIST website");
 
-            // Example to open in browser if possible
             java.awt.Desktop.getDesktop().browse(new java.net.URI("https://mist.ac.bd"));
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void logOut(ActionEvent event) throws IOException {
+    public void logOut(ActionEvent event) throws IOException
+    {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Log Out");
         alert.setHeaderText("You're about to logout");
-        alert.setContentText("Do you want to log out?");
+        alert.setContentText("Do you want to save before exiting?");
 
-        // Get the user's response
-        //alert.initOwner();
-        Optional<ButtonType> result = alert.showAndWait();Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        alert.initOwner(stage);
-
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Proceed with logout only if user confirms
-            Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
-            Scene scene = new Scene(root);
+        if (alert.showAndWait().get() == ButtonType.OK)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
             stage.setScene(scene);
-            stage.close();
-        } else {
-            // User clicked Cancel, so do nothing
-            System.out.println("Logout cancelled");
+            stage.show();
         }
     }
 }

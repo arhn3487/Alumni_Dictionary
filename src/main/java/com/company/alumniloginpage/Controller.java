@@ -373,41 +373,7 @@ public class Controller
         }
     }
 
-    public void switchBroadcast(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setFullScreen(true);
-        stage.setFullScreenExitHint("");
-        stage.show();
-    }
 
-    public void switchtoScene1(ActionEvent event) throws IOException {
-
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("scene2.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setFullScreen(true);
-            stage.show();
-        } catch (IOException e) {
-            System.err.println("Failed to load scene1.fxml: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-    }
-
-    public void switchtoEvent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventalumni.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setFullScreen(true);
-    }
 
     public void BroadcastMail(ActionEvent event) throws IOException {
         Broadcast test= new Broadcast();
@@ -471,22 +437,73 @@ public class Controller
         return emails.toArray(new String[0]);
     }
 
+    public void switchToAdminHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void switchBroadcast(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("");
+        stage.show();
+    }
+
+    @FXML
+    public void switchToJobBoardAdmin(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("jobadmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void eventadmin(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventadmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Hide the exit hint message
+        stage.show();
+    }
+
+
+    public void switchToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
     public void switchalumniCard(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniCard.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
 
-        stage.setFullScreen(true);
-    }
-
-    public void switchToSignupForm(ActionEvent event) throws IOException
-    {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("signupForm.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
         stage.setFullScreen(true);
     }
 
@@ -499,33 +516,31 @@ public class Controller
         stage.setFullScreen(true);
     }
 
-    public void switchTopersonalinfo(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("personalinfo.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-
-        stage.show();
-    }
-
-    public void switchToLogin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login2.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        userTypes.getItems().addAll("Admin", "Student", "Alumni");
-        stage.show();
-    stage.setFullScreen(true);
-    }
-
-    public void switchToHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+    public void switchToJobBoard(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("job.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
+    }
+
+    public void switchtoEvent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventalumni.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    public void switchToStudentHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("student_home.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
     }
 
     public void switchtoStudentIdCard(ActionEvent event) throws IOException {
@@ -536,8 +551,9 @@ public class Controller
         stage.setFullScreen(true);
         stage.show();
     }
-    public void switchToJobBoard(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("job.fxml"))));
+
+    public void switchtoAlumniListStudent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListStudent.fxml"))));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -563,63 +579,37 @@ public class Controller
         stage.show();
     }
 
-    public void switchtoAlumniListStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListStudent.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
-    public void switchToStudentHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("student_home.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setFullScreen(true);
-    }
-
-    public void switchToAdminHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setFullScreen(true);
-    }
-
-    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
     public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{
         Desktop.getDesktop().browse(new URI("https://mist.ac.bd/"));
     }
 
-    public void logOut(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-
+    @FXML
+    public void logOut(ActionEvent event) throws IOException
+    {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Log Out");
         alert.setHeaderText("You're about to logout");
-        alert.setContentText("Do you want to save before exiting ?");
+        alert.setContentText("Do you want to save before exiting?");
 
-        if(alert.showAndWait().get() == ButtonType.OK) {
-            stage.close();
+        if (alert.showAndWait().get() == ButtonType.OK)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
+    public void switchToLogin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login2.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        userTypes.getItems().addAll("Admin", "Student", "Alumni");
+        stage.show();
+        stage.setFullScreen(true);
+    }
 
 
     private Parent loadFXML(String fxmlFileName) throws IOException {

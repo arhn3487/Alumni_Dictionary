@@ -14,7 +14,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@Deshboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.DashboardController">
@@ -89,11 +94,29 @@
     <left>
         <VBox fx:id="sidebar" prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
             <children>
-                <VBox fx:id="profileContainer" alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
-                    <children>
-                        <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-image" />
-                    </children>
-                </VBox>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="50.0" styleClass="profile-circle">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.39285714285714285">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.18039216101169586" green="0.19215686619281769" blue="0.5725490450859833" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.10588235408067703" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Circle>
+                  <ImageView fx:id="userImageView" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
                 <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="27.0" prefWidth="220.0" styleClass="welcome-text" text="Welcome" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
@@ -104,7 +127,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Dashboard">
+                <Button mnemonicParsing="false" onAction="#switchToAdminHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -125,7 +148,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Broadcast">
+            <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Broadcast">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -134,7 +157,7 @@
                   </ImageView>
                </graphic>
             </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
+                <Button mnemonicParsing="false" onAction="#switchToJobBoardAdmin" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -143,16 +166,16 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
+                <Button mnemonicParsing="false" onAction="#eventadmin" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event Management">
                     <graphic>
-                        <ImageView fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="12.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@photos/event_icon.png" />
+                                <Image url="@photos/donate.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST website">
+                <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST website">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>

@@ -521,11 +521,118 @@ public class DashboardController implements Initializable
         alert.showAndWait();
     }
 
-    // Navigation methods
+    public void switchToAdminHome(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void switchBroadcast(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("broadcast.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint("");
+        stage.show();
+    }
+
     @FXML
-    private void switchToStudentHome() {
-        // Navigation logic
-        System.out.println("Switching to Student Home...");
+    public void switchToJobBoardAdmin(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("jobadmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void eventadmin(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventadmin.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Hide the exit hint message
+        stage.show();
+    }
+
+    public void switchToAlumniHome(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setFullScreen(true);
+    }
+
+    @FXML
+    public void switchtoAlumniIdCard(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniCard.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+    }
+
+    public void switchtoAlumniListAlumni(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniList.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    @FXML
+    public void switchToJobBoardAlumni(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("job.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.show();
+    }
+
+    public void eventalumni(ActionEvent event) throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventalumni.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
+        stage.setFullScreenExitHint(""); // Hide the exit hint message
+        stage.show();
+    }
+
+    @FXML
+    public void switchtoStudentHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("student_home.fxml"))));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setFullScreen(true);
     }
 
     @FXML
@@ -567,100 +674,33 @@ public class DashboardController implements Initializable
     }
 
     @FXML
-    private void mistWebsite() {
-        try {
+    private void mistWebsite()
+    {
+        try
+        {
             Desktop.getDesktop().browse(new URI("https://mist.ac.bd"));
-        } catch (IOException | URISyntaxException e) {
+        }
+        catch (IOException | URISyntaxException e)
+        {
             System.err.println("Error opening MIST website: " + e.getMessage());
         }
     }
 
-    public void switchToAdminHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("Admin_dashboard.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setFullScreen(true);
-    }
-
-    public void switchtoAlumniListAdmin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniListAdmin.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
-    public void switchToAlumniHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        stage.setFullScreen(true);
-    }
-
     @FXML
-    public void switchtoAlumniIdCard(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniCard.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-    }
-
-    public void switchtoAlumniListAlumni(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("alumniList.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
-    @FXML
-    public void switchToJobBoardAlumni(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("job.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-    public void eventalumni(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("eventalumni.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.setFullScreenExitHint(""); // Hide the exit hint message
-        stage.show();
-    }
-
-    @FXML
-    public void logOut(ActionEvent event) throws IOException {
+    public void logOut(ActionEvent event) throws IOException
+    {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Log Out");
         alert.setHeaderText("You're about to logout");
-        alert.setContentText("Do you want to log out?");
+        alert.setContentText("Do you want to save before exiting?");
 
-        // Get the user's response
-        alert.initOwner(stage);
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Proceed with logout only if user confirms
-            Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+        if (alert.showAndWait().get() == ButtonType.OK)
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
             stage.setScene(scene);
-            stage.close();
-        } else {
-            // User clicked Cancel, so do nothing
-            System.out.println("Logout canceled");
+            stage.show();
         }
     }
-
 }

@@ -92,7 +92,7 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <VBox prefHeight="640.0" prefWidth="220.0" styleClass="sidebar" stylesheets="@broadcast.css" BorderPane.alignment="CENTER">
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
@@ -127,7 +127,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#switchToAdminHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Dashboard">
+            <Button mnemonicParsing="false" onAction="#switchToAdminHome" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" stylesheets="@broadcast.css" text="Dashboard">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -148,7 +148,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Broadcast">
+            <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button, nav-button-active" text="Broadcast">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -157,7 +157,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchToJobBoard" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
+            <Button mnemonicParsing="false" onAction="#switchToJobBoardAdmin" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Job Board">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -166,11 +166,11 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#switchtoEvent" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Events">
+            <Button mnemonicParsing="false" onAction="#eventadmin" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Event Management">
                <graphic>
                   <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@photos/event_icon.png" />
+                        <Image url="@photos/donate.png" />
                      </image>
                   </ImageView>
                </graphic>

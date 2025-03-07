@@ -128,7 +128,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Dashboard">
+                <Button mnemonicParsing="false" onAction="#switchToAdminHome" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Dashboard">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -140,16 +140,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Announcements">
-                    <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@photos/Invitation.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#switchalumniList" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Alumni Directory Manage">
+                <Button mnemonicParsing="false" onAction="#switchtoAlumniListAdmin" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Alumni Directory Manage">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -158,7 +149,16 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Job Board">
+                <Button mnemonicParsing="false" onAction="#switchBroadcast" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Broadcast">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@photos/Invitation.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchToJobBoardAdmin" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="Job Board">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -167,7 +167,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button, nav-button-active" text="Event Management">
+                <Button mnemonicParsing="false" onAction="#eventadmin" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button, nav-button-active" text="Event Management">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -176,7 +176,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="MIST Website">
+                <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="MIST Website">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -185,6 +185,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
             </children>
         </VBox>
     </left>
