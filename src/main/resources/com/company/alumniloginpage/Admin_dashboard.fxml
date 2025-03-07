@@ -21,6 +21,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="mainContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@Deshboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.DashboardController">
     <top>
@@ -175,6 +176,15 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Button mnemonicParsing="false" onAction="#switchToCreateID" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Create ID">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/idcard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
                 <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST website">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -184,6 +194,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
             </children>
         </VBox>
     </left>

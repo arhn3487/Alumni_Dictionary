@@ -135,16 +135,6 @@ public class LoginController
         passwordField.clear();
     }
 
-    public void switchToSignupForm(ActionEvent event) throws IOException
-    {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("creatAccountFormAdmin.fxml"))));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
-    }
-
     public void switchToForgotPassword(ActionEvent event) throws IOException
     {
         Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("forgotPassword.fxml"))));
@@ -152,15 +142,6 @@ public class LoginController
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setFullScreen(true);
-        stage.show();
-    }
-
-    public void switchToHome() throws IOException
-    {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
-        stage = (Stage) loginButton.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
         stage.show();
     }
 
@@ -182,14 +163,25 @@ public class LoginController
         }
     }
 
+    public void switchToHome() throws IOException
+    {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("home.fxml"))));
+        stage = (Stage) loginButton.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     private void switchToStudenTHome()
     {
         try
         {
             Parent root = FXMLLoader.load(getClass().getResource("student_home.fxml"));
-            //Parent root = FXMLLoader.load(getClass().getResource("scene1.fxml"));
             stage = (Stage) loginButton.getScene().getWindow(); // Use loginButton as reference
             stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
+            stage.setFullScreenExitHint("");
             stage.show();
         }
         catch (IOException e)
@@ -197,4 +189,7 @@ public class LoginController
             e.printStackTrace();
         }
     }
+
+
+
 }

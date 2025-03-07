@@ -20,6 +20,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="main-container" stylesheets="@AdminController.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.alumniloginpage.AdminController">
     <left>
@@ -109,6 +110,15 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Button mnemonicParsing="false" onAction="#switchToCreateID" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Create ID">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/idcard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
                 <Button mnemonicParsing="false" onAction="#switchToWebsite" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="MIST Website">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -118,6 +128,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="version1.0.0" textAlignment="CENTER" wrappingWidth="219.625" />
             </children>
         </VBox>
     </left>

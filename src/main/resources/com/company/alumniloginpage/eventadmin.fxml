@@ -176,6 +176,15 @@
                         </ImageView>
                     </graphic>
                 </Button>
+            <Button mnemonicParsing="false" onAction="#switchToCreateID" prefHeight="50.0" prefWidth="220.0" styleClass="nav-button" text="Create ID">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@photos/idcard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
                 <Button mnemonicParsing="false" onAction="#mistWebsite" prefHeight="50.0" prefWidth="240.0" styleClass="nav-button" text="MIST Website">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">

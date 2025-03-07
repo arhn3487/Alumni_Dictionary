@@ -140,25 +140,6 @@
 
                         <!-- Registration Link -->
                         <VBox alignment="CENTER" spacing="5.0">
-                            <Text fill="white" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
-                                <font>
-                                    <Font name="Arial" size="14.0" />
-                                </font>
-                                <effect>
-                                    <DropShadow height="2.0" radius="0.5" width="2.0" />
-                                </effect>
-                            </Text>
-                            <Button mnemonicParsing="false" onAction="#switchToSignupForm" style="-fx-background-color: transparent; -fx-text-fill: #96c93d; -fx-font-weight: bold; -fx-cursor: hand;" text="REGISTER NOW">
-                                <font>
-                                    <Font name="Arial Bold" size="14.0" />
-                                </font>
-                                <effect>
-                                    <DropShadow height="4.0" radius="1.5" width="4.0" />
-                                </effect>
-                                <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                </cursor>
-                            </Button>
                      <Button mnemonicParsing="false" onAction="#switchToForgotPassword" style="-fx-background-color: transparent; -fx-text-fill: #96c93d; -fx-font-weight: bold; -fx-cursor: hand;" text="FORGOT PASSWORD">
                         <font>
                            <Font name="Arial Bold" size="14.0" />
