@@ -1,6 +1,7 @@
 package com.company.alumniloginpage;
 
 import com.mongodb.client.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,6 +76,13 @@ public class EventController {
     public void initialize() {
         mongoDBConnection = MongoDBConnection.getInstance();
 
+        // Get the stage reference as soon as the component is attached to scene
+        Platform.runLater(() -> {
+            if (addEventButton != null && addEventButton.getScene() != null) {
+                stage = (Stage) addEventButton.getScene().getWindow();
+            }
+        });
+
         // Load user information
         loadUserInfo();
 
@@ -136,10 +144,28 @@ public class EventController {
             }
         });
 
-        // Add event handlers for buttons
-        if (addEventButton != null) addEventButton.setOnAction(event -> addEvent());
-        if (removeEventButton != null) removeEventButton.setOnAction(event -> removeEvent());
-        if (clearButton != null) clearButton.setOnAction(event -> clearEventFields());
+        // Add event handlers for buttons - IMPORTANT: Use lambda without ActionEvent parameter to prevent stage loss
+        if (addEventButton != null) {
+            addEventButton.setOnAction(e -> {
+                addEvent();
+                // Make sure we're not navigating away accidentally
+                e.consume();
+            });
+        }
+
+        if (removeEventButton != null) {
+            removeEventButton.setOnAction(e -> {
+                removeEvent();
+                e.consume();
+            });
+        }
+
+        if (clearButton != null) {
+            clearButton.setOnAction(e -> {
+                clearEventFields();
+                e.consume();
+            });
+        }
 
         // Load events from database
         loadEventsFromDatabase();
@@ -160,12 +186,13 @@ public class EventController {
 
         // Set action for view participants button
         if (viewParticipantsButton != null) {
-            viewParticipantsButton.setOnAction(event -> {
+            viewParticipantsButton.setOnAction(e -> {
                 if (currentEvent != null) {
                     loadParticipantsForEvent(currentEvent.getId());
                 } else {
                     showAlert("Selection Error", "Please select an event to view participants");
                 }
+                e.consume(); // Prevent any bubbling of the event
             });
         }
     }
@@ -177,14 +204,10 @@ public class EventController {
                 private final Button registerButton = new Button("Register");
 
                 {
-//                    registerButton.setOnAction(event -> {
-//                        Event event = getTableView().getItems().get(getIndex());
-//                        registerForEvent(event);
-//                    });
-
                     registerButton.setOnAction(event -> {
                         Event selectedEvent = getTableView().getItems().get(getIndex());
                         registerForEvent(selectedEvent);
+                        event.consume(); // Important: consume the event
                     });
                 }
 
@@ -345,6 +368,11 @@ public class EventController {
 
     // Method to add a new event
     private void addEvent() {
+        // Get the stage if not already set
+        if (stage == null && addEventButton != null && addEventButton.getScene() != null) {
+            stage = (Stage) addEventButton.getScene().getWindow();
+        }
+
         String title = eventTitle.getText().trim();
         LocalDate date = eventDate.getValue();
         String location = eventLocation.getText().trim();
@@ -385,6 +413,11 @@ public class EventController {
 
     // Method to remove an event
     private void removeEvent() {
+        // Get the stage if not already set
+        if (stage == null && removeEventButton != null && removeEventButton.getScene() != null) {
+            stage = (Stage) removeEventButton.getScene().getWindow();
+        }
+
         Event selectedEvent = eventTableView.getSelectionModel().getSelectedItem();
         if (selectedEvent == null) {
             showAlert("Selection Error", "Please select an event to remove");
@@ -446,6 +479,9 @@ public class EventController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        if (stage != null) {
+            alert.initOwner(stage);
+        }
         alert.showAndWait();
     }
 

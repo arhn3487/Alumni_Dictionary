@@ -574,7 +574,7 @@ public class jobBoardController implements Initializable
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
-        alert.showAndWait();
+        //alert.showAndWait();
     }
 
     public void switchToAdminHome(ActionEvent event) throws IOException

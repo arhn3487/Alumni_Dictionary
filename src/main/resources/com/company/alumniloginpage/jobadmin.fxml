@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -223,7 +224,7 @@
 
                         <AnchorPane prefHeight="314.0" prefWidth="856.0" styleClass="feature-card">
                             <children>
-                                <TableView fx:id="jobTableView" layoutX="0.0" layoutY="0.0" styleClass="job-table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <TableView fx:id="jobTableView" layoutX="0.0" layoutY="0.0" styleClass="alumni-table" stylesheets="@alumnilist.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <columns>
                                         <TableColumn fx:id="titleColumn" prefWidth="127.99996566772461" text="Job Title" />
                                         <TableColumn fx:id="companyColumn" prefWidth="127.99998474121094" text="Company" />
@@ -246,7 +247,7 @@
                             </padding>
                         </AnchorPane>
 
-                        <AnchorPane prefHeight="320.0" prefWidth="740.0" styleClass="feature-card" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <AnchorPane prefHeight="320.0" prefWidth="740.0" stylesheets="@alumnilist.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
                                 <Text fill="#333333" layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="card-title" text="Post New Job Opportunity" wrappingWidth="251.0">
                                     <font>
@@ -327,6 +328,10 @@
                             <padding>
                                 <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                             </padding>
+                     <styleClass>
+                        <String fx:value="feature-card" />
+                        <String fx:value="alumni-table" />
+                     </styleClass>
                         </AnchorPane>
 
                         <AnchorPane styleClass="footer" VBox.vgrow="ALWAYS">

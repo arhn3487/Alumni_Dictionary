@@ -145,6 +145,9 @@ public class AlumniCardController {
 
     @FXML
     public void handleDownload() {
+        // Get the current stage
+        Stage currentStage = (Stage) alumniCardPane.getScene().getWindow();
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Student ID Card");
 
@@ -156,7 +159,7 @@ public class AlumniCardController {
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"));
             fileChooser.setInitialFileName(fileName + ".png");
 
-            File file = fileChooser.showSaveDialog(alumniCardPane.getScene().getWindow());
+            File file = fileChooser.showSaveDialog(currentStage);
             if (file != null) {
                 try {
                     // Take snapshot of the card pane
@@ -176,7 +179,7 @@ public class AlumniCardController {
                     new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
             fileChooser.setInitialFileName(fileName + ".pdf");
 
-            File file = fileChooser.showSaveDialog(alumniCardPane.getScene().getWindow());
+            File file = fileChooser.showSaveDialog(currentStage);
             if (file != null) {
                 try {
                     // Take snapshot of the card pane
@@ -266,6 +269,7 @@ public class AlumniCardController {
         alert.setTitle("Download Successful");
         alert.setHeaderText("Student ID Card Downloaded");
         alert.setContentText("Your Student ID card has been successfully saved as " + format + " file.");
+        alert.initOwner((Stage) alumniCardPane.getScene().getWindow());
         alert.showAndWait();
     }
 
@@ -275,6 +279,7 @@ public class AlumniCardController {
         alert.setHeaderText("Error Downloading ID Card");
         alert.setContentText("An error occurred: " + e.getMessage());
         e.printStackTrace();
+        alert.initOwner((Stage) alumniCardPane.getScene().getWindow());
         alert.showAndWait();
     }
 

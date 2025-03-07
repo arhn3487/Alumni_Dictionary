@@ -153,12 +153,12 @@ public class Controller
         }
     }
 
-    private void showAlert(String title, String message)
-    {
+    private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+        alert.initOwner(stage); // Set the owner stage
         alert.showAndWait();
     }
 
@@ -599,6 +599,7 @@ public class Controller
         alert.setTitle("Log Out");
         alert.setHeaderText("You're about to logout");
         alert.setContentText("Do you want to save before exiting?");
+        alert.initOwner(stage);
 
         if (alert.showAndWait().get() == ButtonType.OK)
         {

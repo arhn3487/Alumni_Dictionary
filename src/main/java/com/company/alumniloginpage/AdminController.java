@@ -535,6 +535,7 @@ public class AdminController implements Initializable
         alert.setTitle("Log Out");
         alert.setHeaderText("You're about to logout");
         alert.setContentText("Do you want to save before exiting?");
+        alert.initOwner(stage);
 
         if (alert.showAndWait().get() == ButtonType.OK)
         {
