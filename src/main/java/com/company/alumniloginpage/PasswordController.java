@@ -49,10 +49,11 @@ public class PasswordController
             // Show success message
             showAlert("Success", "Account created successfully!");
 
-            Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("login2.fxml"))));
+            Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("creatAccountFormAdmin.fxml"))));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+
             stage.show();
         }
         else

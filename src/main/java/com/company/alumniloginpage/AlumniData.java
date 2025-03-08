@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class AlumniData {
     private String id;
+    private String studentId;
     private String name;
     private String batch;
     private String department;
@@ -16,10 +17,11 @@ public class AlumniData {
     private ImageView pictureView;
     private String userType;
 
-    public AlumniData(String id, String name, String batch, String department, String degree,
+    public AlumniData(String id, String studentId, String name, String batch, String department, String degree,
                       String graduationYear, String workplace, String email, String phone,
                       String address, ImageView pictureView, String userType) {
         this.id = id;
+        this.studentId = studentId;
         this.name = name;
         this.batch = batch;
         this.department = department;
@@ -40,6 +42,14 @@ public class AlumniData {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {

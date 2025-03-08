@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import org.bson.types.ObjectId;
 
 public class AlumniModel {
     private final StringProperty name;
@@ -17,6 +18,7 @@ public class AlumniModel {
     private final ObjectProperty<ImageView> photoView;
     private final ObjectProperty<Button> actionsButton;
     private String photoPath;
+    private ObjectId mongoId; // Store MongoDB _id as ObjectId
 
     public AlumniModel(String name, String studentId, String batch, String department, String email, String phone) {
         this.name = new SimpleStringProperty(name);
@@ -117,12 +119,20 @@ public class AlumniModel {
         this.actionsButton.set(button);
     }
 
-    // Photo Path (regular field, not a property as it's not displayed in the TableView)
+    // Photo Path
     public String getPhotoPath() {
         return photoPath;
     }
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    // MongoDB _id as ObjectId for direct use in queries
+    public ObjectId getMongoId() {
+        return mongoId;
+    }
+    public void setMongoId(ObjectId mongoId) {
+        this.mongoId = mongoId;
     }
 
     @Override

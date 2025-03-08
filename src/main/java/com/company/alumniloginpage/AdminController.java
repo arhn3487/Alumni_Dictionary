@@ -117,9 +117,6 @@ public class AdminController implements Initializable
         dbConnection = MongoDBConnection.getInstance();
         collection = dbConnection.getDatabase().getCollection("info");
 
-
-
-
         String loggedInUserId = SharedData.getInstance().getLoggedInUserId();
 
         if (loggedInUserId != null)
@@ -156,10 +153,6 @@ public class AdminController implements Initializable
         {
             System.err.println("No logged-in user ID found.");
         }
-
-
-
-
 
         // Set up ComboBoxes
         setupComboBoxes();
@@ -201,8 +194,8 @@ public class AdminController implements Initializable
     }
 
     private void setupTableColumns() {
-        // Setup all columns
-        studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // Setup all columns, now using studentId field for the studentIdColumn
+        studentIdColumn.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         batchColumn.setCellValueFactory(new PropertyValueFactory<>("batch"));
         departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
@@ -264,6 +257,7 @@ public class AdminController implements Initializable
         for (Document doc : documents) {
             // Extract all fields from the document
             String id = doc.getObjectId("_id").toString();
+            String studentId = doc.getString("studentId");
             String name = doc.getString("name");
             String batch = doc.getString("batch");
             String department = doc.getString("department");
@@ -279,8 +273,9 @@ public class AdminController implements Initializable
             // Create ImageView for the picture
             ImageView pictureView = createImageView(picturePath);
 
+            // Important: Now including studentId in the constructor
             AlumniData alumniData = new AlumniData(
-                    id, name, batch, department, degree, graduationYear,
+                    id, studentId, name, batch, department, degree, graduationYear,
                     workplace, email, phone, address, pictureView, userType
             );
 
@@ -382,6 +377,7 @@ public class AdminController implements Initializable
         for (Document doc : documents) {
             // Extract all fields from the document
             String id = doc.getObjectId("_id").toString();
+            String studentId = doc.getString("studentId");
             String name = doc.getString("name");
             String batchVal = doc.getString("batch");
             String departmentVal = doc.getString("department");
@@ -397,8 +393,9 @@ public class AdminController implements Initializable
             // Create ImageView for the picture
             ImageView pictureView = createImageView(picturePath);
 
+            // Including the studentId here as well
             AlumniData alumniData = new AlumniData(
-                    id, name, batchVal, departmentVal, degree, graduationYear,
+                    id, studentId, name, batchVal, departmentVal, degree, graduationYear,
                     workplace, email, phone, address, pictureView, userTypeVal
             );
 
@@ -420,7 +417,7 @@ public class AdminController implements Initializable
         AlumniData selectedData = alumniListView.getSelectionModel().getSelectedItem();
         if (selectedData != null) {
             // Implement view details functionality
-            System.out.println("Viewing details for: " + selectedData.getId());
+            System.out.println("Viewing details for: " + selectedData.getStudentId());
         }
     }
 

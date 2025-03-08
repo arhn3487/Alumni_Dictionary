@@ -20,7 +20,9 @@ import javafx.stage.Stage;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.awt.*;
 import java.io.File;
@@ -39,7 +41,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
-public class AlumniManagementController //implements Initializable
+public class AlumniManagementController implements Initializable
 {
 
     // FXML components for the Alumni Table
@@ -85,21 +87,21 @@ public class AlumniManagementController //implements Initializable
     private File selectedPhotoFile;
     private static final String PHOTO_DIRECTORY = "src/main/resources/com/company/alumniloginpage/photos/profiles/";
 
-    //@Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        // Initialize MongoDB connection
-//        MongoDBConnection dbConnection = MongoDBConnection.getInstance();
-//        alumniCollection = dbConnection.getDatabase().getCollection("info");
-//
-//        // Initialize ComboBoxes
-//        initializeComboBoxes();
-//
-//        // Initialize TableView
-//        initializeTableView();
-//
-//        // Load data from MongoDB
-//        loadAlumniData();
-//    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize MongoDB connection
+        MongoDBConnection dbConnection = MongoDBConnection.getInstance();
+        alumniCollection = dbConnection.getDatabase().getCollection("info");
+
+        // Initialize ComboBoxes
+        initializeComboBoxes();
+
+        // Initialize TableView
+        initializeTableView();
+
+        // Load data from MongoDB
+        loadAlumniData();
+    }
 
     private void initializeComboBoxes() {
         // Check if userTypeComboBox is not null
@@ -143,11 +145,10 @@ public class AlumniManagementController //implements Initializable
         }
     }
 
-
     private void initializeTableView() {
         // Configure table columns with proper cell factories
-        if(photoColumn!=null)photoColumn.setCellValueFactory(new PropertyValueFactory<>("photoView"));
-        if(photoColumn!=null)photoColumn.setCellFactory(column -> {
+        if(photoColumn!=null) photoColumn.setCellValueFactory(new PropertyValueFactory<>("photoView"));
+        if(photoColumn!=null) photoColumn.setCellFactory(column -> {
             return new TableCell<AlumniModel, ImageView>() {
                 @Override
                 protected void updateItem(ImageView item, boolean empty) {
@@ -218,6 +219,10 @@ public class AlumniManagementController //implements Initializable
     }
 
     private AlumniModel createAlumniModelFromDocument(Document doc) {
+        // Get MongoDB _id (important for delete operations)
+        ObjectId mongoId = doc.getObjectId("_id");
+
+        // Get other fields from document
         String name = doc.getString("name");
         String studentId = doc.getString("studentId");
         String batch = doc.getString("batch");
@@ -228,6 +233,7 @@ public class AlumniManagementController //implements Initializable
 
         // Create the alumni model
         AlumniModel alumni = new AlumniModel(name, studentId, batch, department, email, phone);
+        alumni.setMongoId(mongoId); // Store MongoDB _id for future operations
 
         // Set photo if available
         if (photoPath != null && !photoPath.isEmpty()) {
@@ -250,9 +256,15 @@ public class AlumniManagementController //implements Initializable
         }
 
         // Create action buttons
-        Button actionButton = new Button("View/Edit");
-        actionButton.setOnAction(event -> handleViewEditAlumni(alumni));
-        alumni.setActionsButton(actionButton);
+        Button viewEditButton = new Button("View/Edit");
+        viewEditButton.setOnAction(event -> handleViewEditAlumni(alumni));
+
+        Button deleteButton = new Button("Delete");
+        deleteButton.setOnAction(event -> handleDeleteAlumni(alumni));
+
+        // Use a container for buttons (HBox or similar in real implementation)
+        // For simplicity, just using one button in this example
+        alumni.setActionsButton(viewEditButton);
 
         return alumni;
     }
@@ -286,7 +298,7 @@ public class AlumniManagementController //implements Initializable
             filter.append("userType", userType);
         }
 
-        if (department != null && !department.equals("All Departments")) {
+        if (department != null && !department.equals("All")) {
             filter.append("department", department);
         }
 
@@ -451,6 +463,44 @@ public class AlumniManagementController //implements Initializable
         // In a real implementation, you would load a new FXML or dialog here
     }
 
+    // New method to handle alumni deletion
+    private void handleDeleteAlumni(AlumniModel alumni) {
+        // Confirm deletion with the user
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Confirm Deletion");
+        confirmAlert.setHeaderText("Delete Alumni Record");
+        confirmAlert.setContentText("Are you sure you want to delete " + alumni.getName() + " (" + alumni.getStudentId() + ")?");
+
+        confirmAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    // Delete from database using MongoDB _id
+                    alumniCollection.deleteOne(Filters.eq("_id", alumni.getMongoId()));
+
+                    // Remove from the observable list
+                    alumniList.remove(alumni);
+
+                    // Delete photo file if it exists
+                    if (alumni.getPhotoPath() != null && !alumni.getPhotoPath().isEmpty()) {
+                        try {
+                            File photoFile = new File(alumni.getPhotoPath());
+                            if (photoFile.exists() && !photoFile.isDirectory()) {
+                                photoFile.delete();
+                            }
+                        } catch (Exception e) {
+                            System.err.println("Error deleting photo file: " + e.getMessage());
+                        }
+                    }
+
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Alumni record deleted successfully!");
+                } catch (Exception e) {
+                    System.err.println("Error deleting document: " + e.getMessage());
+                    showAlert(Alert.AlertType.ERROR, "Database Error", "Could not delete the alumni record.");
+                }
+            }
+        });
+    }
+
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -513,7 +563,7 @@ public class AlumniManagementController //implements Initializable
         }
     }
 
-    public void mistWebsite(ActionEvent event) throws URISyntaxException,IOException{
+    public void mistWebsite(ActionEvent event) throws URISyntaxException, IOException {
         Desktop.getDesktop().browse(new URI("https://mist.ac.bd/"));
     }
 }
