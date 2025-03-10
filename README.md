@@ -74,7 +74,7 @@
 <h2 class="section-title" style="color: #1ABC9C;">👨‍💻 Contributors</h2>
 <div class="section contributors" style="background: #F8F9F9; padding: 10px; border-radius: 8px;">
     <p>👨‍💻 <strong>Arafat Hasan</strong> - <a href="https://github.com/arhn3487" target="_blank" style="color: #2980B9;">GitHub</a></p>
-    <p>👨‍💻 <strong>Sakib</strong> - <a href="https://github.com/sm-shakib" target="_blank" style="color: #2980B9;">GitHub</a></p>
+    <p>👨‍💻 <strong>Shakib</strong> - <a href="https://github.com/sm-shakib" target="_blank" style="color: #2980B9;">GitHub</a></p>
     <p>👨‍💻 <strong>Isbat</strong> - <a href="https://github.com/ihsamin01" target="_blank" style="color: #2980B9;">GitHub</a></p>
 </div>
 
