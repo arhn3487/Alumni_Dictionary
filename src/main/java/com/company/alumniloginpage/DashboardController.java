@@ -142,6 +142,8 @@ public class DashboardController implements Initializable
         timeline.play();
     }
 
+
+
     private void maximizeStage() {
         // Find the stage from any control
         if (namelbl != null && namelbl.getScene() != null && namelbl.getScene().getWindow() != null) {
