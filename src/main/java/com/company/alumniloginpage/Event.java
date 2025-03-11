@@ -3,7 +3,7 @@ package com.company.alumniloginpage;
 import java.time.LocalDate;
 
 public class Event {
-    private String id;
+    private String id;//encapsulation
     private String title;
     private LocalDate date;
     private String location;
@@ -28,7 +28,7 @@ public class Event {
     // Getters and setters
     public String getId() {
         return id;
-    }
+    }//Encapsulation
 
     public void setId(String id) {
         this.id = id;

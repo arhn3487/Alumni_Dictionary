@@ -44,7 +44,9 @@ public class LoginController
         String usertype = userType.getValue();
 
         // Connect to MongoDB
-        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+        //\mongoClient = MongoClients.create("mongodb+srv://arafatsakibisbat:Password123@alumni.meusu.mongodb.net/?retryWrites=true&w=majority&appName=alumni")
+        //try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
+        try (MongoClient mongoClient = MongoClients.create("mongodb+srv://arafatsakibisbat:Password123@alumni.meusu.mongodb.net/?retryWrites=true&w=majority&appName=alumni"))
         {
             MongoDatabase database = mongoClient.getDatabase("alumni");
             MongoCollection<Document> collection = database.getCollection("info");

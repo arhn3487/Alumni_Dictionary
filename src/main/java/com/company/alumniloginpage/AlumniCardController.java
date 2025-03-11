@@ -93,6 +93,7 @@ public class AlumniCardController {
 
         // Set up button actions for verification
         verifyInfoButton.setOnAction(event -> {
+            if(verifyInfoButton==null) return;
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Verified");
             alert.setHeaderText("ID Card Information Verified");

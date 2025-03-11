@@ -403,8 +403,8 @@ public class Controller
 
     private String[] fetchUsersByYearAndBatch(String year, String batch) {
         List<String> emails = new ArrayList<String>(); // Create a list to store emails
-
-        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+        try (MongoClient mongoClient = MongoClients.create("mongodb+srv://arafatsakibisbat:Password123@alumni.meusu.mongodb.net/?retryWrites=true&w=majority&appName=alumni")){
+        //try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
             MongoDatabase database = mongoClient.getDatabase("alumni");
             MongoCollection<Document> collection = database.getCollection("info");
 

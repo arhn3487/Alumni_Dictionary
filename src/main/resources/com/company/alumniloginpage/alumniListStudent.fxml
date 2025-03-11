@@ -307,7 +307,7 @@
                                     <children>
                                         <VBox spacing="10.0" styleClass="form-group" HBox.hgrow="ALWAYS">
                                             <children>
-                                                <Label styleClass="input-label" text="Session">
+                                                <Label styleClass="input-label" text="Graduation Year">
                                                     <font>
                                                         <Font size="14.0" />
                                                     </font>
@@ -319,7 +319,7 @@
                                                         </DropShadow>
                                                     </effect>
                                                 </Label>
-                                                <ComboBox fx:id="graduationYear" prefHeight="40.0" prefWidth="200.0" promptText="All Sessions" styleClass="form-combo-box">
+                                                <ComboBox fx:id="graduationYear" prefHeight="40.0" prefWidth="200.0" promptText="Graduation Year" styleClass="form-combo-box">
                                                     <effect>
                                                         <DropShadow height="5.0" radius="2.0" width="5.0">
                                                             <color>

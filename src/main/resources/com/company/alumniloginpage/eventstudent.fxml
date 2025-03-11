@@ -60,18 +60,6 @@
                                 <Insets right="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="header-button" text="Settings">
-                            <graphic>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@photos/settings.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                        </Button>
                         <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Sign Out">
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">

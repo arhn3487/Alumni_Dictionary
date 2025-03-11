@@ -27,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
+import java.util.regex.Pattern;//
 
 public class ForgotPasswordController {
 
@@ -35,7 +35,7 @@ public class ForgotPasswordController {
     private VBox emailPane, otpPane, resetPasswordPane, successPane;
 
     @FXML
-    private TextField emailField, otpField;
+    private TextField emailField, otpField;//
 
     @FXML
     private PasswordField newPasswordField, confirmPasswordField;
@@ -208,7 +208,7 @@ public class ForgotPasswordController {
         resendButton.setDisable(true);
 
         // Generate and send new OTP
-        SendOTP otpSender = new SendOTP();
+        SendOTP otpSender = new SendOTP();//abstruction
         generatedOTP = otpSender.generateOTP();
 
         Thread sendOTPThread = new Thread(() -> {

@@ -34,7 +34,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class jobBoardController implements Initializable
+public class jobBoardController implements Initializable//abstruc
 {
 
     Stage stage;
@@ -78,7 +78,7 @@ public class jobBoardController implements Initializable
     // MongoDB connection
     private MongoCollection<Document> jobsCollection;
 
-    @Override
+    @Override///poly
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
