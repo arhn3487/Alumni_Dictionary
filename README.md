@@ -7,6 +7,12 @@
     <p>🔗 The <strong>MIST Alumni Portal</strong> is a comprehensive platform designed to manage alumni information, provide digital ID cards, and facilitate job postings and events.</p>
 </div>
 
+<div style="text-align: center; margin: 20px 0;">
+    <a href="https://youtu.be/Vd7RQLaynlU?si=PqsygzZHO61KVOH1" target="_blank" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Watch_on-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch on YouTube">
+    </a>
+</div>
+
 <h2 class="section-title" style="color: #1ABC9C;">👥 Features by User Role</h2>
 
 <div class="section" style="background: #F8F9F9; padding: 10px; border-radius: 8px;">
@@ -80,5 +86,4 @@
 
 <div class="footer" style="text-align: center; margin-top: 20px;">
     <p>🚀 Developed with ❤️ by <span style="color: #E74C3C; font-weight: bold;">MIST Alumni Portal Team</span></p>
-    
 </div>
